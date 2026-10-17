@@ -1,0 +1,757 @@
+{
+  "bundled_sources": [
+    "mass_1.mas20.txt",
+    "rct1.mas20.txt",
+    "rct2_1.mas20.txt",
+    "radii.html",
+    "be2-adopted.json"
+  ],
+  "experimental_status": "retrospective_release_validation_not_blind",
+  "macros": {
+    "A": "N+Z",
+    "I": "(N-Z)/(N+Z)",
+    "P_m": {
+      "formula": "vp*vn/(vp+vn), 0 when vp+vn=0; valence=min absolute distance",
+      "neutron_magic": [
+        8,
+        20,
+        28,
+        50,
+        82
+      ],
+      "proton_magic": [
+        8,
+        20,
+        28,
+        50,
+        82
+      ]
+    },
+    "P_s": {
+      "formula": "vp*vn/(vp+vn), 0 when vp+vn=0; valence=min absolute distance",
+      "neutron_magic": [
+        2,
+        8,
+        14,
+        28,
+        50,
+        82,
+        126,
+        184
+      ],
+      "note": "Source-specific effective closures, not a claim all are universal magic numbers",
+      "proton_magic": [
+        2,
+        6,
+        14,
+        28,
+        50,
+        82,
+        114
+      ]
+    },
+    "d": "((-1)**N+(-1)**Z)/2",
+    "radius_conversion": "Sheng reports equivalent sharp R_C=sqrt(5/3)*r_rms; every Sheng expression here includes sqrt(3/5)."
+  },
+  "model_seeds": [
+    7,
+    17,
+    37,
+    73,
+    101
+  ],
+  "noise_levels": [
+    0,
+    0.01,
+    0.05
+  ],
+  "release_date": "2026-10-17",
+  "schema_version": 1,
+  "source_counts": {
+    "B": 2550,
+    "BE2": 424,
+    "E2plus": 524,
+    "E3minus": 103,
+    "E4plus": 369,
+    "OES3n": 2264,
+    "OES3p": 2173,
+    "R42": 369,
+    "Rch": 908,
+    "S2n": 2301,
+    "S2p": 2212,
+    "Sn": 2393,
+    "Sp": 2343,
+    "delta2n": 2086,
+    "delta2p": 1893
+  },
+  "source_policy": "Pinned evaluated values, no estimated mass parents, preliminary radii or censored point labels",
+  "sources": {
+    "be2-adopted.json": {
+      "sha256": "a3f45fcf38f40b6ca3a7ebe03d9a468cc748d3480f3576bb4972ced76c703688",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www.nndc.bnl.gov/be2/data/adopted-entries.json"
+    },
+    "ensdf_260901.zip": {
+      "sha256": "cd5ee83ea1b5926bb44eb9c4559f637276d9aadb76d378b888c08c6c07c0ba3b",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www.nndc.bnl.gov/ensdfarchivals/distributions/dist26/ensdf_260901.zip"
+    },
+    "mass_1.mas20.txt": {
+      "sha256": "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www-nds.iaea.org/amdc/ame2020/mass_1.mas20.txt"
+    },
+    "radii.html": {
+      "sha256": "2e68fe0277140f32073a7403ee1051bc2d28b3245fd1e89964bb0d50228becf3",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www-nds.iaea.org/radii/"
+    },
+    "rct1.mas20.txt": {
+      "sha256": "e6ba1d2256f90053464c48e24d44691828dc49820ce64054aa418d834cc18e90",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www-nds.iaea.org/amdc/ame2020/rct1.mas20.txt"
+    },
+    "rct2_1.mas20.txt": {
+      "sha256": "78765c7b3f3c991ce2b6ff3b5c086a135aad1807d07819f806ab9a9150a4c2c7",
+      "snapshot_retrieved": "2026-10-01",
+      "url": "https://www-nds.iaea.org/amdc/ame2020/rct2_1.mas20.txt"
+    }
+  },
+  "split_seed": 101,
+  "tasks": [
+    {
+      "category": "expression_recovery",
+      "data": "data/A01_BW.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "liquid_drop",
+      "formula": {
+        "domain": "mass_bw",
+        "expression": "15.78*A-18.34*A**(2/3)-0.71*Z*(Z-1)/A**(1/3)-23.21*(N-Z)**2/A+12*d/sqrt(A)",
+        "family": "liquid_drop",
+        "id": "A01_BW",
+        "label": "formula_generated",
+        "locator": "Eq. (1), coefficients in text",
+        "observable": "B",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://arxiv.org/pdf/nucl-th/0405080",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A01_BW",
+      "observable": "B",
+      "rows": 2020,
+      "source_population": 2550,
+      "splits": "splits/A01_BW.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A02_BWM.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "liquid_drop",
+      "formula": {
+        "domain": "mass_bw",
+        "expression": "15.777*A-18.34*A**(2/3)-0.71*Z*(Z-1)/A**(1/3)-23.21*(N-Z)**2/(A*(1+exp(-A/17)))+12*(1-exp(-A/30))*d/sqrt(A)",
+        "family": "liquid_drop",
+        "id": "A02_BWM",
+        "label": "formula_generated",
+        "locator": "Eqs. (4)-(5); no isotonic experimental shift",
+        "observable": "B",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://arxiv.org/pdf/nucl-th/0405080",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A02_BWM",
+      "observable": "B",
+      "rows": 2020,
+      "source_population": 2550,
+      "splits": "splits/A02_BWM.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A03_MISR1_B.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "misr",
+      "formula": {
+        "domain": "misr",
+        "expression": "Z*(1+1/N+1.10*N/Z**2)*(I*(32.43-A**(1/3)*N/Z)+16.70)",
+        "family": "misr",
+        "id": "A03_MISR1_B",
+        "label": "formula_generated",
+        "locator": "Version 3, Eq. (4), eta0=1 MeV",
+        "observable": "B",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://arxiv.org/html/2404.11477v3",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A03_MISR1_B",
+      "observable": "B",
+      "rows": 939,
+      "source_population": 2550,
+      "splits": "splits/A03_MISR1_B.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A04_R_A.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_scaling",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.2269*A**(1/3)",
+        "family": "radius_scaling",
+        "id": "A04_R_A",
+        "label": "formula_generated",
+        "locator": "Eq. (2), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A04_R_A",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A04_R_A.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A05_R_Z.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_scaling",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.6394*Z**(1/3)",
+        "family": "radius_scaling",
+        "id": "A05_R_Z",
+        "label": "formula_generated",
+        "locator": "Eq. (6), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A05_R_Z",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A05_R_Z.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A06_R_I.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_isospin",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.2828*(1-0.2704*I)*A**(1/3)",
+        "family": "radius_isospin",
+        "id": "A06_R_I",
+        "label": "formula_generated",
+        "locator": "Eq. (4), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A06_R_I",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A06_R_I.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A07_R_finite.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_isospin",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.2331*(1-0.1461*I+2.3310/A)*A**(1/3)",
+        "family": "radius_isospin",
+        "id": "A07_R_finite",
+        "label": "formula_generated",
+        "locator": "Eq. (5), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A07_R_finite",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A07_R_finite.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A08_R_collective.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_valence",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.2262*(1-0.1473*I+1.9876/A+0.3993*P_s/A)*A**(1/3)",
+        "family": "radius_valence",
+        "id": "A08_R_collective",
+        "label": "formula_generated",
+        "locator": "Eq. (10), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A08_R_collective",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A08_R_collective.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A09_R_pairing.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius_valence",
+      "formula": {
+        "domain": "sheng",
+        "expression": "sqrt(3/5)*1.2262*(1-0.1472*I+1.9552/A+0.4030*P_s/A+0.1093*d/A)*A**(1/3)",
+        "family": "radius_valence",
+        "id": "A09_R_pairing",
+        "label": "formula_generated",
+        "locator": "Eq. (11), Table 1",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://doi.org/10.7498/aps.64.112101",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A09_R_pairing",
+      "observable": "Rch",
+      "rows": 880,
+      "source_population": 908,
+      "splits": "splits/A09_R_pairing.json",
+      "unit": "fm"
+    },
+    {
+      "category": "expression_recovery",
+      "data": "data/A10_MISR1_R.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "misr",
+      "formula": {
+        "domain": "misr",
+        "expression": "A**(1/3)*(0.95+1.48/Z)+0.017*(P_m-Z/N)*exp(I)-I",
+        "family": "misr",
+        "id": "A10_MISR1_R",
+        "label": "formula_generated",
+        "locator": "Version 3, Eq. (5); numeric radii in fm",
+        "observable": "Rch",
+        "parameters": "Fixed printed coefficients; never refit using test labels",
+        "source": "https://arxiv.org/html/2404.11477v3",
+        "status": "empirical_model_not_unique_physical_truth"
+      },
+      "id": "A10_MISR1_R",
+      "observable": "Rch",
+      "rows": 315,
+      "source_population": 908,
+      "splits": "splits/A10_MISR1_R.json",
+      "unit": "fm"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B01_B.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "mass",
+      "formula": null,
+      "id": "B01_B",
+      "observable": "B",
+      "rows": 2457,
+      "source_population": 2550,
+      "splits": "splits/B01_B.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B02_S2n.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "mass_difference",
+      "formula": null,
+      "id": "B02_S2n",
+      "observable": "S2n",
+      "rows": 2232,
+      "source_population": 2301,
+      "splits": "splits/B02_S2n.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B03_S2p.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "mass_difference",
+      "formula": null,
+      "id": "B03_S2p",
+      "observable": "S2p",
+      "rows": 2151,
+      "source_population": 2212,
+      "splits": "splits/B03_S2p.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B04_Sn.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "mass_difference",
+      "formula": null,
+      "id": "B04_Sn",
+      "observable": "Sn",
+      "rows": 2314,
+      "source_population": 2393,
+      "splits": "splits/B04_Sn.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B05_Sp.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "mass_difference",
+      "formula": null,
+      "id": "B05_Sp",
+      "observable": "Sp",
+      "rows": 2268,
+      "source_population": 2343,
+      "splits": "splits/B05_Sp.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B06_OES3n.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "pairing",
+      "formula": null,
+      "id": "B06_OES3n",
+      "observable": "OES3n",
+      "rows": 2192,
+      "source_population": 2264,
+      "splits": "splits/B06_OES3n.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B07_OES3p.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "pairing",
+      "formula": null,
+      "id": "B07_OES3p",
+      "observable": "OES3p",
+      "rows": 2105,
+      "source_population": 2173,
+      "splits": "splits/B07_OES3p.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B08_delta2n.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "shell_gap",
+      "formula": null,
+      "id": "B08_delta2n",
+      "observable": "delta2n",
+      "rows": 2031,
+      "source_population": 2086,
+      "splits": "splits/B08_delta2n.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B09_delta2p.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "shell_gap",
+      "formula": null,
+      "id": "B09_delta2p",
+      "observable": "delta2p",
+      "rows": 1846,
+      "source_population": 1893,
+      "splits": "splits/B09_delta2p.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B10_Rch.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "radius",
+      "formula": null,
+      "id": "B10_Rch",
+      "observable": "Rch",
+      "rows": 884,
+      "source_population": 908,
+      "splits": "splits/B10_Rch.json",
+      "unit": "fm"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B11_BE2.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "collectivity",
+      "formula": null,
+      "id": "B11_BE2",
+      "observable": "BE2",
+      "rows": 417,
+      "source_population": 424,
+      "splits": "splits/B11_BE2.json",
+      "unit": "e^2 fm^4"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B12_E2plus.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "spectroscopy",
+      "formula": null,
+      "id": "B12_E2plus",
+      "observable": "E2plus",
+      "rows": 509,
+      "source_population": 524,
+      "splits": "splits/B12_E2plus.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B13_E4plus.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "spectroscopy",
+      "formula": null,
+      "id": "B13_E4plus",
+      "observable": "E4plus",
+      "rows": 368,
+      "source_population": 369,
+      "splits": "splits/B13_E4plus.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B14_E3minus.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "spectroscopy",
+      "formula": null,
+      "id": "B14_E3minus",
+      "observable": "E3minus",
+      "rows": 99,
+      "source_population": 103,
+      "splits": "splits/B14_E3minus.json",
+      "unit": "MeV"
+    },
+    {
+      "category": "observable_prediction",
+      "data": "data/B15_R42.csv",
+      "enabled_splits": [
+        "iid101",
+        "isotope101",
+        "isotone101",
+        "neutron_edge",
+        "proton_edge",
+        "shell_N",
+        "shell_Z"
+      ],
+      "family": "collectivity",
+      "formula": null,
+      "id": "B15_R42",
+      "observable": "R42",
+      "rows": 368,
+      "source_population": 369,
+      "splits": "splits/B15_R42.json",
+      "unit": "1"
+    }
+  ],
+  "version": "1.0.0"
+}

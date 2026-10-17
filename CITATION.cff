@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "NuSR Nuclear Structure Benchmark"
+message: "Cite this repository and the original data and formula publications listed in DATA_SOURCES.md and FORMULAS.md."
+type: software
+authors:
+  - name: "TAO-MINGYU"
+version: 1.0.0
+date-released: 2026-10-17
+url: "https://github.com/TAO-MINGYU/NuSR-Benchmark"
+repository-code: "https://github.com/TAO-MINGYU/NuSR-Benchmark"

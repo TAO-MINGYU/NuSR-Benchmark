@@ -1,0 +1,37 @@
+{
+  "status": "configuration_required_before_model_runs",
+  "bank_version": "1.0.0",
+  "bank_checksums_sha256": "d6c08197dffca4984de8421a6b40a75a543e83d0a67ee703d8b06be305afcc1f",
+  "task_selection": "all_category_A_clean_and_all_category_B_enabled_splits",
+  "robustness_extension": "category_A_noise_0.01_and_0.05",
+  "seeds": [
+    7,
+    17,
+    37,
+    73,
+    101
+  ],
+  "horizontal_models": [
+    "NuSR",
+    "PySR",
+    "MySR",
+    "Operon"
+  ],
+  "vertical_models": [
+    "NuSR",
+    "GPR",
+    "LightGBM",
+    "MLP_ensemble"
+  ],
+  "primary_information": "N_Z_and_declared_matched_nuclear_knowledge_no_measured_lookup",
+  "knowledge_mode": null,
+  "model_revisions_and_effective_configurations": null,
+  "adapter_revisions": null,
+  "cpu_seconds_per_run_including_preprocessing": null,
+  "hyperparameter_search_budget": null,
+  "threads_and_affinity": null,
+  "failure_retry_policy": "retain_all_failures_no_best_retry_selection",
+  "candidate_selection": "lowest_validation_RMSE_then_registered_complexity_then_expression",
+  "published_model_panel": "separate_with_historical_calibration_and_coverage_disclosure",
+  "scientific_status": "not_executed"
+}
