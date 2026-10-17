@@ -1,4 +1,4 @@
-# Coverage audit — v2.0.0
+# Coverage audit — v0.1.0
 
 ## Instance counts and declared grouping
 

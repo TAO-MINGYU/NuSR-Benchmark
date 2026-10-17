@@ -289,7 +289,7 @@ def build(raw, output):
         )
     bank = {
         "schema_version": 2,
-        "version": "2.0.0",
+        "version": "0.1.0",
         "release_date": "2026-10-17",
         "tasks": tasks,
         "macros": MACROS,
@@ -331,9 +331,9 @@ def build(raw, output):
 def validate(root):
     root = Path(root)
     bank = load_bank(root)
-    if bank["schema_version"] != 2 or bank["version"] != "2.0.0":
+    if bank["schema_version"] != 2 or bank["version"] != "0.1.0":
         raise ValueError(
-            "This verifier targets bank v2.0.0; use the v1.0.0 tag to validate the legacy bank"
+            "This verifier targets bank v0.1.0; use the v1.0.0 tag to validate the legacy bank"
         )
     checksums = json.loads((root / "checksums.json").read_text())
     expected = {"bank.json", "coverage.json", "literature.json"}

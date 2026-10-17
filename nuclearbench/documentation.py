@@ -12,7 +12,7 @@ def render(root):
     bank = load_bank(root)
     counts = summary(bank)
     lines = [
-        "# Task inventory — v2.0.0",
+        "# Task inventory — v0.1.0",
         "",
         "Two evaluation categories: expression recovery and observable prediction. Published formulas, restricted analytic references and designed controls are separate panels within recovery. Counts below are task instances, not independent physical laws.",
         "",
@@ -41,7 +41,7 @@ def render(root):
     ]
     files = {"TASKS.md": "\n".join(lines).rstrip() + "\n"}
     lines = [
-        "# Coverage audit — v2.0.0",
+        "# Coverage audit — v0.1.0",
         "",
         "## Instance counts and declared grouping",
         "",

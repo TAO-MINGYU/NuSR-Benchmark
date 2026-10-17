@@ -116,3 +116,19 @@ Historical availability is an evaluation-vintage proxy, not certified experiment
 dates. Model revisions, actual options, compute/tuning budgets and the full
 comparison campaign remain future work. This release establishes a broader,
 reproducible question bank, not publication sufficiency or NuSR superiority.
+
+## 2026-10-17 — requested numbering correction to 0.1.0
+
+The maintainer requested a 0.x data-release sequence. The previous 120-task
+release is renumbered from 2.0.0 to 0.1.0 with consistent package, bank, citation,
+protocol, provenance links and regenerated artifact/campaign fingerprints. All
+CSV labels and split bytes must match the prior release; historical commits and
+audit entries are retained. This prepares the newly requested research/data
+expansion as 0.2.0. No new target or scientific result enters this correction.
+
+Correction validation: all 248 CSV/split/source files are byte-identical to
+d320f86; the pinned-source rebuild validates the 120-instance bank. All27 tests
+pass both in the task checkout and outside it using a fresh normal noneditable
+0.1.0 installation (Python3.11.15/NumPy2.4.6/SymPy1.14.0). Ruff, formatting and
+whitespace pass. New checksums.json SHA256:
+856832654f8dd306b7b2ae3a21ded31249f9a980c9316424bc3552d4d8ab774a.

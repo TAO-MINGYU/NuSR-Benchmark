@@ -1,4 +1,4 @@
-# Task inventory — v2.0.0
+# Task inventory — v0.1.0
 
 Two evaluation categories: expression recovery and observable prediction. Published formulas, restricted analytic references and designed controls are separate panels within recovery. Counts below are task instances, not independent physical laws.
 

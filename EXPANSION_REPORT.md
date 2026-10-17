@@ -1,4 +1,4 @@
-# Scientific coverage expansion: v1.0.0 to v2.0.0
+# Scientific coverage expansion: v1.0.0 to v0.1.0
 
 The original version was a reproducible **25-card core**, not an exhaustive nuclear-structure benchmark or a scientifically justified final manuscript examination. Only 10 cards had exact formula-generated recovery labels; seven were radius formulas. Nine of the 15 observation cards came from the same mass evaluation and its differences. More seeds, splits or data rows could not repair that limited structural coverage.
 
@@ -6,7 +6,7 @@ This release adds source-backed spectroscopy, different radius structures, restr
 
 ## What the 120 instances mean
 
-| Panel | v2 instances | Independent interpretation |
+| Panel | 0.1.0 instances | Independent interpretation |
 | --- | ---: | --- |
 | Published empirical recovery | 38 | Eight declared related groups; 22 are parameter/spin variants of valence-spectroscopy expressions |
 | Restricted analytic recovery | 3 | Related spherical macroscopic pieces; not the complete LDM/NLD/LSD models |
@@ -26,7 +26,7 @@ There are **89 recovery instances and 31 prediction instances**, 194,077 task ro
 
 **Historical labels.** The T panel trains and validates on original AME2016 values and tests nonestimated targets newly available in AME2020 under the same complete-parent rule. The binding task has 71 test nuclei. A later revised value is not used to clean old training labels. Primitive masses remain the same dependency across edition prefixes; embargoes prevent shared mass parents across partitions. This is retrospective evaluation-vintage extrapolation, not certified future measurement chronology or a private blind test.
 
-**Radius truth audit.** The v2 primary absolute-radius task excludes 72 rows from elements identified in the source discussion as using model-based absolute anchors, retaining 812. This narrows an earlier overbroad experimental interpretation. It does not erase correlations/calibrations in the remaining evaluated data. The original v1 tag remains unchanged for historical reproducibility.
+**Radius truth audit.** The 0.1.0 primary absolute-radius task excludes 72 rows from elements identified in the source discussion as using model-based absolute anchors, retaining 812. This narrows an earlier overbroad experimental interpretation. It does not erase correlations/calibrations in the remaining evaluated data. The original v1 tag remains unchanged for historical reproducibility.
 
 ## What was deliberately not added
 
@@ -42,4 +42,4 @@ The admission ledger is a selected audit, not proof that the literature is exhau
 
 The bank is materially broader and can support a more informative NuSR manuscript campaign. It does **not** guarantee journal acceptance, establish NuSR superiority or replace measured comparisons. All exact answers, controls and public data are inspectable. Freeze model releases, adapters, prior knowledge, template assistance, tuning and measured compute accounting before the actual campaign. Compare NuSR/PySR/MySR/Operon on recovery and NuSR/GPR/LightGBM/MLP on observations, with appropriate separately labeled physical references.
 
-Report errors, recovery and complexity by panel, declared group and structural split; retain every failure and unsupported case. An actual external blind evaluation and additional observable families remain future work, not completed release claims. `v1.0.0` is immutable; use `v2.0.0` with its own code, metadata and artifact inventory.
+Report errors, recovery and complexity by panel, declared group and structural split; retain every failure and unsupported case. An actual external blind evaluation and additional observable families remain future work, not completed release claims. `v1.0.0` is immutable; use `v0.1.0` with its own code, metadata and artifact inventory.

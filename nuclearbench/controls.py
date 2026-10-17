@@ -133,7 +133,7 @@ def control_formulas():
                 expression,
                 "E_control",
                 family,
-                "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+                "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
                 "Benchmark-designed template, not an experimentally established expression",
                 "nuclear_grid",
                 recovery_kind="synthetic_mechanism_control",

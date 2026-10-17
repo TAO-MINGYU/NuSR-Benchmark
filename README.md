@@ -1,6 +1,6 @@
 # NuSR Nuclear Structure Benchmark
 
-An independent question bank for symbolic expression recovery and prediction of nuclear structure observables. **Version 2.0.0 expands the original 25-card core to 120 task instances**, with 194,077 task rows. These are **not 120 independent physical laws**. The original [v1.0.0](https://github.com/TAO-MINGYU/NuSR-Benchmark/tree/v1.0.0) remains immutable.
+An independent question bank for symbolic expression recovery and prediction of nuclear structure observables. **Version 0.1.0 expands the original 25-card core to 120 task instances**, with 194,077 task rows. These are **not 120 independent physical laws**. The original [v1.0.0](https://github.com/TAO-MINGYU/NuSR-Benchmark/tree/v1.0.0) remains immutable.
 
 | Evaluation question | Panel | Instances | Interpretation |
 | --- | --- | ---: | --- |
@@ -9,6 +9,8 @@ An independent question bank for symbolic expression recovery and prediction of 
 | Expression recovery | Designed mechanism controls | 48 | 16 templates, three coefficient instances each; 12 development and 36 public confirmation instances |
 | Observable prediction | Evaluated observations | 22 | Mass, radii, transition strength, spectroscopy and shape coexistence |
 | Observable prediction | Historical evaluation holdout | 9 | Train/validate using AME2016 labels, test newly nonestimated AME2020 entries |
+
+See [VERSION_HISTORY.md](VERSION_HISTORY.md) for the requested numbering correction.
 
 Read [EXPANSION_REPORT.md](EXPANSION_REPORT.md) for what changed and [COVERAGE.md](COVERAGE.md) for related families, sparse cases and excluded candidates. Engineering integrity and a version tag do not establish publication sufficiency or NuSR superiority.
 
@@ -83,7 +85,7 @@ nuclearbench build --raw .cache/raw --output /tmp/nuclearbench-rebuilt
 diff checksums.json /tmp/nuclearbench-rebuilt/checksums.json
 ```
 
-`fetch` first verifies and copies eight small original files in `source_snapshots/`; only the 42 MB ENSDF archival zip needs downloading. These original bytes and their attribution are preserved, avoiding dependence on mutable pages and browser-download restrictions. An alternative snapshot location can be supplied with `--snapshots`. All input bytes are checked: `fetch` **fails on a hash mismatch** rather than silently changing the release. If upstream changes, obtain the locked ENSDF snapshot or use the checked-in normalized bank; creating a newer source snapshot requires a new bank version. Last-bit math differences across platforms are tolerated by formula validation; byte-identical rebuild claims apply to the recorded Python/NumPy environment in the development log. Use each version's own code and artifacts together; the v2 verifier deliberately rejects a v1 bank.
+`fetch` first verifies and copies eight small original files in `source_snapshots/`; only the 42 MB ENSDF archival zip needs downloading. These original bytes and their attribution are preserved, avoiding dependence on mutable pages and browser-download restrictions. An alternative snapshot location can be supplied with `--snapshots`. All input bytes are checked: `fetch` **fails on a hash mismatch** rather than silently changing the release. If upstream changes, obtain the locked ENSDF snapshot or use the checked-in normalized bank; creating a newer source snapshot requires a new bank version. Last-bit math differences across platforms are tolerated by formula validation; byte-identical rebuild claims apply to the recorded Python/NumPy environment in the development log. Use each version's own code and artifacts together; this verifier deliberately rejects a v1 bank.
 
 The source datasets have been used in NuSR development. This release supports reproducible retrospective validation; an independent future-data or genuinely untouched release set is needed for a blind performance claim. Passing the integrity checks does not establish NuSR superiority.
 

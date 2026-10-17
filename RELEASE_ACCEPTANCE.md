@@ -1,6 +1,6 @@
 # Release integrity and scientific acceptance
 
-## Bank v2.0.0 integrity gates
+## Bank v0.1.0 integrity gates
 
 - Every task has actual CSV labels, stable unique IDs, physical units, source record locators, source hashes, filtering/domain definitions and frozen partitions.
 - Formula-generated labels match the declared reference expressions; observations and uncertainties stay distinct. Every published radius formula uses the declared radius convention.

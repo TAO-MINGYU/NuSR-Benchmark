@@ -74,7 +74,7 @@ def fetch(raw, snapshots=Path("source_snapshots")):
         request = Request(
             url,
             headers={
-                "User-Agent": "NuSR-Benchmark/2.0 (+https://github.com/TAO-MINGYU/NuSR-Benchmark)"
+                "User-Agent": "NuSR-Benchmark/0.1 (+https://github.com/TAO-MINGYU/NuSR-Benchmark)"
             },
         )
         try:

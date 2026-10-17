@@ -1,4 +1,4 @@
-# Evaluation protocol v2
+# Evaluation protocol — 0.1.0
 
 The frozen bank is a release evaluation instrument, not a claim that NuSR has passed it. Scientific model runs are a separate campaign. Freeze the campaign manifest, adapter revisions and all model settings before seeing test scores. Do not choose task subsets, seeds, software revisions or retries after observing outcomes.
 

@@ -2454,7 +2454,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "isospin_quadratic",
         "template": "a*(N-Z)**2/A"
@@ -2520,7 +2520,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "isospin_quadratic",
         "template": "a*(N-Z)**2/A"
@@ -2586,7 +2586,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "isospin_quadratic",
         "template": "a*(N-Z)**2/A"
@@ -2658,7 +2658,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "surface_symmetry",
         "template": "(a*A**(2/3)+b*A**(1/3))*I**2"
@@ -2730,7 +2730,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "surface_symmetry",
         "template": "(a*A**(2/3)+b*A**(1/3))*I**2"
@@ -2802,7 +2802,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "surface_symmetry",
         "template": "(a*A**(2/3)+b*A**(1/3))*I**2"
@@ -2868,7 +2868,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "wigner_cusp",
         "template": "a*abs(N-Z)/A"
@@ -2934,7 +2934,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "wigner_cusp",
         "template": "a*abs(N-Z)/A"
@@ -3000,7 +3000,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "wigner_cusp",
         "template": "a*abs(N-Z)/A"
@@ -3072,7 +3072,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "congruence_exp",
         "template": "a*exp(-b*abs(I))"
@@ -3144,7 +3144,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "congruence_exp",
         "template": "a*exp(-b*abs(I))"
@@ -3216,7 +3216,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "congruence_exp",
         "template": "a*exp(-b*abs(I))"
@@ -3288,7 +3288,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_power",
         "template": "a*d/A**p"
@@ -3360,7 +3360,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_power",
         "template": "a*d/A**p"
@@ -3432,7 +3432,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_power",
         "template": "a*d/A**p"
@@ -3504,7 +3504,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_isospin",
         "template": "a*d*(1-b*I**2)/sqrt(A)"
@@ -3576,7 +3576,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_isospin",
         "template": "a*d*(1-b*I**2)/sqrt(A)"
@@ -3648,7 +3648,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "pairing_isospin",
         "template": "a*d*(1-b*I**2)/sqrt(A)"
@@ -3725,7 +3725,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_sum",
         "template": "a*exp(-((N-n0)/w)**2)+b*exp(-((Z-z0)/w)**2)"
@@ -3802,7 +3802,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_sum",
         "template": "a*exp(-((N-n0)/w)**2)+b*exp(-((Z-z0)/w)**2)"
@@ -3879,7 +3879,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_sum",
         "template": "a*exp(-((N-n0)/w)**2)+b*exp(-((Z-z0)/w)**2)"
@@ -3950,7 +3950,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_joint",
         "template": "a*exp(-((N-n0)/w)**2-((Z-z0)/w)**2)"
@@ -4021,7 +4021,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_joint",
         "template": "a*exp(-((N-n0)/w)**2-((Z-z0)/w)**2)"
@@ -4092,7 +4092,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_gaussian_joint",
         "template": "a*exp(-((N-n0)/w)**2-((Z-z0)/w)**2)"
@@ -4163,7 +4163,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_absolute_exp",
         "template": "a*exp(-abs(N-n0)/w)"
@@ -4234,7 +4234,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_absolute_exp",
         "template": "a*exp(-abs(N-n0)/w)"
@@ -4305,7 +4305,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_absolute_exp",
         "template": "a*exp(-abs(N-n0)/w)"
@@ -4371,7 +4371,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_product",
         "template": "a*Np*Nn/A"
@@ -4437,7 +4437,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_product",
         "template": "a*Np*Nn/A"
@@ -4503,7 +4503,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_product",
         "template": "a*Np*Nn/A"
@@ -4575,7 +4575,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_saturation",
         "template": "a*P/(b+P)"
@@ -4647,7 +4647,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_saturation",
         "template": "a*P/(b+P)"
@@ -4719,7 +4719,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_saturation",
         "template": "a*P/(b+P)"
@@ -4791,7 +4791,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_isospin",
         "template": "a*Np*Nn*(1-b*I**2)/A"
@@ -4863,7 +4863,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_isospin",
         "template": "a*Np*Nn*(1-b*I**2)/A"
@@ -4935,7 +4935,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "valence_isospin",
         "template": "a*Np*Nn*(1-b*I**2)/A"
@@ -5007,7 +5007,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_isospin",
         "template": "a*I*exp(-((N-n0)/w)**2)"
@@ -5079,7 +5079,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_isospin",
         "template": "a*I*exp(-((N-n0)/w)**2)"
@@ -5151,7 +5151,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_isospin",
         "template": "a*I*exp(-((N-n0)/w)**2)"
@@ -5223,7 +5223,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_pairing",
         "template": "a*d*exp(-((N-n0)/w)**2)/sqrt(A)"
@@ -5295,7 +5295,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_pairing",
         "template": "a*d*exp(-((N-n0)/w)**2)/sqrt(A)"
@@ -5367,7 +5367,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "shell_pairing",
         "template": "a*d*exp(-((N-n0)/w)**2)/sqrt(A)"
@@ -5451,7 +5451,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_pairing",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*d/sqrt(A)"
@@ -5535,7 +5535,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_pairing",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*d/sqrt(A)"
@@ -5619,7 +5619,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_pairing",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*d/sqrt(A)"
@@ -5714,7 +5714,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_shell_collective",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*exp(-((N-n0)/w)**2)+k*Np*Nn/A"
@@ -5809,7 +5809,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_shell_collective",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*exp(-((N-n0)/w)**2)+k*Np*Nn/A"
@@ -5904,7 +5904,7 @@
         },
         "recovery_kind": "synthetic_mechanism_control",
         "scope": "Designed diagnostic numeric energy in MeV",
-        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v2.0.0/CONTROL_DESIGN.md",
+        "source": "https://github.com/TAO-MINGYU/NuSR-Benchmark/blob/v0.1.0/CONTROL_DESIGN.md",
         "status": "synthetic_control_not_an_empirical_law",
         "structure_group": "bulk_shell_collective",
         "template": "a*A-b*A**(2/3)-c*(N-Z)**2/A+h*exp(-((N-n0)/w)**2)+k*Np*Nn/A"
@@ -6861,5 +6861,5 @@
       "unit": "MeV"
     }
   ],
-  "version": "2.0.0"
+  "version": "0.1.0"
 }
