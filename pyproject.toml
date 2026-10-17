@@ -12,7 +12,7 @@ license = {text = "MIT (software only; source data retain their original terms)"
 
 [project.optional-dependencies]
 symbolic = ["sympy>=1.12"]
-test = ["sympy>=1.12"]
+test = ["sympy>=1.12", "scipy>=1.10", "threadpoolctl>=3.1"]
 
 [project.scripts]
 nuclearbench = "nuclearbench.cli:main"

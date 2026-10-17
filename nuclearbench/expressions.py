@@ -20,7 +20,18 @@ OPS = {
 NAMES = {"N", "Z", "A", "I", "d", "P_s", "P_m"}
 EXTRA_FEATURES = ("Np", "Nn", "P", "Q_EI")
 NAMES.update(EXTRA_FEATURES)
-FUNCS = {"sqrt": np.sqrt, "exp": np.exp, "log": np.log, "abs": np.abs}
+FUNCS = {
+    "sqrt": np.sqrt,
+    "exp": np.exp,
+    "log": np.log,
+    "abs": np.abs,
+    "sin": np.sin,
+    "cos": np.cos,
+    "tan": np.tan,
+    "asin": np.arcsin,
+    "acos": np.arccos,
+    "atan": np.arctan,
+}
 
 
 def parse(expression):
@@ -186,7 +197,18 @@ def _symbolic(expression):
         "P_m": sp.Symbol("P_m", nonnegative=True),
         **{name: sp.Symbol(name, nonnegative=True) for name in EXTRA_FEATURES},
     }
-    functions = {"sqrt": sp.sqrt, "exp": sp.exp, "log": sp.log, "abs": sp.Abs}
+    functions = {
+        "sqrt": sp.sqrt,
+        "exp": sp.exp,
+        "log": sp.log,
+        "abs": sp.Abs,
+        "sin": sp.sin,
+        "cos": sp.cos,
+        "tan": sp.tan,
+        "asin": sp.asin,
+        "acos": sp.acos,
+        "atan": sp.atan,
+    }
 
     def run(node):
         if isinstance(node, ast.Constant):

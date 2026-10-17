@@ -1,5 +1,46 @@
 # Development log
 
+## 2026-10-17 — external-only baseline execution
+
+Adds the native PySR, Operon and AI Feynman adapters plus GPR, LightGBM,
+MLP-ensemble and linear/ridge predictive baselines in a fresh benchmark worktree.
+The full matrix contains 79,630 requests across all 151 tasks and 945 enabled
+task/split pairs, both feature modes and five seeds. Twelve development controls
+remain separate from confirmation. MySR/NuSR are excluded from this campaign.
+See EXTERNAL_CAMPAIGN.md and the machine-readable native profiles for budgets,
+precision, active coordinates, validation grids and interpretation boundaries.
+
+The frozen v0.2.0 bank inventory is unchanged: checksums.json SHA-256 remains
+8850fa5f95289068afad1b9a79c18a0e1f08805ae88fa23b5cc2e39c0d08a17f.
+Source/scorer commit and runtime hashes are independent of the data version.
+The scorer now safely accepts native trigonometric functions and preserves valid
+held-out prediction scores when additional recovery witnesses are outside a
+candidate's domain; such candidates receive no numerical-agreement credit.
+
+Validation: 47 tests pass from source and from a normal noneditable installation
+outside the checkout. Full bank validation, Ruff checks/formatting, shell syntax
+and whitespace checks pass. Native toy-contract fits/export/predict checks passed
+for all seven methods in both representations. Accepted Operon probes use the
+verified upstream float64 source build. AI Feynman's compiled Fortran extension,
+compatible NumPy environment and A/I nuclear coordinates passed native checks;
+saved native candidates also replayed with the final affine-polynomial exporter.
+The full predictive fit/selection/score/atomic-artifact pipeline passed independently.
+
+All earlier failures remain outside the repository in the owned preflight archive:
+Julia provisioning failures, the original float32 Operon export discrepancy,
+AI Feynman's NumPy ragged-array issue and the integral-float epoch failure in its
+pretrained branch. The adapter preserves intended integer epoch counts and records
+actual native NN invocations. No algorithm source patches, score-based retries or
+scientific performance claims follow from these compatibility checks.
+
+The runner freezes committed source, package layers, Julia project/manifest,
+interpreters, matrix and answer-free payloads before submission. It stages package
+layers on node-local storage, validates node2/exactly 256 logical CPUs and runtime
+precision, then runs one-thread independent fits. Fit/scoring resources and all
+terminal failures remain explicit. The Slurm script has no wall-time cap, mem=0
+and no automatic requeue. Full campaign output and scheduler receipts live outside
+source; passing the above engineering checks is not a scientific benchmark result.
+
 ## 2026-10-17 — independent release bank v1
 
 Replaces the earlier protocol-only proposal with two explicit label semantics:

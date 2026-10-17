@@ -68,6 +68,11 @@ For an executable prediction-file example, see [examples/train_linear.py](exampl
 
 Recommended horizontal methods: **NuSR, PySR, MySR and Operon**. Recommended vertical methods: **GPR, LightGBM and an MLP ensemble**, with empirical/physical references appropriate to each observable. Published formulas or per-nuclide prediction tables can save computation; unrelated paper-level RMSE values cannot form a matched ranking. See [MODEL_CANDIDATES.md](MODEL_CANDIDATES.md).
 
+The external-only execution plan adds AI Feynman and a linear/ridge reference;
+MySR/NuSR remain deferred. See [EXTERNAL_CAMPAIGN.md](EXTERNAL_CAMPAIGN.md) for the
+complete 79,630-request matrix, native configurations, compatibility evidence,
+selection rules and single-allocation Slurm runner.
+
 ## Contents and reproducibility
 
 - [TARGET_CATALOG_AUDIT.md](TARGET_CATALOG_AUDIT.md): 76 supplied families, eligibility decisions and reasons.

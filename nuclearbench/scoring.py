@@ -103,11 +103,19 @@ def recover(root, task_id, kind, expression):
     zs = sorted(set(range(8, 101, 3)) | {m + d for m in (8, 20, 28, 50, 82) for d in (-1, 0, 1)})
     pairs = [(n, z) for n in ns for z in zs if in_domain(task["formula"]["domain"], n, z)]
     wn, wz = zip(*pairs)
-    actual = evaluate(expression, wn, wz)
     expected = evaluate(reference, wn, wz)
     scale = max(float(np.std([r["y"] for r in train])), 1e-12)
     test_equal = bool(np.allclose(predicted, [r["y"] for r in test], rtol=1e-8, atol=1e-8 * scale))
-    witness_equal = bool(np.allclose(actual, expected, rtol=1e-8, atol=1e-8 * scale))
+    witness_status = "finite"
+    try:
+        actual = evaluate(expression, wn, wz)
+        witness_equal = bool(np.allclose(actual, expected, rtol=1e-8, atol=1e-8 * scale))
+    except (ValueError, FloatingPointError, OverflowError, ZeroDivisionError):
+        # A fitted predictor may be finite on its held-out data while failing
+        # global equivalence witnesses. Retain its predictive score and mark
+        # recovery false; never select a different candidate after this check.
+        witness_equal = False
+        witness_status = "candidate_undefined_on_reference_domain"
     return dict(
         task=task_id,
         split=kind,
@@ -122,6 +130,7 @@ def recover(root, task_id, kind, expression):
         numeric_agreement=test_equal and witness_equal,
         numeric_tolerance={"rtol": 1e-8, "atol": 1e-8 * scale},
         witness_count=len(pairs),
+        numeric_witness_status=witness_status,
         expression_complexity=complexity(expression),
         reference_complexity=complexity(reference),
         **result,
