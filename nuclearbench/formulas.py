@@ -132,6 +132,14 @@ def in_domain(domain, n, z):
         return 8 <= n <= 154 and 8 <= z <= 100
     if domain == "macroscopic":
         return n >= 8 and z >= 8
+    if domain == "gdr_reference":
+        return n >= 8 and z >= 8 and n + z >= 40
+    if domain == "grodzins_reference":
+        return n >= 8 and z >= 8 and n % 2 == z % 2 == 0
+    if domain == "pairing_reference":
+        return n >= 8 and z >= 8 and n + z >= 40
+    if domain == "vogel_reference":
+        return 50 < z < 82 and 82 < n < 126
     raise ValueError(domain)
 
 

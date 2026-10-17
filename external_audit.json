@@ -1,0 +1,40 @@
+{
+  "barriers": {
+    "inconsistent_element_excluded": 1,
+    "source_rows": 77
+  },
+  "decay": {
+    "excited_or_ambiguous_state": 2450,
+    "nonpositive_or_invalid_branch": 5,
+    "source_rows": 5843,
+    "stable_estimated_censored_or_unknown_lifetime": 715,
+    "unselected_qualified_or_unknown_branch": 1847
+  },
+  "gdr": {
+    "experimental_single_mode": 74,
+    "experimental_two_mode": 61,
+    "source_rows": 8980,
+    "systematics_excluded": 8845
+  },
+  "moments": {
+    "Q_gs": {
+      "qualified_spin_sign_or_value": 69,
+      "retained": 529,
+      "source_rows": 1155,
+      "wrong_state_or_report": 557
+    },
+    "mu_gs": {
+      "malformed_identity": 1,
+      "qualified_spin_sign_or_value": 133,
+      "retained": 788,
+      "source_rows": 2364,
+      "wrong_state_or_report": 1442
+    }
+  },
+  "resonances": {
+    "Gg0_BNL:missing": 69,
+    "S0_BNL:missing": 56,
+    "logD0_BNL:missing": 31,
+    "source_rows": 324
+  }
+}

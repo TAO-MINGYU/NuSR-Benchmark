@@ -1,8 +1,8 @@
 {
   "adapter_revisions": null,
   "aggregation": "equal_seeds_then_equal_tasks_within_group_then_equal_groups",
-  "bank_checksums_sha256": "856832654f8dd306b7b2ae3a21ded31249f9a980c9316424bc3552d4d8ab774a",
-  "bank_version": "0.1.0",
+  "bank_checksums_sha256": "8850fa5f95289068afad1b9a79c18a0e1f08805ae88fa23b5cc2e39c0d08a17f",
+  "bank_version": "0.2.0",
   "candidate_selection": "lowest_validation_RMSE_then_registered_complexity_then_expression",
   "confirmation_pool": "36_public_control_instances_not_blind",
   "cpu_seconds_per_run_including_preprocessing": null,
@@ -29,7 +29,7 @@
     101
   ],
   "status": "configuration_required_before_model_runs",
-  "task_selection": "all_enabled_non_development_tasks_reported_separately_by_panel_group_and_split",
+  "task_selection": "all_enabled_non_development_tasks_reported_separately_by_panel_group_and_split; decay/structure-parameter extensions separately from observed core",
   "threads_and_affinity": null,
   "vertical_models": [
     "NuSR",

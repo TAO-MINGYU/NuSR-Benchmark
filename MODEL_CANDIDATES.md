@@ -50,3 +50,11 @@ No additional published-model table is silently bundled or treated as a finished
 The bottleneck is usually **matching the evaluation protocol**, not whether another local numerical calculation is possible. A published model may predict almost every needed nuclide cheaply, yet have trained on this bank's test nuclei. That comparison can still be informative if labeled correctly; it is not a fair claim about held-out learning superiority.
 
 For T tasks, an existing physical model with genuinely frozen pre-test calibration can provide useful retrospective forecasting evidence after the original fit date and data coverage are verified. A later AME2020 refit cannot be presented as an earlier forecast merely because its model family is older. The primary learned-model comparison still uses the identical retained AME2016 training and validation labels.
+
+For the 0.2.0 GDR panel, the 2005 handbook and 2018 SLO/SMLO systematics are
+cheaply evaluable N/Z physical references. They are historically calibrated
+references, not train-only fits, and must be compared against the matching
+energy/component definition. Pairing references describe average gaps rather
+than an exact OES3 estimator. Decay formulas using measured Q or daughter
+state information are assisted comparisons, not matched N/Z-only rivals.
+No paper-level aggregate RMSE is inserted into these new tables.

@@ -1,4 +1,4 @@
-# Evaluation protocol — 0.1.0
+# Evaluation protocol — 0.2.0
 
 The frozen bank is a release evaluation instrument, not a claim that NuSR has passed it. Scientific model runs are a separate campaign. Freeze the campaign manifest, adapter revisions and all model settings before seeing test scores. Do not choose task subsets, seeds, software revisions or retries after observing outcomes.
 
@@ -38,13 +38,13 @@ After initial assignment, all test primitive dependencies are protected. Remove 
 
 A split with fewer than three retained rows in any train/validation/test partition is `insufficient_coverage`. It is not scored or silently replaced. Report effective sample sizes after purging; a small training set is part of the declared difficulty and may provide weak statistical power.
 
-Version 2 has 16 explicitly disabled task/split pairs, including the sparse light-radius and higher-spin cases; the complete list and counts are in [SPLIT_COUNTS.md](SPLIT_COUNTS.md). Newly admitted observed targets need >=30 domain rows and >=2 usable structural splits, in addition to the conservative label rules. The original B14 core case remains retained and marked sparse. The nine T tasks instead use the single genuine `ame2016_to_2020` availability split, with old labels retained and primitive IDs shared across editions; see [TEMPORAL_PROTOCOL.md](TEMPORAL_PROTOCOL.md).
+Version 0.2.0 has 58 explicitly disabled task/split pairs, including the sparse light-radius and higher-spin cases; the complete list and counts are in [SPLIT_COUNTS.md](SPLIT_COUNTS.md). Newly admitted observed targets need >=30 domain rows and >=2 usable structural splits, in addition to the conservative label rules. The original B14 core case remains retained and marked sparse. The nine T tasks instead use the single genuine `ame2016_to_2020` availability split, with old labels retained and primitive IDs shared across editions; see [TEMPORAL_PROTOCOL.md](TEMPORAL_PROTOCOL.md).
 
 ## Noise and repeated runs
 
 Model seeds are **7,17,37,73,101**. Each completed run and failed run is retained. Seeds index stochastic training; they do not change the registered data partitions. Report recovery proportions and error distributions across all seeds, not the best seed.
 
-Separate the 38 empirical formula instances, 3 restricted analytic references and 48 synthetic controls in reports. The controls consist of 16 templates; their 12 development instances are excluded from default final aggregation and their 36 public confirmation instances are evaluated after adapter/configuration freeze. Public confirmation roles do not establish blindness. See [CONTROL_DESIGN.md](CONTROL_DESIGN.md).
+Separate the 46 empirical formula instances, 4 analytic references and 48 synthetic controls in reports. The controls consist of 16 templates; their 12 development instances are excluded from default final aggregation and their 36 public confirmation instances are evaluated after adapter/configuration freeze. Public confirmation roles do not establish blindness. See [CONTROL_DESIGN.md](CONTROL_DESIGN.md).
 
 Category A has clean, 1% and 5% training-label noise settings, measured relative to the clean training-label standard deviation. Noise is a deterministic Box-Muller sample keyed by task/sample ID and a fixed noise101 prefix; validation/test labels stay clean and weight=1. Export with `--noise 0.01` or `--noise 0.05` for training. All methods receive identical perturbed targets. The primary core is the clean condition; noise is the robustness extension. Category B adds no artificial noise.
 
@@ -82,3 +82,26 @@ nuclearbench aggregate --root . --results runs.json \
 For the requested panel/split and noise condition, the aggregator expects every eligible nondevelopment task at all five registered seeds for each named model. It rejects duplicate task/seed entries and mismatched bank fingerprints, and lists missing runs. It averages seeds within tasks, tasks within a declared group and groups within the panel. Thus 22 spectroscopy instances do not have 22 times the weight of a one-instance radius group. Group definitions are a declared reporting convention, not a proof of physical or statistical independence.
 
 An incomplete group has no final aggregate. A terminal failure remains in the recovery denominator; normalized predictive error is left unavailable if any expected run has no valid prediction. Unproved equality remains an explicit unresolved proof status; the automatic symbolic rate counts only proved equal cases and is not a manually adjudicated recovery rate. Physical-unit RMSE/MAE remain task-specific; no aggregate averages raw MeV, fm and transition-strength errors. A normalized-error mean is a distribution-specific summary, not a universal quality measure. Conditions, panels and structural splits are not silently pooled.
+
+## New source and extension panels
+
+The 25 evaluated-observable tasks remain the primary observation panel. Report the
+three evaluated neutron-resonance parameters, eleven GDR/barrier parameter tasks,
+five nuclear-decay tasks and nine historical-vintage tasks in distinct panels.
+Fitted parameters are not raw measurements. Source-derived/composite labels retain
+their primitive parents. The two very sparse proton-emission candidates fail the
+unchanged 30-row/two-split admission gate and do not enter a favorable subset.
+
+For all new tasks, input remains N/Z with declared matched deterministic knowledge.
+A published alpha/cluster/proton formula using measured Q is an externally assisted
+reference, not a matched N/Z-only competitor. Partial-lifetime targets are log10
+(T_partial/1second) and spacing targets log10(D0/1eV); their units are dimensionless
+decades. Logarithms are fixed target definitions, not normalization fitted on test
+labels. Report RMSE/MAE in decades explicitly. No measured branching fractions,
+Q-values, level energies, moments or resonance parameters enter predictors.
+
+NuSR has embedded datasets related to some new targets, including IAEA moments
+and NUBASE. New web retrieval does not establish independence from development.
+Disable all direct and derived target lookups and record the effective release
+configuration before running. New RIPL4 files are a source/version expansion, not
+proof of an untouched blind set. Exact reference seeding remains assisted recovery.

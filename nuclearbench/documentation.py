@@ -12,7 +12,7 @@ def render(root):
     bank = load_bank(root)
     counts = summary(bank)
     lines = [
-        "# Task inventory — v0.1.0",
+        f"# Task inventory — v{bank['version']}",
         "",
         "Two evaluation categories: expression recovery and observable prediction. Published formulas, restricted analytic references and designed controls are separate panels within recovery. Counts below are task instances, not independent physical laws.",
         "",
@@ -41,7 +41,7 @@ def render(root):
     ]
     files = {"TASKS.md": "\n".join(lines).rstrip() + "\n"}
     lines = [
-        "# Coverage audit — v0.1.0",
+        f"# Coverage audit — v{bank['version']}",
         "",
         "## Instance counts and declared grouping",
         "",
@@ -121,6 +121,29 @@ def render(root):
             )
         lines.append("| " + t["id"] + " | " + " | ".join(cells) + " |")
     files["SPLIT_COUNTS.md"] = "\n".join(lines).rstrip() + "\n"
+    audit = json.loads((root / "target_catalog_audit.json").read_text())
+    lines = [
+        f"# Supplied 76-family catalogue audit — v{bank['version']}",
+        "",
+        audit["evidence_scope"],
+        "",
+        "The supplied research collection spans nuclear structure, decay, reactions, astrophysics and bulk matter. Its own audit does not certify every coefficient or prepare a deduplicated benchmark. Decisions below concern the current N/Z-only interface; rejected candidates are not failures of an SR search.",
+        "",
+        f"Catalogue CSV SHA-256: `{audit['catalog_sha256']}`. The [machine-readable audit](target_catalog_audit.json) records hashes of all 228 consulted formula/README/bibliography files. It contains no personal documents or redistributed secondary radius transcription.",
+        "",
+        "| ID | Family | Decision | Existing or new tasks | Reason |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for item in audit["entries"]:
+        mapped = ", ".join(f"[{t}](data/{t}.csv)" for t in item["mapped_tasks"]) or "—"
+        lines.append(
+            f"| {item['id']} | {item['name']} | {item['decision']} | {mapped} | {item['reason']} |"
+        )
+    lines += [
+        "",
+        "New magnetic moments, quadrupole moments and RIPL-4 resonance/barrier parameters were researched separately from this formula catalogue. See [EXTERNAL_DATA.md](EXTERNAL_DATA.md) and [EXPANSION_020_REPORT.md](EXPANSION_020_REPORT.md) for source filtering, definitions and release scope.",
+    ]
+    files["TARGET_CATALOG_AUDIT.md"] = "\n".join(lines).rstrip() + "\n"
     return files
 
 

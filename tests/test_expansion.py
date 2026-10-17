@@ -162,8 +162,8 @@ class MechanismTests(unittest.TestCase):
 
     def test_inventory_exposes_related_instances(self):
         report = summary(load_bank(ROOT))
-        self.assertEqual(report["task_instances"], 120)
-        self.assertEqual(report["panels"]["published_empirical"]["task_instances"], 38)
+        self.assertEqual(report["task_instances"], 151)
+        self.assertEqual(report["panels"]["published_empirical"]["task_instances"], 46)
         self.assertEqual(
             report["panels"]["published_empirical"]["declared_structure_groups"][
                 "valence_spectroscopy"

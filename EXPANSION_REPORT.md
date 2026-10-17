@@ -1,4 +1,6 @@
-# Scientific coverage expansion: v1.0.0 to v0.1.0
+# Historical 120-task expansion (now v0.1.0)
+
+This report documents the previous expansion. See [EXPANSION_020_REPORT.md](EXPANSION_020_REPORT.md) for the current 151-task release.
 
 The original version was a reproducible **25-card core**, not an exhaustive nuclear-structure benchmark or a scientifically justified final manuscript examination. Only 10 cards had exact formula-generated recovery labels; seven were radius formulas. Nine of the 15 observation cards came from the same mass evaluation and its differences. More seeds, splits or data rows could not repair that limited structural coverage.
 

@@ -46,4 +46,38 @@ Finite numerical agreement uses the clean held-out labels and a deterministic gr
 
 Complexity is a **registered syntax cost**, separate from tool-native tree size. Constants and raw variables cost 1; each operation costs 1; macro costs are `A:3, I:9, d:9, P_s:67, P_m:43, Np:55, Nn:63, P:131, Q_EI:95`. Macro costs are declared protocol weights, not claims of literal expanded subtree size. Report the expression and native complexity alongside this cost, and compare error-complexity frontiers; avoid claiming a universal simplicity ranking from one cost system. Physically harmless floating-point underflow to zero is allowed for localized exponentials; nonfinite/invalid outputs still fail.
 
-The 38 empirical instances belong to eight declared related groups. The three restricted references form one separate group. Designed controls use 16 declared templates in their own panel. None of these group labels is a proof of independence. A04 and A05 remain deliberately easy calibration cases. No supplied reference expression, coefficient vector or exact matching initializer may be counted as de novo recovery. Template-assisted runs belong in a separately labeled panel.
+The 46 empirical instances belong to thirteen declared related groups. Four analytic references form two separate groups: three macroscopic pieces and one TRK sum rule. Designed controls use 16 declared templates in their own panel. None of these group labels is a proof of independence. A04 and A05 remain deliberately easy calibration cases. No supplied reference expression, coefficient vector or exact matching initializer may be counted as de novo recovery. Template-assisted runs belong in a separately labeled panel.
+
+## Additional N/Z references in 0.2.0
+
+The exact generated expressions and domains for A42-A50 are in `bank.json`.
+A42-A44 use the [RIPL handbook](https://www-nds.iaea.org/RIPL-3/handbook/ripl2-feb2005.pdf),
+printed p.129, Eq.(7.25): `E0=31.2*A**(-1/3)+20.6*A**(-1/6)`,
+`width=0.026*E0**1.91`, `peak=144*N*Z/(A*pi*width)`. Substitute E0 and width
+fully to obtain N/Z-only expressions; no measured energy/width is supplied.
+These cases use the one-mode experimental-fit coordinates with A>=40; this
+is a reference domain, not proof that every selected nucleus is spherical.
+
+A45-A46 use the official 2018 SLO/SMLO centroid parameterization
+`e1*sqrt(4*N*Z/A**2)*A**(-1/3)/sqrt(1+e2*A**(-1/3))` with `(e1,e2)`
+`(130.0,9.0)` and `(128.0,8.5)`. They are two instances of one structure.
+Their coordinate/context source is the SLO experimental-fit table; those
+context values are not represented as SMLO measurements. See the frozen
+[official README](source_snapshots/ripl4-gdr.readme), COMMENT 2.
+
+A47 is the [Raman/Grodzins product](https://arxiv.org/html/2105.07164v1),
+Eq.(1): `25.7*Z**2*A**(-2/3)` in MeV e^2 fm^4. The source coefficient
+2.57 uses keV and e^2 barn^2; converting their product multiplies it by 10.
+The real prediction task is also the product, so measured E2 is never a
+hidden input for B(E2). Primitive level and strength dependencies are retained.
+
+A48-A49 are average pairing references from the [primary BCS paper](https://arxiv.org/pdf/nucl-th/0308046v1),
+Eq.(16): `12/sqrt(A)` and `(7.2-44*I**2)*A**(-1/3)`, MeV, with original
+Vogel/Jonson/Hansen credit retained. A49's benchmark coordinates are restricted
+to 50<Z<82 and 82<N<126. An average pairing gap is not asserted to be exactly
+the measured three-point mass difference. No experimental gap is fabricated
+for these references; AME supplies coordinates only.
+
+A50 is the unenhanced TRK analytic reference `60*N*Z/A` in MeV mb, using
+kappa=0 and the handbook text below Eq.(7.25). It is not an asserted measured
+integral. The fixed pi convention for A44 is 3.141592653589793.

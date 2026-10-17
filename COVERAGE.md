@@ -1,21 +1,29 @@
-# Coverage audit — v0.1.0
+# Coverage audit — v0.2.0
 
 ## Instance counts and declared grouping
 
 Declared groups organize reports; they do not certify statistical independence. Different coefficients, spin states, splits, noise levels or random seeds must not be counted as new structure families.
 
-### evaluated_observables: 22 instances
+### evaluated_observables: 25 instances
 
 | Declared group | Instances |
 | --- | ---: |
-| collectivity | 2 |
+| collectivity | 3 |
+| magnetic_moments | 1 |
 | mass | 1 |
 | mass_difference | 4 |
 | pairing | 2 |
+| quadrupole_moments | 1 |
 | radius | 1 |
 | shape_coexistence | 1 |
 | shell_gap | 2 |
 | spectroscopy | 9 |
+
+### evaluated_resonance_parameters: 3 instances
+
+| Declared group | Instances |
+| --- | ---: |
+| s_wave_neutron_resonances | 3 |
 
 ### historical_new_measurements: 9 instances
 
@@ -26,16 +34,32 @@ Declared groups organize reports; they do not certify statistical independence. 
 | pairing | 2 |
 | shell_gap | 2 |
 
-### published_analytic_reference: 3 instances
+### nuclear_decay_extension: 5 instances
 
 | Declared group | Instances |
 | --- | ---: |
+| ground_state_EC | 1 |
+| ground_state_SF | 1 |
+| ground_state_alpha | 1 |
+| ground_state_beta_minus | 1 |
+| ground_state_beta_plus_EC | 1 |
+
+### published_analytic_reference: 4 instances
+
+| Declared group | Instances |
+| --- | ---: |
+| dipole_sum_rule | 1 |
 | macroscopic_curvature | 3 |
 
-### published_empirical: 38 instances
+### published_empirical: 46 instances
 
 | Declared group | Instances |
 | --- | ---: |
+| average_pairing_reference | 2 |
+| collectivity_product | 1 |
+| gdr_isovector_centroid | 2 |
+| gdr_mass_scaling | 1 |
+| gdr_response_scaling | 2 |
 | liquid_drop | 2 |
 | misr | 2 |
 | radius_inverse_powers | 1 |
@@ -44,6 +68,13 @@ Declared groups organize reports; they do not certify statistical independence. 
 | radius_scaling | 2 |
 | radius_valence | 2 |
 | valence_spectroscopy | 22 |
+
+### structure_parameter_prediction: 11 instances
+
+| Declared group | Instances |
+| --- | ---: |
+| fission_barrier_parameters | 4 |
+| giant_dipole_response | 7 |
 
 ### synthetic_mechanism_control: 48 instances
 
@@ -105,6 +136,30 @@ Original 15 core targets are retained with the radius-anchor correction. New obs
 | E7plus | 4 | 4 | False | 0 | insufficient conservative definite-state coverage: need >=30 rows and >=2 usable splits |
 | E9plus | 0 | 0 | False | 0 | insufficient conservative definite-state coverage: need >=30 rows and >=2 usable splits |
 | E0plus | 228 | 221 | True | 6 | meets >=30 observations and >=2 usable splits |
+| mu_gs | 788 | 754 | True | 7 | meets >=30 labels and >=2 usable structural splits; recommended_evaluated |
+| Q_gs | 529 | 513 | True | 7 | meets >=30 labels and >=2 usable structural splits; recommended_evaluated |
+| Grodzins_EB | 401 | 394 | True | 7 | meets >=30 labels and >=2 usable structural splits; derived_composite |
+| GDR_E_centroid | 135 | 135 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_E1 | 135 | 135 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_E2 | 61 | 61 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_W1 | 135 | 135 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_W2 | 61 | 61 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_peak1 | 135 | 135 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| GDR_peak2 | 61 | 61 | True | 5 | meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter |
+| logD0_BNL | 293 | 293 | True | 6 | meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter |
+| Gg0_BNL | 255 | 255 | True | 6 | meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter |
+| S0_BNL | 268 | 268 | True | 6 | meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter |
+| barrier_inner | 76 | 76 | True | 6 | meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter |
+| barrier_outer | 45 | 45 | True | 4 | meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter |
+| barrier_hw_inner | 45 | 45 | True | 4 | meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter |
+| barrier_hw_outer | 45 | 45 | True | 4 | meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter |
+| logT_alpha | 470 | 469 | True | 7 | meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime |
+| logT_beta_minus | 1149 | 1116 | True | 7 | meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime |
+| logT_beta_plus_EC | 857 | 847 | True | 7 | meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime |
+| logT_EC | 139 | 138 | True | 5 | meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime |
+| logT_SF | 75 | 75 | True | 4 | meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime |
+| logT_proton | 21 | 14 | False | 2 | insufficient strict state/branch coverage: need >=30 rows and >=2 usable splits |
+| logT_two_proton | 10 | 4 | False | 0 | insufficient strict state/branch coverage: need >=30 rows and >=2 usable splits |
 
 The absolute-radius panel excludes 72 domain rows with Z=75,84,86,87,88,96 because of model-based reference anchors identified in the source discussion. Remaining radii are evaluated quantities with shared calibration/correlation, not independent raw measurements.
 
@@ -125,5 +180,16 @@ The absolute-radius panel excludes 72 domain rows with Z=75,84,86,87,88,96 becau
 | [madland_nix1988](https://doi.org/10.1016/0375-9474(88)90370-3) | deferred |  Potential pairing-gap references | Shape-dependent terms and target-estimator correspondence require further audit; no unverified coefficients included |
 | [garvey_kelson](https://www.iasa.gr/stathis/Nucl/Mass_Prediction_Garvey_Kelson.pdf) | not_NZ_only_recovery |  Possible future mass-relation diagnostic | Neighboring measured masses are additional inputs; cannot silently count a relation as an N/Z-only expression |
 | [variable_J](https://arxiv.org/pdf/1007.3192) | not_variable_J_primary |  Possible separate spectroscopy model study | Variable angular momentum and moment of inertia are outside N/Z input. Fixed-spin empirical yrast tasks do not add J as a fitted input. |
+| [ripl2005_gdr_trk](https://www-nds.iaea.org/RIPL-3/handbook/ripl2-feb2005.pdf) | admitted | Sec7.6 printedp129 Eq7.25 and TRK text Three published nested GDR recovery references and one unenhanced analytic sum rule | Near-stability spherical systematics; no measured energy/width inserted; sum rule is not experimental truth |
+| [ripl2018_gdr](https://raw.githubusercontent.com/IAEA-NDS/RIPL-4/54afc19a4f7c861d28237c1da812d4cf385b528d/gamma/gdr-parameters_exp%26systematics_slo%26smlo.readme) | admitted | COMMENT2 and fixed e1/e2 sets; In flag format SLO/SMLO centroid reference variants; SLO experimental-fit parameter prediction | Only135 In=1 recommendations are observational;8845 systematic rows excluded; fit parameters are model-dependent |
+| [pairing2003](https://arxiv.org/pdf/nucl-th/0308046v1) | admitted | Eq16; original Vogel1984 credit in references Traditional and isospin-dependent averaged pairing reference expressions | Average gaps are not exact OES3 values; Vogel benchmark coordinate domain is restricted |
+| [grodzins2021](https://arxiv.org/html/2105.07164v1) | admitted_as_NZ_product | Eq1;keV and e2barn2 units Raman/Grodzins E2*BE2 reference and real composite prediction | Neither measured factor is an input; coefficient2.57 becomes25.7 in MeV*e2fm4; shell-closure limitations retained |
+| [moments0915](https://www-nds.iaea.org/nuclearmoments/magn_mom_recomm.csv) | admitted | Recommended report0915; definite ground-state sign/spin Ground-state magnetic moments | CSV second column is A; excited states, unknown signs, malformed fields and other report versions excluded |
+| [moments0833](https://www-nds.iaea.org/nuclearmoments/elec_mom_recomm.csv) | admitted | Recommended report0833; ground state Electric quadrupole moments | Barns times100; no tentative sign or silent repair of malformed values |
+| [ripl4_resonances2025](https://raw.githubusercontent.com/IAEA-NDS/RIPL-4/54afc19a4f7c861d28237c1da812d4cf385b528d/resonances/resonances.readme) | admitted | L0 fixed-format BNL2018 columns s-wave spacing, radiative width and neutron strength | Target N/Z is not compound N+1/Z; missing BNL values do not fall back to older RIPL3 values |
+| [ripl4_fission2025](https://raw.githubusercontent.com/IAEA-NDS/RIPL-4/54afc19a4f7c861d28237c1da812d4cf385b528d/fission/empirical-barriers-ripl4.readme) | admitted_separate_parameter_panel | 2025 empirical barrier table and uncertainty notice Barrier heights and curvatures | Model-dependent parameters; ad-hoc spreads are not statistical sigma; inconsistent84/207/Bi row excluded |
+| [nubase2020](https://www-nds.iaea.org/amdc/ame2020/nubase_4.mas20.txt) | admitted_optional_decay_panel | Ground-state half-life and direct branch fields N/Z-only prediction of log partial lifetimes | No Q input; censoring/estimates/unknown branching excluded; proton/two-proton candidates must still pass coverage |
+| [nudat_source_identity](https://www.nndc.bnl.gov/nudat3/guide/) | ENSDF_view_not_new_independent_source |  NuDat source-identity audit | Levels/gammas/decay are ENSDF-derived; changing web frontend does not create independent measurements |
+| [weisskopf_catalog_conflict](https://doi.org/10.1103/PhysRev.83.1073) | deferred |  Possible single-particle reference | Supplied catalogue generalE2 expression gives about0.0594A^(4/3), but separate downward prose quotes0.297; original direction/convention unresolved, not copied blindly |
 
 This is an audited selection, not an exhaustive literature review or a guarantee of manuscript acceptance. Source PDF hashes, where recorded, identify reviewed originals; complete articles are not redistributed.

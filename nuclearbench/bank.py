@@ -8,13 +8,17 @@ from pathlib import Path
 
 import numpy as np
 
+from . import __version__
+from .catalog_audit import CATALOG_AUDIT
 from .controls import control_formulas
 from .data import STATES, load_observables, read_masses, state_name
 from .expanded_formulas import published_formulas
 from .expressions import evaluate
+from .external_data import read_external
+from .external_specs import EXTERNAL_SPECS
 from .formulas import MACROS, in_domain
 from .literature import LITERATURE
-from .sources import SOURCES, digest, verify_raw
+from .sources import EXTRA_SOURCES, SOURCES, digest, verify_raw
 from .splits import SPLITS, make_split, validate_split
 from .temporal import (
     TEMPORAL_OBSERVABLES,
@@ -58,6 +62,11 @@ UNITS = {
     "E3minus": "MeV",
     "R42": "1",
     "BE2": "e^2 fm^4",
+    "GDR_E_single": "MeV",
+    "GDR_W_single": "MeV",
+    "GDR_peak_single": "mb",
+    "Delta_pair_ref": "MeV",
+    "TRK_sum": "MeV mb",
 }
 FAMILIES = {
     "B": "mass",
@@ -79,6 +88,9 @@ FAMILIES = {
 for _j, _p in STATES:
     UNITS[state_name(_j, _p)] = "MeV"
     FAMILIES[state_name(_j, _p)] = "shape_coexistence" if _j == 0 else "spectroscopy"
+for _spec in EXTERNAL_SPECS:
+    UNITS[_spec["observable"]] = _spec["unit"]
+    FAMILIES[_spec["observable"]] = _spec["structure_group"]
 
 MODEL_ANCHORED_RADIUS_Z = {75, 84, 86, 87, 88, 96}
 MIN_NEW_OBSERVATIONS = 30
@@ -140,12 +152,35 @@ def get_task(root, task_id):
     )
 
 
+def source_rows_equal(actual, expected):
+    """Exact provenance, allowing only last-bit differences in derived floating values."""
+    if len(actual) != len(expected):
+        return False
+    for row, reference in zip(actual, expected):
+        if row.keys() != reference.keys():
+            return False
+        for key, value in row.items():
+            other = reference[key]
+            if (
+                key in {"y", "sigma", "observed_y", "observed_sigma"}
+                and value is not None
+                and other is not None
+            ):
+                if not math.isclose(value, other, rel_tol=2e-14, abs_tol=2e-14):
+                    return False
+            elif value != other:
+                return False
+    return True
+
+
 def build(raw, output):
     verify_raw(raw)
     output = Path(output)
     if (output / "bank.json").exists():
         raise ValueError("Build into a fresh directory; never overwrite a frozen release")
-    tables = load_observables(raw)
+    base_tables = load_observables(raw)
+    external_tables, external_audit = read_external(raw, base_tables)
+    tables = {**base_tables, **external_tables}
     bundled = [name for name in SOURCES if not name.endswith(".zip")]
     (output / "source_snapshots").mkdir(parents=True, exist_ok=True)
     for name in bundled:
@@ -153,7 +188,9 @@ def build(raw, output):
     tasks = []
     coverage = []
 
-    def add(task_id, category, observable, rows, family, formula=None, temporal=False):
+    def add(
+        task_id, category, observable, rows, family, formula=None, temporal=False, target_spec=None
+    ):
         if not rows:
             raise ValueError(f"Empty dataset: {task_id}")
         data = f"data/{task_id}.csv"
@@ -187,16 +224,22 @@ def build(raw, output):
                 "enabled_splits": [k for k in partition if partition[k]["status"] == "enabled"],
             }
         )
+        if target_spec is not None:
+            tasks[-1].update(panel=target_spec["panel"], target_spec=target_spec)
 
     for formula in [*published_formulas(), *control_formulas()]:
         rows = []
         synthetic = formula["recovery_kind"] == "synthetic_mechanism_control"
         coordinate_table = (
-            tables["B"]
-            if synthetic
-            or formula["domain"] == "spectroscopy"
-            or formula["recovery_kind"] == "published_analytic_reference"
-            else tables[formula["observable"]]
+            tables[formula["coordinate_observable"]]
+            if "coordinate_observable" in formula
+            else (
+                tables["B"]
+                if synthetic
+                or formula["domain"] == "spectroscopy"
+                or formula["recovery_kind"] == "published_analytic_reference"
+                else tables[formula["observable"]]
+            )
         )
         for (n, z), coordinate in sorted(coordinate_table.items()):
             if not in_domain(formula["domain"], n, z):
@@ -204,7 +247,7 @@ def build(raw, output):
             observed = (
                 None
                 if synthetic or formula["recovery_kind"] == "published_analytic_reference"
-                else tables[formula["observable"]].get((n, z))
+                else tables.get(formula["observable"], {}).get((n, z))
             )
             row = dict(observed or coordinate)
             row.update(
@@ -241,7 +284,7 @@ def build(raw, output):
             formula["family"],
             formula,
         )
-    for index, (observable, table) in enumerate(tables.items(), 1):
+    for index, (observable, table) in enumerate(base_tables.items(), 1):
         rows = [dict(row) for (n, z), row in sorted(table.items()) if n >= 8 and z >= 8]
         excluded_anchors = 0
         if observable == "Rch":
@@ -275,6 +318,35 @@ def build(raw, output):
             rows,
             FAMILIES[observable],
         )
+    for spec in EXTERNAL_SPECS:
+        observable = spec["observable"]
+        table = external_tables[observable]
+        rows = [dict(r) for (n, z), r in sorted(table.items()) if n >= 8 and z >= 8]
+        eligible_splits = [k for k in SPLITS if make_split(rows, k)["status"] == "enabled"]
+        admitted = len(rows) >= MIN_NEW_OBSERVATIONS and len(eligible_splits) >= 2
+        coverage.append(
+            {
+                "observable": observable,
+                "upstream_parsed": len(table),
+                "domain_rows": len(rows),
+                "model_anchored_radius_rows_excluded": 0,
+                "admitted": admitted,
+                "enabled_splits": eligible_splits,
+                "reason": "meets >=30 labels and >=2 usable structural splits; "
+                + spec["label_kind"]
+                if admitted
+                else "insufficient strict state/branch coverage: need >=30 rows and >=2 usable splits",
+            }
+        )
+        if admitted:
+            add(
+                spec["id"],
+                "observable_prediction",
+                observable,
+                rows,
+                spec["structure_group"],
+                target_spec=spec,
+            )
     old = read_masses(raw, "AME2016")
     for index, observable in enumerate(TEMPORAL_OBSERVABLES, 1):
         rows = temporal_rows(old[observable], tables[observable])
@@ -289,7 +361,7 @@ def build(raw, output):
         )
     bank = {
         "schema_version": 2,
-        "version": "0.1.0",
+        "version": __version__,
         "release_date": "2026-10-17",
         "tasks": tasks,
         "macros": MACROS,
@@ -303,7 +375,7 @@ def build(raw, output):
                 "url": url,
                 "sha256": sha,
                 "snapshot_retrieved": "2026-10-17"
-                if name in {"mass16.txt", "rct1-16.txt", "rct2-16.txt"}
+                if name in {"mass16.txt", "rct1-16.txt", "rct2-16.txt", *EXTRA_SOURCES}
                 else "2026-10-01",
             }
             for name, (url, sha) in SOURCES.items()
@@ -315,11 +387,15 @@ def build(raw, output):
     }
     write_json(output / "coverage.json", coverage)
     write_json(output / "literature.json", LITERATURE)
+    write_json(output / "external_audit.json", external_audit)
+    write_json(output / "target_catalog_audit.json", CATALOG_AUDIT)
     write_json(output / "bank.json", bank)
     paths = [
         output / "bank.json",
         output / "coverage.json",
         output / "literature.json",
+        output / "external_audit.json",
+        output / "target_catalog_audit.json",
         *sorted((output / "data").glob("*.csv")),
         *sorted((output / "splits").glob("*.json")),
         *sorted((output / "source_snapshots").iterdir()),
@@ -331,12 +407,25 @@ def build(raw, output):
 def validate(root):
     root = Path(root)
     bank = load_bank(root)
-    if bank["schema_version"] != 2 or bank["version"] != "0.1.0":
+    if bank["schema_version"] != 2 or bank["version"] != __version__:
         raise ValueError(
-            "This verifier targets bank v0.1.0; use the v1.0.0 tag to validate the legacy bank"
+            f"This verifier targets bank {__version__}; use each frozen bank's own code and tag"
         )
+    if set(bank["sources"]) != set(SOURCES) or bank["bundled_sources"] != [
+        name for name in SOURCES if not name.endswith(".zip")
+    ]:
+        raise ValueError("Source registry membership differs from frozen release")
+    for name, (url, sha) in SOURCES.items():
+        if bank["sources"][name]["url"] != url or bank["sources"][name]["sha256"] != sha:
+            raise ValueError("Source registry differs from pinned original release bytes")
     checksums = json.loads((root / "checksums.json").read_text())
-    expected = {"bank.json", "coverage.json", "literature.json"}
+    expected = {
+        "bank.json",
+        "coverage.json",
+        "literature.json",
+        "external_audit.json",
+        "target_catalog_audit.json",
+    }
     expected.update("source_snapshots/" + name for name in bank["bundled_sources"])
     for name in bank["bundled_sources"]:
         if digest(root / "source_snapshots" / name) != bank["sources"][name]["sha256"]:
@@ -359,12 +448,48 @@ def validate(root):
         raise ValueError("Missing or additional registered recovery tasks")
     if json.loads((root / "literature.json").read_text()) != json.loads(json.dumps(LITERATURE)):
         raise ValueError("Literature admission ledger differs from reviewed registry")
+    if json.loads((root / "target_catalog_audit.json").read_text()) != CATALOG_AUDIT:
+        raise ValueError("Target candidate audit differs from reviewed decisions")
     old_mass = read_masses(root / "source_snapshots", "AME2016")
     new_mass = read_masses(root / "source_snapshots", "AME2020")
+    # Reconstruct the new labels from bundled primary bytes; a regenerated hash
+    # cannot legitimize a changed source value or wrong state/unit convention.
+    context = {}
+    for key, task_id in (("BE2", "B11_BE2"), ("E2plus", "B12_E2plus")):
+        _, rows, _ = get_task(root, task_id)
+        context[key] = {(r["N"], r["Z"]): r for r in rows}
+    external_tables, external_audit = read_external(root / "source_snapshots", context)
+    if json.loads((root / "external_audit.json").read_text()) != external_audit:
+        raise ValueError("External source audit differs from actual primary-source parsing")
+    expected_external = {}
+    for spec in EXTERNAL_SPECS:
+        rows = [
+            dict(r)
+            for (n, z), r in sorted(external_tables[spec["observable"]].items())
+            if n >= 8 and z >= 8
+        ]
+        splits = [k for k in SPLITS if make_split(rows, k)["status"] == "enabled"]
+        if len(rows) >= MIN_NEW_OBSERVATIONS and len(splits) >= 2:
+            expected_external[spec["id"]] = (spec, rows)
+    actual_external = {t["id"] for t in bank["tasks"] if "target_spec" in t}
+    if actual_external != set(expected_external):
+        raise ValueError("Missing or additional source-admitted external tasks")
     row_count = 0
     disabled = []
     for task in bank["tasks"]:
         _, rows, partitions = get_task(root, task["id"])
+        if task["id"] in expected_external:
+            spec, expected_rows = expected_external[task["id"]]
+            if not source_rows_equal(rows, expected_rows) or task["target_spec"] != spec:
+                raise ValueError(
+                    "External labels or definitions differ from original primary sources"
+                )
+            if (task["panel"], task["unit"], task["structure_group"]) != (
+                spec["panel"],
+                spec["unit"],
+                spec["structure_group"],
+            ):
+                raise ValueError("External panel/unit/group metadata differs from definition")
         if len(rows) != task["rows"] or len({r["sample_id"] for r in rows}) != len(rows):
             raise ValueError(f"Row count or unique ID mismatch: {task['id']}")
         for row in rows:

@@ -11,7 +11,7 @@ and is archived under `archive/120-task-v2.0.0`. The old `v2.0.0` tag is replace
 by `v0.1.0`; no branch history is rewritten. The still older 25-card v1.0.0 tag
 is a legacy historical artifact, not the new release sequence.
 
-The next substantive data expansion is **v0.2.0**. Use the code and checksums
+The substantive data expansion is **v0.2.0**, containing 151 task instances. Use the code and checksums
 from the same version; artifacts whose source/version metadata changed must
 not be mixed by relying only on their equal task counts. Historical development
 log entries retain the names used when those operations occurred.

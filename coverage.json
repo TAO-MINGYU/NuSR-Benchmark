@@ -469,5 +469,368 @@
     "observable": "E0plus",
     "reason": "meets >=30 observations and >=2 usable splits",
     "upstream_parsed": 228
+  },
+  {
+    "admitted": true,
+    "domain_rows": 754,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "mu_gs",
+    "reason": "meets >=30 labels and >=2 usable structural splits; recommended_evaluated",
+    "upstream_parsed": 788
+  },
+  {
+    "admitted": true,
+    "domain_rows": 513,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "Q_gs",
+    "reason": "meets >=30 labels and >=2 usable structural splits; recommended_evaluated",
+    "upstream_parsed": 529
+  },
+  {
+    "admitted": true,
+    "domain_rows": 394,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "Grodzins_EB",
+    "reason": "meets >=30 labels and >=2 usable structural splits; derived_composite",
+    "upstream_parsed": 401
+  },
+  {
+    "admitted": true,
+    "domain_rows": 135,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_E_centroid",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 135
+  },
+  {
+    "admitted": true,
+    "domain_rows": 135,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_E1",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 135
+  },
+  {
+    "admitted": true,
+    "domain_rows": 61,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_E2",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 61
+  },
+  {
+    "admitted": true,
+    "domain_rows": 135,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_W1",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 135
+  },
+  {
+    "admitted": true,
+    "domain_rows": 61,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_W2",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 61
+  },
+  {
+    "admitted": true,
+    "domain_rows": 135,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_peak1",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 135
+  },
+  {
+    "admitted": true,
+    "domain_rows": 61,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "GDR_peak2",
+    "reason": "meets >=30 labels and >=2 usable structural splits; experimental_data_fitted_parameter",
+    "upstream_parsed": 61
+  },
+  {
+    "admitted": true,
+    "domain_rows": 293,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logD0_BNL",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter",
+    "upstream_parsed": 293
+  },
+  {
+    "admitted": true,
+    "domain_rows": 255,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "Gg0_BNL",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter",
+    "upstream_parsed": 255
+  },
+  {
+    "admitted": true,
+    "domain_rows": 268,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "S0_BNL",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_resonance_parameter",
+    "upstream_parsed": 268
+  },
+  {
+    "admitted": true,
+    "domain_rows": 76,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "barrier_inner",
+    "reason": "meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter",
+    "upstream_parsed": 76
+  },
+  {
+    "admitted": true,
+    "domain_rows": 45,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "barrier_outer",
+    "reason": "meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter",
+    "upstream_parsed": 45
+  },
+  {
+    "admitted": true,
+    "domain_rows": 45,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "barrier_hw_inner",
+    "reason": "meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter",
+    "upstream_parsed": 45
+  },
+  {
+    "admitted": true,
+    "domain_rows": 45,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "barrier_hw_outer",
+    "reason": "meets >=30 labels and >=2 usable structural splits; empirical_model_dependent_parameter",
+    "upstream_parsed": 45
+  },
+  {
+    "admitted": true,
+    "domain_rows": 469,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_alpha",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime",
+    "upstream_parsed": 470
+  },
+  {
+    "admitted": true,
+    "domain_rows": 1116,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_beta_minus",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime",
+    "upstream_parsed": 1149
+  },
+  {
+    "admitted": true,
+    "domain_rows": 847,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge",
+      "proton_edge",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_beta_plus_EC",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime",
+    "upstream_parsed": 857
+  },
+  {
+    "admitted": true,
+    "domain_rows": 138,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "shell_N",
+      "shell_Z"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_EC",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime",
+    "upstream_parsed": 139
+  },
+  {
+    "admitted": true,
+    "domain_rows": 75,
+    "enabled_splits": [
+      "iid101",
+      "isotope101",
+      "isotone101",
+      "neutron_edge"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_SF",
+    "reason": "meets >=30 labels and >=2 usable structural splits; evaluated_partial_lifetime",
+    "upstream_parsed": 75
+  },
+  {
+    "admitted": false,
+    "domain_rows": 14,
+    "enabled_splits": [
+      "iid101",
+      "shell_N"
+    ],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_proton",
+    "reason": "insufficient strict state/branch coverage: need >=30 rows and >=2 usable splits",
+    "upstream_parsed": 21
+  },
+  {
+    "admitted": false,
+    "domain_rows": 4,
+    "enabled_splits": [],
+    "model_anchored_radius_rows_excluded": 0,
+    "observable": "logT_two_proton",
+    "reason": "insufficient strict state/branch coverage: need >=30 rows and >=2 usable splits",
+    "upstream_parsed": 10
   }
 ]

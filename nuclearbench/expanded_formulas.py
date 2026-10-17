@@ -2,6 +2,7 @@
 
 from .data import state_name
 from .formulas import FORMULAS, SHENG, entry
+from .more_formulas import more_formulas
 
 HA = "https://arxiv.org/pdf/nucl-th/0612003v2"
 YRAST = "https://arxiv.org/pdf/1007.3192v1"
@@ -182,4 +183,4 @@ def published_formulas():
             numerical_convention="e^2=1.4399764 MeV fm; microscopic, deformation, electron and congruence corrections excluded",
         )
         result.append(f)
-    return result
+    return result + more_formulas()

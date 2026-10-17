@@ -1,6 +1,6 @@
 # Release integrity and scientific acceptance
 
-## Bank v0.1.0 integrity gates
+## Bank v0.2.0 integrity gates
 
 - Every task has actual CSV labels, stable unique IDs, physical units, source record locators, source hashes, filtering/domain definitions and frozen partitions.
 - Formula-generated labels match the declared reference expressions; observations and uncertainties stay distinct. Every published radius formula uses the declared radius convention.
@@ -9,9 +9,10 @@
 - The checked-in artifact checksum inventory matches; a same-environment source rebuild is byte-identical. Missing or changed upstream raw files fail hash checks.
 - The scorer verifies exact ID coverage, uniqueness and finite values. Reordered predictions score identically. Missing/extra/duplicate/nonfinite predictions fail.
 - Recovery checks distinguish symbolic equality from finite numerical agreement and good approximate fit. The expression interpreter rejects arbitrary executable syntax.
-- All 89 recovery entries and their panel/group/role metadata match the source-audited or synthetic-generator registry. The literature ledger matches the reviewed decisions; generated documentation matches the actual task inventory.
+- All 98 recovery entries and their panel/group/role metadata match the source-audited or synthetic-generator registry. The literature ledger matches the reviewed decisions; generated documentation matches the actual task inventory.
 - Temporal labels and membership reconstruct from both bundled editions, old values remain old, and shared primitive parents cannot escape embargo by changing edition prefixes.
 - Artificial controls, restricted macroscopic pieces and missing spectroscopy context are not represented as experimental observations. Model-anchored absolute-radius rows are excluded from the primary prediction target.
+- New observational labels reconstruct from bundled IAEA/AMDC/RIPL4 bytes, including state identity, sign, units, In flags and branch definitions; recomputing a hash cannot legitimize a fabricated label. All76 supplied catalogue families have explicit decisions and metadata-source hashes.
 - Equal-group aggregation prevents parameter/state multiplicity from dominating a report. Missing/failed/duplicate runs and mismatched bank fingerprints are detected; raw mixed-unit RMSE is not averaged.
 - Clean installation, standalone CLI export/scoring, source rebuild, focused tests, lint and Git whitespace checks pass. No source package modifications or trained NuSR artifact is required.
 

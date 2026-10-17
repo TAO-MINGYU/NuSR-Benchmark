@@ -1,8 +1,8 @@
-# Task inventory — v0.1.0
+# Task inventory — v0.2.0
 
 Two evaluation categories: expression recovery and observable prediction. Published formulas, restricted analytic references and designed controls are separate panels within recovery. Counts below are task instances, not independent physical laws.
 
-Total: **120 task instances**, 194,077 task rows, 770 enabled task/split pairs.
+Total: **151 task instances**, 206,228 task rows, 945 enabled task/split pairs.
 
 Recovery labels are generated values. `observed_y` is optional experimental context and is never a fitting input. Common-coordinate spectroscopy cards do not fabricate missing level measurements. Restricted macroscopic components and synthetic controls assert no experimental value for their generated target.
 
@@ -32,6 +32,17 @@ Recovery labels are generated values. `observed_y` is optional experimental cont
 | B20_E5minus | E5minus / MeV | 56 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B20_E5minus.csv) / [IDs](splits/B20_E5minus.json) |
 | B29_E3plus | E3plus / MeV | 108 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B29_E3plus.csv) / [IDs](splits/B29_E3plus.json) |
 | B33_E0plus | E0plus / MeV | 221 | 0 | shape_coexistence | evaluation | 6 | [CSV](data/B33_E0plus.csv) / [IDs](splits/B33_E0plus.json) |
+| B34_mu_gs | mu_gs / mu_N | 754 | 0 | magnetic_moments | evaluation | 7 | [CSV](data/B34_mu_gs.csv) / [IDs](splits/B34_mu_gs.json) |
+| B35_Q_gs | Q_gs / e fm^2 | 513 | 0 | quadrupole_moments | evaluation | 7 | [CSV](data/B35_Q_gs.csv) / [IDs](splits/B35_Q_gs.json) |
+| B36_Grodzins_EB | Grodzins_EB / MeV e^2 fm^4 | 394 | 0 | collectivity | evaluation | 7 | [CSV](data/B36_Grodzins_EB.csv) / [IDs](splits/B36_Grodzins_EB.json) |
+
+## evaluated_resonance_parameters
+
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| B44_logD0_BNL | logD0_BNL / decades | 293 | 0 | s_wave_neutron_resonances | evaluation | 6 | [CSV](data/B44_logD0_BNL.csv) / [IDs](splits/B44_logD0_BNL.json) |
+| B45_Gg0_BNL | Gg0_BNL / eV | 255 | 0 | s_wave_neutron_resonances | evaluation | 6 | [CSV](data/B45_Gg0_BNL.csv) / [IDs](splits/B45_Gg0_BNL.json) |
+| B46_S0_BNL | S0_BNL / 1e-4 | 268 | 0 | s_wave_neutron_resonances | evaluation | 6 | [CSV](data/B46_S0_BNL.csv) / [IDs](splits/B46_S0_BNL.json) |
 
 ## historical_new_measurements
 
@@ -47,6 +58,16 @@ Recovery labels are generated values. `observed_y` is optional experimental cont
 | T08_delta2n | delta2n / MeV | 2055 | 0 | shell_gap | evaluation | 1 | [CSV](data/T08_delta2n.csv) / [IDs](splits/T08_delta2n.json) |
 | T09_delta2p | delta2p / MeV | 1870 | 0 | shell_gap | evaluation | 1 | [CSV](data/T09_delta2p.csv) / [IDs](splits/T09_delta2p.json) |
 
+## nuclear_decay_extension
+
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| D01_logT_alpha | logT_alpha / decades | 469 | 0 | ground_state_alpha | evaluation | 7 | [CSV](data/D01_logT_alpha.csv) / [IDs](splits/D01_logT_alpha.json) |
+| D02_logT_beta_minus | logT_beta_minus / decades | 1116 | 0 | ground_state_beta_minus | evaluation | 7 | [CSV](data/D02_logT_beta_minus.csv) / [IDs](splits/D02_logT_beta_minus.json) |
+| D03_logT_beta_plus_EC | logT_beta_plus_EC / decades | 847 | 0 | ground_state_beta_plus_EC | evaluation | 7 | [CSV](data/D03_logT_beta_plus_EC.csv) / [IDs](splits/D03_logT_beta_plus_EC.json) |
+| D04_logT_EC | logT_EC / decades | 138 | 0 | ground_state_EC | evaluation | 5 | [CSV](data/D04_logT_EC.csv) / [IDs](splits/D04_logT_EC.json) |
+| D05_logT_SF | logT_SF / decades | 75 | 0 | ground_state_SF | evaluation | 4 | [CSV](data/D05_logT_SF.csv) / [IDs](splits/D05_logT_SF.json) |
+
 ## published_analytic_reference
 
 | ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
@@ -54,6 +75,7 @@ Recovery labels are generated values. `observed_y` is optional experimental cont
 | A39_LDM_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A39_LDM_spherical_macro.csv) / [IDs](splits/A39_LDM_spherical_macro.json) |
 | A40_NLD_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A40_NLD_spherical_macro.csv) / [IDs](splits/A40_NLD_spherical_macro.json) |
 | A41_LSD_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A41_LSD_spherical_macro.csv) / [IDs](splits/A41_LSD_spherical_macro.json) |
+| A50_TRK_sum | TRK_sum / MeV mb | 2301 | 0 | dipole_sum_rule | analytic_reference | 7 | [CSV](data/A50_TRK_sum.csv) / [IDs](splits/A50_TRK_sum.json) |
 
 ## published_empirical
 
@@ -97,6 +119,30 @@ Recovery labels are generated values. `observed_y` is optional experimental cont
 | A36_DZ_R_naive | Rch / fm | 101 | 101 | radius_isovector_exponential | evaluation | 6 | [CSV](data/A36_DZ_R_naive.csv) / [IDs](splits/A36_DZ_R_naive.json) |
 | A37_DZ_R_correlated | Rch / fm | 106 | 106 | radius_isovector_exponential | evaluation | 6 | [CSV](data/A37_DZ_R_correlated.csv) / [IDs](splits/A37_DZ_R_correlated.json) |
 | A38_Angeli_R | Rch / fm | 880 | 880 | radius_inverse_powers | evaluation | 7 | [CSV](data/A38_Angeli_R.csv) / [IDs](splits/A38_Angeli_R.json) |
+| A42_GDR_centroid_2005 | GDR_E_single / MeV | 65 | 65 | gdr_mass_scaling | reference_recovery | 5 | [CSV](data/A42_GDR_centroid_2005.csv) / [IDs](splits/A42_GDR_centroid_2005.json) |
+| A43_GDR_width_2005 | GDR_W_single / MeV | 65 | 65 | gdr_response_scaling | reference_recovery | 5 | [CSV](data/A43_GDR_width_2005.csv) / [IDs](splits/A43_GDR_width_2005.json) |
+| A44_GDR_peak_2005 | GDR_peak_single / mb | 65 | 65 | gdr_response_scaling | reference_recovery | 5 | [CSV](data/A44_GDR_peak_2005.csv) / [IDs](splits/A44_GDR_peak_2005.json) |
+| A45_GDR_centroid_SLO2018 | GDR_E_centroid / MeV | 121 | 121 | gdr_isovector_centroid | reference_recovery | 5 | [CSV](data/A45_GDR_centroid_SLO2018.csv) / [IDs](splits/A45_GDR_centroid_SLO2018.json) |
+| A46_GDR_centroid_SMLO2018 | GDR_E_centroid / MeV | 121 | 121 | gdr_isovector_centroid | reference_recovery | 5 | [CSV](data/A46_GDR_centroid_SMLO2018.csv) / [IDs](splits/A46_GDR_centroid_SMLO2018.json) |
+| A47_Grodzins_product | Grodzins_EB / MeV e^2 fm^4 | 394 | 394 | collectivity_product | reference_recovery | 7 | [CSV](data/A47_Grodzins_product.csv) / [IDs](splits/A47_Grodzins_product.json) |
+| A48_pairing_classical | Delta_pair_ref / MeV | 2301 | 0 | average_pairing_reference | reference_recovery | 7 | [CSV](data/A48_pairing_classical.csv) / [IDs](splits/A48_pairing_classical.json) |
+| A49_pairing_Vogel | Delta_pair_ref / MeV | 662 | 0 | average_pairing_reference | reference_recovery | 7 | [CSV](data/A49_pairing_Vogel.csv) / [IDs](splits/A49_pairing_Vogel.json) |
+
+## structure_parameter_prediction
+
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| B37_GDR_E_centroid | GDR_E_centroid / MeV | 135 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B37_GDR_E_centroid.csv) / [IDs](splits/B37_GDR_E_centroid.json) |
+| B38_GDR_E1 | GDR_E1 / MeV | 135 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B38_GDR_E1.csv) / [IDs](splits/B38_GDR_E1.json) |
+| B39_GDR_E2 | GDR_E2 / MeV | 61 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B39_GDR_E2.csv) / [IDs](splits/B39_GDR_E2.json) |
+| B40_GDR_W1 | GDR_W1 / MeV | 135 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B40_GDR_W1.csv) / [IDs](splits/B40_GDR_W1.json) |
+| B41_GDR_W2 | GDR_W2 / MeV | 61 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B41_GDR_W2.csv) / [IDs](splits/B41_GDR_W2.json) |
+| B42_GDR_peak1 | GDR_peak1 / mb | 135 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B42_GDR_peak1.csv) / [IDs](splits/B42_GDR_peak1.json) |
+| B43_GDR_peak2 | GDR_peak2 / mb | 61 | 0 | giant_dipole_response | evaluation | 5 | [CSV](data/B43_GDR_peak2.csv) / [IDs](splits/B43_GDR_peak2.json) |
+| B47_barrier_inner | barrier_inner / MeV | 76 | 0 | fission_barrier_parameters | evaluation | 6 | [CSV](data/B47_barrier_inner.csv) / [IDs](splits/B47_barrier_inner.json) |
+| B48_barrier_outer | barrier_outer / MeV | 45 | 0 | fission_barrier_parameters | evaluation | 4 | [CSV](data/B48_barrier_outer.csv) / [IDs](splits/B48_barrier_outer.json) |
+| B49_barrier_hw_inner | barrier_hw_inner / MeV | 45 | 0 | fission_barrier_parameters | evaluation | 4 | [CSV](data/B49_barrier_hw_inner.csv) / [IDs](splits/B49_barrier_hw_inner.json) |
+| B50_barrier_hw_outer | barrier_hw_outer / MeV | 45 | 0 | fission_barrier_parameters | evaluation | 4 | [CSV](data/B50_barrier_hw_outer.csv) / [IDs](splits/B50_barrier_hw_outer.json) |
 
 ## synthetic_mechanism_control
 

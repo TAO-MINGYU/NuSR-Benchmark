@@ -132,3 +132,66 @@ pass both in the task checkout and outside it using a fresh normal noneditable
 0.1.0 installation (Python3.11.15/NumPy2.4.6/SymPy1.14.0). Ruff, formatting and
 whitespace pass. New checksums.json SHA256:
 856832654f8dd306b7b2ae3a21ded31249f9a980c9316424bc3552d4d8ab774a.
+
+
+## 2026-10-17 — primary-source expansion 0.2.0
+
+The explicitly requested primary-source research and catalogue review expands
+120 to 151 task instances: 98 recovery and 53 prediction instances, 206,228 task
+rows, 945 enabled and 58 unsupported task/split pairs. The new panels add moments,
+collectivity products, GDR response, neutron-resonance and fission parameters,
+and an optional decay extension. Experimental observations, evaluated parameters,
+experimental-data fits, empirical systematics and analytic references retain
+separate semantics. Nine recovery and 22 prediction instances are new; this
+is not 31 independent laws or a result selected using NuSR outcomes.
+
+All 76 supplied catalogue families have explicit admission/deferral decisions.
+The current lowercase target directory was rechecked after the user's correction;
+all 228 consulted metadata hashes match the original uppercase-directory snapshot.
+Only independently verified primary data and conventions enter formal labels;
+no personal documents or secondary licensed radius transcription are redistributed.
+Nine pinned primary files are added, including official IAEA-NDS RIPL-4 bytes at
+54afc19a4f7c861d28237c1da812d4cf385b528d. Reviewed paper PDFs remain outside Git.
+
+Validation on Python 3.11.15 / NumPy 2.4.6 / SymPy 1.14.0:
+
+- All 37 focused tests pass from outside the checkout using a separate normal
+  noneditable installation. Coverage includes unit factors, state/sign/limit
+  filtering, source-column and target/compound identity, direct decay branches,
+  censored/estimated/isomer rejection, primitive dependencies and catalogue mapping.
+- A changed primary label remains rejected after regenerating its checksum.
+  Changing both source bytes and bank source hashes is rejected against the
+  frozen code registry. Derived floating values allow 2e-14 comparison tolerance
+  for cross-platform libm rounding; provenance and original byte hashes are exact.
+- All 324 inventory members match a second pinned-source build byte-for-byte
+  in this environment. The final checksums.json SHA-256 is
+  8850fa5f95289068afad1b9a79c18a0e1f08805ae88fa23b5cc2e39c0d08a17f.
+  All 248 preceding data, split and bundled-source files remain byte-identical
+  to 0.1.0. Final log units are explicit dimensionless decades; no label changes.
+- All 98 supplied reference answers pass symbolic equality and independent
+  numerical nuclear-domain witnesses. A four-worker integrity check followed
+  resource inspection, with numerical library threads fixed at one. These are
+  answer/scorer checks, not expressions rediscovered by an SR model.
+- Installed CLI checks export target-free magnetic-moment and SF test inputs,
+  run the training-only linear example, and score complete files (159 moment
+  rows and 13 SF rows). A nested GDR known-answer CLI check passes. These are
+  workflow smoke results, not predictive comparisons.
+- Ruff checks/formatting, local documentation links, and Git whitespace checks
+  pass. The actual publication commit's three-Python-version remote matrix is
+  checked during release closure; it is not inferred from workflow configuration.
+
+Direct RIPL-3 data requests returned HTTP 403; official immutable RIPL-4 files
+were used instead. Early parser/schema/test failures and source probes remain
+in task-specific /tmp evidence, rather than being erased or counted as model
+results. Proton and two-proton prediction candidates failed the unchanged minimum
+coverage gate. Weisskopf direction/coefficient ambiguity, unverified spontaneous
+fission coefficients, and extra-input reaction formulas remain deferred. Only
+135 experimental-fit GDR rows are retained; 8,845 systematic recommendations are
+excluded. Source identity errors are excluded, not silently repaired.
+
+The preceding 120-task release is now v0.1.0 at e1f9233; its main and tag CI passed.
+Original d320f86 remains archived under archive/120-task-v2.0.0, and the superseded
+v2.0.0 tag was removed as requested without rewriting branch history. Legacy
+25-task v1.0.0 remains documented. NuSR/NuSRCore source repositories and unrelated
+worktrees are preserved. No formal SR/predictor training campaign, Slurm job,
+blind-evaluation claim, or claim of NuSR superiority is part of this release.
