@@ -175,15 +175,35 @@ class PartitionTests(unittest.TestCase):
 
     def test_manifest_and_checksum_tampering(self):
         result = validate(ROOT)
-        self.assertEqual(result["tasks"], {"expression_recovery": 10, "observable_prediction": 15})
+        self.assertEqual(result["tasks"], {"expression_recovery": 89, "observable_prediction": 31})
         with tempfile.TemporaryDirectory() as directory:
             destination = Path(directory) / "bank"
             destination.mkdir()
-            for path in ("data", "splits", "source_snapshots", "bank.json", "checksums.json"):
+            for path in (
+                "data",
+                "splits",
+                "source_snapshots",
+                "bank.json",
+                "checksums.json",
+                "coverage.json",
+                "literature.json",
+            ):
                 if (ROOT / path).is_dir():
                     shutil.copytree(ROOT / path, destination / path)
                 else:
                     shutil.copy2(ROOT / path, destination / path)
+            original_bank = (destination / "bank.json").read_bytes()
+            original_checksums = (destination / "checksums.json").read_bytes()
+            altered = load_bank(destination)
+            altered["tasks"][0]["structure_group"] = "fabricated_independent_group"
+            (destination / "bank.json").write_text(json.dumps(altered))
+            locked = json.loads(original_checksums)
+            locked["bank.json"] = digest(destination / "bank.json")
+            (destination / "checksums.json").write_text(json.dumps(locked))
+            with self.assertRaisesRegex(ValueError, "metadata differs from registry"):
+                validate(destination)
+            (destination / "bank.json").write_bytes(original_bank)
+            (destination / "checksums.json").write_bytes(original_checksums)
             task = load_bank(destination)["tasks"][0]
             with (destination / task["data"]).open("a") as stream:
                 stream.write("tampered\n")

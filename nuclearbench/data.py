@@ -138,8 +138,8 @@ def number(text):
     return float(text) if NUMBER.fullmatch(text) and math.isfinite(float(text)) else None
 
 
-def primitive(n, z):
-    return f"AME2020:ME:{n}:{z}"
+def primitive(n, z, version="AME2020"):
+    return f"{version}:ME:{n}:{z}"
 
 
 def record(n, z, y, sigma, source, locator, dependencies, note=""):
@@ -168,9 +168,13 @@ def insert(table, key, value):
     table[key] = value
 
 
-def read_masses(raw):
-    text = (Path(raw) / "mass_1.mas20.txt").read_text()
-    if "BINDING ENERGY/A" not in text or "f14.6" not in text:
+def read_masses(raw, version="AME2020"):
+    if version not in {"AME2016", "AME2020"}:
+        raise ValueError("Unsupported AME vintage")
+    old = version == "AME2016"
+    mass_file = "mass16.txt" if old else "mass_1.mas20.txt"
+    text = (Path(raw) / mass_file).read_text()
+    if "BINDING ENERGY/A" not in text or ("f13.5" if old else "f14.6") not in text:
         raise ValueError("Unsupported AME mass format")
     masses, binding = {}, {}
     for index, line in enumerate(text.splitlines(), 1):
@@ -179,10 +183,13 @@ def read_masses(raw):
         n, z, a = int(line[4:9]), int(line[9:14]), int(line[14:19])
         if a != n + z:
             raise ValueError("AME inconsistent N,Z,A")
-        me, unc = number(line[28:42]), number(line[42:54])
-        ba, bu = number(line[54:67]), number(line[68:78])
-        locator = f"mass_1.mas20.txt:{index}"
-        if me is not None and "#" not in line[28:54]:
+        me_end, unc_end, ba_end, bu_start, bu_end = (
+            (41, 52, 63, 63, 72) if old else (42, 54, 67, 68, 78)
+        )
+        me, unc = number(line[28:me_end]), number(line[me_end:unc_end])
+        ba, bu = number(line[unc_end:ba_end]), number(line[bu_start:bu_end])
+        locator = f"{mass_file}:{index}"
+        if me is not None and "#" not in line[28:unc_end]:
             insert(
                 masses,
                 (n, z),
@@ -191,12 +198,12 @@ def read_masses(raw):
                     z,
                     me * 0.001,
                     None if unc is None else unc * 0.001,
-                    "AME2020",
+                    version,
                     locator,
-                    [primitive(n, z)],
+                    [primitive(n, z, version)],
                 ),
             )
-        if ba is not None and "#" not in line[54:78] and (n, z) in masses:
+        if ba is not None and "#" not in line[unc_end:bu_end] and (n, z) in masses:
             insert(
                 binding,
                 (n, z),
@@ -205,9 +212,9 @@ def read_masses(raw):
                     z,
                     ba * a * 0.001,
                     None if bu is None else bu * a * 0.001,
-                    "AME2020",
+                    version,
                     locator,
-                    [primitive(n, z)],
+                    [primitive(n, z, version)],
                     "B=A*(B/A); source B/A rounded",
                 ),
             )
@@ -216,8 +223,10 @@ def read_masses(raw):
         ("rct1.mas20.txt", (("S2n", 2, 0), ("S2p", 0, 2))),
         ("rct2_1.mas20.txt", (("Sn", 1, 0), ("Sp", 0, 1))),
     ):
+        if old:
+            filename = "rct1-16.txt" if filename == "rct1.mas20.txt" else "rct2-16.txt"
         text = (Path(raw) / filename).read_text()
-        if "f12.4,f10.4" not in text:
+        if ("f10.2,f8.2" if old else "f12.4,f10.4") not in text:
             raise ValueError("Unsupported AME reaction format")
         for name, _, _ in names:
             result[name] = {}
@@ -231,12 +240,13 @@ def read_masses(raw):
             a, z = int(line[1:4]), int(line[8:11])
             n = a - z
             for column, (name, dn, dz) in enumerate(names):
-                lo = 12 + 22 * column
-                value, unc = number(line[lo : lo + 12]), number(line[lo + 12 : lo + 22])
+                width, stride = (10, 18) if old else (12, 22)
+                lo = 12 + stride * column
+                value, unc = number(line[lo : lo + width]), number(line[lo + width : lo + stride])
                 neighbor = (n - dn, z - dz)
                 if (
                     value is None
-                    or "#" in line[lo : lo + 22]
+                    or "#" in line[lo : lo + stride]
                     or (n, z) not in masses
                     or neighbor not in masses
                 ):
@@ -247,7 +257,7 @@ def read_masses(raw):
                     + dz * masses[0, 1]["y"]
                     - masses[n, z]["y"]
                 )
-                if abs(expected - value * 0.001) > 0.000003:
+                if abs(expected - value * 0.001) > (0.00003 if old else 0.000003):
                     raise ValueError(f"Reaction/mass inconsistency: {name},{n},{z}")
                 insert(
                     result[name],
@@ -257,9 +267,9 @@ def read_masses(raw):
                         z,
                         value * 0.001,
                         None if unc is None else unc * 0.001,
-                        "AME2020",
+                        version,
                         f"{filename}:{index}",
-                        [primitive(n, z), primitive(*neighbor)],
+                        [primitive(n, z, version), primitive(*neighbor, version)],
                         "Published reaction uncertainty; nucleon masses are fixed constants",
                     ),
                 )
@@ -282,9 +292,9 @@ def read_masses(raw):
                 z,
                 value,
                 None,
-                "AME2020-derived",
+                version + "-derived",
                 row["source_record"],
-                [primitive(*left), primitive(n, z), primitive(*right)],
+                [primitive(*left, version), primitive(n, z, version), primitive(*right, version)],
                 "Three-point atomic mass excess difference; covariance unavailable, sigma unknown",
             )
         result[name] = table
@@ -385,8 +395,37 @@ def level_sigma(value, unc):
     )
 
 
+STATES = [
+    (2, "+"),
+    (4, "+"),
+    (3, "-"),
+    (6, "+"),
+    (8, "+"),
+    (10, "+"),
+    (1, "-"),
+    (5, "-"),
+    (7, "-"),
+    (9, "-"),
+    (2, "-"),
+    (4, "-"),
+    (6, "-"),
+    (8, "-"),
+    (10, "-"),
+    (1, "+"),
+    (3, "+"),
+    (5, "+"),
+    (7, "+"),
+    (9, "+"),
+    (0, "+"),
+]
+
+
+def state_name(spin, parity):
+    return f"E{spin}" + ("plus" if parity == "+" else "minus")
+
+
 def read_levels(raw):
-    result = {k: {} for k in ("E2plus", "E4plus", "E3minus")}
+    result = {state_name(j, p): {} for j, p in STATES}
 
     def process(lines, filename, start):
         if not lines or not lines[0][9:39].strip().startswith("ADOPTED LEVELS"):
@@ -423,7 +462,8 @@ def read_levels(raw):
                 )
         if not any(x[0] == 0 and x[2] == "0+" for x in levels) or unresolved:
             return
-        for name, spin in (("E2plus", "2+"), ("E4plus", "4+"), ("E3minus", "3-")):
+        for j, parity in STATES:
+            name, spin = state_name(j, parity), f"{j}{parity}"
             eligible = sorted(x for x in levels if x[0] > 0 and x[2] == spin)
             if not eligible:
                 continue
@@ -482,7 +522,17 @@ def read_levels(raw):
             e4["dependencies"] + e2["dependencies"],
             "E4/E2; covariance unavailable, sigma unknown",
         )
-    return result
+    # Keep original public B01-B15 identifiers stable; append new spin states.
+    return {
+        name: result[name]
+        for name in (
+            "E2plus",
+            "E4plus",
+            "E3minus",
+            "R42",
+            *(state_name(j, p) for j, p in STATES[3:]),
+        )
+    }
 
 
 def load_observables(raw):

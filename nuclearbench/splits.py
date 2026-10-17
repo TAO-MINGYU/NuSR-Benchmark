@@ -45,6 +45,11 @@ def make_split(rows, kind):
         else:
             partition = assigned[row["sample_id"]]
         parts[partition].append(row)
+    embargo(parts)
+    return partition_result(parts)
+
+
+def embargo(parts):
     protected = {d for r in parts["test"] for d in r["dependencies"]}
     for partition in ("validation", "train"):
         kept = []
@@ -55,6 +60,9 @@ def make_split(rows, kind):
                 kept.append(row)
         parts[partition] = kept
         protected.update(d for row in kept for d in row["dependencies"])
+
+
+def partition_result(parts):
     counts = {p: len(values) for p, values in parts.items()}
     enabled = all(counts[p] >= 3 for p in ("train", "validation", "test"))
     return {
@@ -68,7 +76,12 @@ def make_split(rows, kind):
 
 
 def validate_split(rows, split, kind):
-    expected = make_split(rows, kind)
+    if kind == "ame2016_to_2020":
+        from .temporal import make_temporal_split
+
+        expected = make_temporal_split(rows)
+    else:
+        expected = make_split(rows, kind)
     if split != expected:
         raise ValueError(f"Split differs from registered algorithm: {kind}")
     by_id = {r["sample_id"]: r for r in rows}

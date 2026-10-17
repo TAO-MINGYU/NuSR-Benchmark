@@ -50,3 +50,69 @@ claim of scientific superiority is part of this release. Campaign model
 revisions, effective options and compute budgets remain explicitly unresolved
 in the template until the actual software is finalized. Source datasets were
 already used during development: validation is retrospective, not blind.
+
+## 2026-10-17 — scientific coverage expansion v2
+
+The v1 publication-adequacy review identified a small, correlated 10-formula
+recovery panel. This expansion is implemented in a fresh benchmark-only
+worktree from the unchanged v1 main commit. NuSR and NuSRCore source checkouts
+are unchanged; no scientific search or predictor campaign was run to select
+tasks or coefficients. The immutable v1.0.0 tag is retained.
+
+Version 2 contains 120 task instances and 194,077 task rows: 38 published
+empirical formula instances in eight declared related groups, three restricted
+spherical macroscopic references, 48 synthetic controls from 16 templates,
+22 evaluated-observable tasks and nine evaluation-vintage tasks. It has 770
+enabled and 16 explicitly disabled task/split pairs. Twelve synthetic instances
+are development-only; 36 public confirmation instances are not blind. Spin,
+coefficient, split and noise variants are not independent physical laws.
+
+The source audit adds spectroscopy and radius references, a machine-readable
+literature admission/exclusion ledger, conservative higher-spin coverage rules,
+and original AME2016 labels for historical prediction. Cross-edition primitive
+IDs prevent derived-mass leakage. T01 has 71 newly evaluable test nuclei; old
+training values remain old even when revised. B10 now excludes 72 radii whose
+element-level absolute reference anchors were identified as model-based in the
+source discussion, retaining 812 evaluated entries. This does not imply that
+all retained radii are independently measured absolute quantities.
+
+Validation completed on Python 3.11.15, NumPy 2.4.6 and SymPy 1.14.0:
+
+- All 27 focused tests pass in a separate normal noneditable installation,
+  invoked outside the checkout. Added checks cover independently calculated
+  published physics anchors, missing spectroscopy observations, original old
+  labels, cross-vintage embargoes, synthetic roles, inventory documentation,
+  equal-group weighting, and incomplete/failed/duplicate/mismatched runs.
+  Terminal failures cannot inherit recovery credit from stale candidate flags.
+- The 251-member artifact inventory validates. The final pinned-source rebuild
+  reproduces every frozen data, split, source and metadata artifact byte-for-byte
+  in this environment. The SHA-256 of checksums.json is
+  c25852b240a5643c6bac5b4c98197c993f7f1a04ceea7c32836fe122d12571a7.
+- All 89 registered reference expressions pass symbolic equality and independent
+  nuclear-domain numerical witnesses. These checks supply the known answers to
+  the scorer; they are not SR rediscovery results. This check used four workers
+  after inspecting CPU affinity, load, cgroup limits and available memory;
+  ordinary validation and numerical library threads remain single-threaded.
+- Installed CLI checks export all 71 T01 test coordinates without targets,
+  recover a synthetic known answer, detect an incomplete fingerprinted result
+  collection, and reproduce training-only noise without changing validation or
+  test data. The train-only NumPy linear example produces and scores complete
+  71-row temporal predictions; this is dataflow smoke evidence only.
+- Ruff checks and formatting, local Markdown links, and Git whitespace checks
+  pass. Generated task/coverage/split documents match the frozen inventory.
+  Fresh GitHub matrix status is verified against the actual publication commit
+  during release closure, rather than inferred from the configured workflow.
+
+Source acquisition initially tried guessed AME2016 reaction filenames with
+underscores and received HTTP 403; the official hyphenated filenames were then
+retrieved and pinned. A development rebuild exposed a Python tuple versus JSON
+list registry comparison, corrected before final freezing. Early build and
+diagnostic artifacts were retained outside the repository. The full source
+papers were reviewed for equations/coefficients; their PDFs are not redistributed.
+
+The source search is selected rather than exhaustive. Synthetic diagnostics,
+restricted mass-model pieces and repeated spin variants remain separate panels.
+Historical availability is an evaluation-vintage proxy, not certified experiment
+dates. Model revisions, actual options, compute/tuning budgets and the full
+comparison campaign remain future work. This release establishes a broader,
+reproducible question bank, not publication sufficiency or NuSR superiority.

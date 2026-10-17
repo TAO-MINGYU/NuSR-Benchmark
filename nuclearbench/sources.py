@@ -6,6 +6,18 @@ from urllib.request import Request, urlopen
 
 AME = "https://www-nds.iaea.org/amdc/ame2020/"
 SOURCES = {
+    "mass16.txt": (
+        "https://www-nds.iaea.org/amdc/ame2016/mass16.txt",
+        "2167f57a2a98331e4649b2dd2b658a9006ed4fba1975729ebfe52a42b4b9218a",
+    ),
+    "rct1-16.txt": (
+        "https://www-nds.iaea.org/amdc/ame2016/rct1-16.txt",
+        "f0200d338083021d6077f768390f6447f8dc32f4677aef27a23a8ad4a201b853",
+    ),
+    "rct2-16.txt": (
+        "https://www-nds.iaea.org/amdc/ame2016/rct2-16.txt",
+        "cd7ff26ccde00659e2101afd8bf731e2e30a0645ac54e4ca402d5e17c49f6f0f",
+    ),
     "mass_1.mas20.txt": (
         AME + "mass_1.mas20.txt",
         "e8599c6d7f724fac91934e59f1b9de8fb8f63e820f4b39456b790665ed2a3307",
@@ -62,7 +74,7 @@ def fetch(raw, snapshots=Path("source_snapshots")):
         request = Request(
             url,
             headers={
-                "User-Agent": "NuSR-Benchmark/1.0 (+https://github.com/TAO-MINGYU/NuSR-Benchmark)"
+                "User-Agent": "NuSR-Benchmark/2.0 (+https://github.com/TAO-MINGYU/NuSR-Benchmark)"
             },
         )
         try:

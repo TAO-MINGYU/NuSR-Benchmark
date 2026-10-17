@@ -1,4 +1,4 @@
-# Evaluation protocol v1
+# Evaluation protocol v2
 
 The frozen bank is a release evaluation instrument, not a claim that NuSR has passed it. Scientific model runs are a separate campaign. Freeze the campaign manifest, adapter revisions and all model settings before seeing test scores. Do not choose task subsets, seeds, software revisions or retries after observing outcomes.
 
@@ -12,7 +12,7 @@ The primary vertical panel trains every learned model on the same bank training 
 
 ## Inputs, prior knowledge and NuSR settings
 
-1. Raw mode uses integer `N,Z` plus target and optional training weights. A declared nuclear-knowledge mode may add only deterministic functions of N/Z. `export --features nuclear` provides the same values of `A,I,d,P_s,P_m` for adapter authors; their definitions are public. NuSR's public fit interface remains N/Z. Its adapter must record which internal features implement the declared knowledge; it cannot pretend to accept arbitrary external feature columns. A required macro unavailable in an adapter's language must be identified in the preflight, not silently omitted or injected only for another tool.
+1. Raw mode uses integer `N,Z` plus target and optional training weights. A declared nuclear-knowledge mode may add only deterministic functions of N/Z. `export --features nuclear` provides the same values of `A,I,d,P_s,P_m,Np,Nn,P,Q_EI` for adapter authors; their definitions are public. NuSR's public fit interface remains N/Z. Its adapter must record which internal features implement the declared knowledge; it cannot pretend to accept arbitrary external feature columns. A required macro unavailable in an adapter's language must be identified in the preflight, not silently omitted or injected only for another tool.
 2. Primary NuSR runs disable every embedded experimental-data terminal, plus all direct or indirect target-table access. Record **effective configuration**, not just a claim that defaults are safe. Inspect exact release API, feature graph, profile/effects, seeds, loss, exported expression and provenance. `profile='null'` alone is not proof embedded data or AFE is off.
 3. For category A, supplying the exact reference initializer/template or coefficient vector is template assistance, not rediscovery. Audit built-in seeds and profile knowledge before running. Report assisted and unassisted results separately. For category B, no same-source measured masses, radii, levels, strengths or their derived labels may appear as inputs at held-out coordinates.
 4. Every normalizer, imputer, feature selector, AFE candidate screen, loss-weight calibration and hyperparameter selection is fitted strictly inside training data. The outer validation partition chooses the model/candidate. AFE's own construction/confirmation split is nested inside outer training. No use of `observed_y`, source identifiers, uncertainty, test labels, or other-task observations as predictors in the primary panel.
@@ -36,11 +36,15 @@ The exact hash prefix and integer conversion are defined in `nuclearbench/splits
 
 After initial assignment, all test primitive dependencies are protected. Remove any validation row sharing one; protect the retained validation dependencies as well, then remove conflicting training rows. Every removed ID is recorded as `purged`; do not move it into another partition. This preserves test membership and forbids shared label-building observations between partitions. It is intentionally stricter than merely avoiding duplicate `(N,Z)` pairs.
 
-A split with fewer than three retained rows in any train/validation/test partition is `insufficient_coverage`. It is not scored or silently replaced. Current exceptions are B14's two edge splits. The small B14 dataset remains useful on its five other splits, with appropriately cautious interpretation. Report effective sample sizes after purging; a small training set is part of the declared difficulty.
+A split with fewer than three retained rows in any train/validation/test partition is `insufficient_coverage`. It is not scored or silently replaced. Report effective sample sizes after purging; a small training set is part of the declared difficulty and may provide weak statistical power.
+
+Version 2 has 16 explicitly disabled task/split pairs, including the sparse light-radius and higher-spin cases; the complete list and counts are in [SPLIT_COUNTS.md](SPLIT_COUNTS.md). Newly admitted observed targets need >=30 domain rows and >=2 usable structural splits, in addition to the conservative label rules. The original B14 core case remains retained and marked sparse. The nine T tasks instead use the single genuine `ame2016_to_2020` availability split, with old labels retained and primitive IDs shared across editions; see [TEMPORAL_PROTOCOL.md](TEMPORAL_PROTOCOL.md).
 
 ## Noise and repeated runs
 
 Model seeds are **7,17,37,73,101**. Each completed run and failed run is retained. Seeds index stochastic training; they do not change the registered data partitions. Report recovery proportions and error distributions across all seeds, not the best seed.
+
+Separate the 38 empirical formula instances, 3 restricted analytic references and 48 synthetic controls in reports. The controls consist of 16 templates; their 12 development instances are excluded from default final aggregation and their 36 public confirmation instances are evaluated after adapter/configuration freeze. Public confirmation roles do not establish blindness. See [CONTROL_DESIGN.md](CONTROL_DESIGN.md).
 
 Category A has clean, 1% and 5% training-label noise settings, measured relative to the clean training-label standard deviation. Noise is a deterministic Box-Muller sample keyed by task/sample ID and a fixed noise101 prefix; validation/test labels stay clean and weight=1. Export with `--noise 0.01` or `--noise 0.05` for training. All methods receive identical perturbed targets. The primary core is the clean condition; noise is the robustness extension. Category B adds no artificial noise.
 
@@ -65,3 +69,16 @@ For SR, report CPU seconds, elapsed time, total fitness/case-loss work and evalu
 To assess NuSR's own progression, use fixed revisions and the same data, seeds, splits and compute accounting. Suggested ablations: raw N/Z configuration, permitted fixed nuclear features, explicitly enabled physics effects, AFE, and profile/seed specialization. Audit configuration compatibility for the actual NuSR version; unsupported combinations are not fabricated baselines. Keep the original baseline and all negative results. This is additional evidence alongside the user's vertical prediction-model panel.
 
 The release must distinguish implementation/integrity checks from measured scientific outcomes. As public datasets have already informed development, the present bank is retrospective. An untouched future-data panel requires its own source versions, historical availability rules and sealed evaluation; it is not implied by a fresh random split of AME2020.
+
+## Equal-group result summaries
+
+Use `nuclearbench summary --root .` to inspect instance counts and declared structure groups. For model results, retain each scored JSON, append the actual `model`, `seed` and `noise` fields, and store a JSON list. Failure records need the same frozen `bank_checksums_sha256`, task, split and model/seed/noise condition plus a terminal `failed`, `timeout` or `unsupported` status. A scored SR recovery record must include both the proof status and numerical-agreement result from `recover`.
+
+```bash
+nuclearbench aggregate --root . --results runs.json \
+  --panel published_empirical --split iid101 --models NuSR PySR MySR Operon
+```
+
+For the requested panel/split and noise condition, the aggregator expects every eligible nondevelopment task at all five registered seeds for each named model. It rejects duplicate task/seed entries and mismatched bank fingerprints, and lists missing runs. It averages seeds within tasks, tasks within a declared group and groups within the panel. Thus 22 spectroscopy instances do not have 22 times the weight of a one-instance radius group. Group definitions are a declared reporting convention, not a proof of physical or statistical independence.
+
+An incomplete group has no final aggregate. A terminal failure remains in the recovery denominator; normalized predictive error is left unavailable if any expected run has no valid prediction. Unproved equality remains an explicit unresolved proof status; the automatic symbolic rate counts only proved equal cases and is not a manually adjudicated recovery rate. Physical-unit RMSE/MAE remain task-specific; no aggregate averages raw MeV, fm and transition-strength errors. A normalized-error mean is a distribution-specific summary, not a universal quality measure. Conditions, panels and structural splits are not silently pooled.

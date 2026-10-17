@@ -1,9 +1,26 @@
 {
-  "status": "configuration_required_before_model_runs",
-  "bank_version": "1.0.0",
-  "bank_checksums_sha256": "d6c08197dffca4984de8421a6b40a75a543e83d0a67ee703d8b06be305afcc1f",
-  "task_selection": "all_category_A_clean_and_all_category_B_enabled_splits",
+  "adapter_revisions": null,
+  "aggregation": "equal_seeds_then_equal_tasks_within_group_then_equal_groups",
+  "bank_checksums_sha256": "c25852b240a5643c6bac5b4c98197c993f7f1a04ceea7c32836fe122d12571a7",
+  "bank_version": "2.0.0",
+  "candidate_selection": "lowest_validation_RMSE_then_registered_complexity_then_expression",
+  "confirmation_pool": "36_public_control_instances_not_blind",
+  "cpu_seconds_per_run_including_preprocessing": null,
+  "failure_retry_policy": "retain_all_failures_no_best_retry_selection",
+  "historical_panel": "AME2016_original_labels_to_new_nonestimated_AME2020_targets",
+  "horizontal_models": [
+    "NuSR",
+    "PySR",
+    "MySR",
+    "Operon"
+  ],
+  "hyperparameter_search_budget": null,
+  "knowledge_mode": null,
+  "model_revisions_and_effective_configurations": null,
+  "primary_information": "N_Z_and_declared_matched_nuclear_knowledge_no_measured_lookup",
+  "published_model_panel": "separate_with_historical_calibration_and_coverage_disclosure",
   "robustness_extension": "category_A_noise_0.01_and_0.05",
+  "scientific_status": "not_executed",
   "seeds": [
     7,
     17,
@@ -11,27 +28,13 @@
     73,
     101
   ],
-  "horizontal_models": [
-    "NuSR",
-    "PySR",
-    "MySR",
-    "Operon"
-  ],
+  "status": "configuration_required_before_model_runs",
+  "task_selection": "all_enabled_non_development_tasks_reported_separately_by_panel_group_and_split",
+  "threads_and_affinity": null,
   "vertical_models": [
     "NuSR",
     "GPR",
     "LightGBM",
     "MLP_ensemble"
-  ],
-  "primary_information": "N_Z_and_declared_matched_nuclear_knowledge_no_measured_lookup",
-  "knowledge_mode": null,
-  "model_revisions_and_effective_configurations": null,
-  "adapter_revisions": null,
-  "cpu_seconds_per_run_including_preprocessing": null,
-  "hyperparameter_search_budget": null,
-  "threads_and_affinity": null,
-  "failure_retry_policy": "retain_all_failures_no_best_retry_selection",
-  "candidate_selection": "lowest_validation_RMSE_then_registered_complexity_then_expression",
-  "published_model_panel": "separate_with_historical_calibration_and_coverage_disclosure",
-  "scientific_status": "not_executed"
+  ]
 }

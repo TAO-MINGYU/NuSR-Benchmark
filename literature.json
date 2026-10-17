@@ -1,0 +1,104 @@
+[
+  {
+    "caveat": "Experimental isotonic shift is excluded; exact built-in template/initializer access must be audited",
+    "decision": "admitted",
+    "id": "bw_bwm",
+    "locators": "Eqs. (1), (4)-(5)",
+    "role": "Original BW/BWM reference cards retained",
+    "source": "https://arxiv.org/pdf/nucl-th/0405080"
+  },
+  {
+    "caveat": "Equivalent sharp radii converted to rms; proton-scaling variants remain related instances",
+    "decision": "admitted",
+    "id": "sheng2015",
+    "locators": "Eqs. (2),(4)-(11), Table 1",
+    "role": "Radius scaling, isospin, finite-size and valence/pairing instances",
+    "source": "https://doi.org/10.7498/aps.64.112101"
+  },
+  {
+    "caveat": "Version-pinned leading expressions, not the complete MISR10 model or a blind discovery challenge",
+    "decision": "admitted",
+    "id": "misr2024v3",
+    "locators": "Eqs. (4)-(5)",
+    "role": "Original leading-order MISR binding/radius cards retained",
+    "source": "https://arxiv.org/html/2404.11477v3"
+  },
+  {
+    "caveat": "Fixed even-even spin tasks; reference valence boundaries stated explicitly",
+    "decision": "admitted",
+    "id": "ha2007",
+    "locators": "Eq. (1), Table I",
+    "role": "Two fixed-state instances of one shared-rate valence formula",
+    "source": "https://arxiv.org/pdf/nucl-th/0612003v2"
+  },
+  {
+    "caveat": "No 11+ row in Table A despite caption; excluded. Sparse observed states use common AME coordinate anchors with no invented observations.",
+    "decision": "admitted",
+    "id": "yrast2010",
+    "locators": "Eq. (3), Table A p.9",
+    "reviewed_pdf_sha256": "34e55b2995af82ebb75f67de8caabf373972764b58811e1904a1cdf7bec2304d",
+    "role": "20 fixed-state parameter instances; one structural family",
+    "source": "https://arxiv.org/pdf/1007.3192"
+  },
+  {
+    "caveat": "Restricted light-nucleus domains and explicit EI-shell occupancy convention; original r_pi notation retained as an empirical radius reference",
+    "decision": "admitted",
+    "id": "heylen2016",
+    "locators": "Eq. (3a)-(3b), fitted parameter sets in text",
+    "reviewed_pdf_sha256": "3d348b10f0843d2f5d70522102c308e9385efa671d7dfab5a490e674296b1fe1",
+    "role": "Naive and correlated Duflo-Zuker radius forms",
+    "source": "https://arxiv.org/pdf/1609.05021"
+  },
+  {
+    "caveat": "Some evaluated radii share model-based absolute anchors; exclude Z=75,84,86,87,88,96 from primary absolute-radius prediction",
+    "decision": "admitted",
+    "id": "angeli2013",
+    "locators": "Eq. (8), reference-radius discussion",
+    "role": "Inverse-power rms-radius interpolation",
+    "source": "https://doi.org/10.1016/j.adt.2011.12.006"
+  },
+  {
+    "caveat": "These are not complete LDM/NLD/LSD mass predictions: no microscopic, deformation, electron or congruence corrections are invented",
+    "decision": "restricted_reference",
+    "id": "pomorski2002",
+    "locators": "Macroscopic expression, Table I",
+    "reviewed_pdf_sha256": "e421c4eeff0bfd2781606c60b28a3db7c5641c6df74e6e011f65c53111cff471",
+    "role": "Three spherical analytic macroscopic components",
+    "source": "https://arxiv.org/pdf/nucl-th/0205011"
+  },
+  {
+    "caveat": "Full model requires a separately audited algorithmic grammar; an opaque callable is not a short formula recovery answer",
+    "decision": "deferred",
+    "id": "dz_mass",
+    "role": "Possible future complex shell-occupation recovery panel",
+    "source": "https://arxiv.org/abs/1407.8218"
+  },
+  {
+    "caveat": "Measured binding energy/pairing features exceed N/Z-only primary information; no silent primary admission",
+    "decision": "assisted_panel_only",
+    "id": "radius_ml2025",
+    "role": "Published radius SR/predictive reference candidate",
+    "source": "https://arxiv.org/html/2512.06683v1"
+  },
+  {
+    "caveat": "Shape-dependent terms and target-estimator correspondence require further audit; no unverified coefficients included",
+    "decision": "deferred",
+    "id": "madland_nix1988",
+    "role": "Potential pairing-gap references",
+    "source": "https://doi.org/10.1016/0375-9474(88)90370-3"
+  },
+  {
+    "caveat": "Neighboring measured masses are additional inputs; cannot silently count a relation as an N/Z-only expression",
+    "decision": "not_NZ_only_recovery",
+    "id": "garvey_kelson",
+    "role": "Possible future mass-relation diagnostic",
+    "source": "https://www.iasa.gr/stathis/Nucl/Mass_Prediction_Garvey_Kelson.pdf"
+  },
+  {
+    "caveat": "Variable angular momentum and moment of inertia are outside N/Z input. Fixed-spin empirical yrast tasks do not add J as a fitted input.",
+    "decision": "not_variable_J_primary",
+    "id": "variable_J",
+    "role": "Possible separate spectroscopy model study",
+    "source": "https://arxiv.org/pdf/1007.3192"
+  }
+]

@@ -122,6 +122,16 @@ def in_domain(domain, n, z):
         return n > 8 and z > 8
     if domain == "misr":
         return n >= 8 and 12 <= z <= 50
+    if domain == "spectroscopy":
+        return 8 <= n <= 154 and 8 <= z <= 100 and n % 2 == z % 2 == 0
+    if domain == "dz_naive":
+        return n > 8 and z > 8 and n + z <= 60
+    if domain == "dz_correlated":
+        return 8 < n <= 50 and 8 < z < 30 and n + z <= 80
+    if domain == "nuclear_grid":
+        return 8 <= n <= 154 and 8 <= z <= 100
+    if domain == "macroscopic":
+        return n >= 8 and z >= 8
     raise ValueError(domain)
 
 
@@ -141,4 +151,15 @@ MACROS = {
         "neutron_magic": [8, 20, 28, 50, 82],
     },
     "radius_conversion": "Sheng reports equivalent sharp R_C=sqrt(5/3)*r_rms; every Sheng expression here includes sqrt(3/5).",
+    "standard_valence": {
+        "neutron_magic": [2, 8, 20, 28, 50, 82, 126, 184],
+        "proton_magic": [2, 8, 20, 28, 50, 82, 126],
+        "formula": "Np/Nn = minimum absolute distance to proton/neutron boundaries; P=Np*Nn/(Np+Nn), zero when both zero",
+        "note": "Spectroscopy domain N<=154,Z<=100 avoids dependence on unobserved upper-shell midpoints; boundaries are conventions, not universally established closures",
+    },
+    "Q_EI": {
+        "boundaries": [2, 6, 14, 28, 50],
+        "formula": "product of u*(D-u)/D**2 for proton and neutron EI shells, u=count-lower, D=upper-lower; zero on every boundary",
+        "domain": "2<=N,Z<=50; only used within the DZ correlated task domain",
+    },
 }

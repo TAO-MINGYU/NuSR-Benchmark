@@ -10,6 +10,7 @@ import numpy as np
 
 from .bank import get_task
 from .expressions import complexity, evaluate, prove
+from .sources import digest
 
 
 def partition(root, task_id, kind, part="test"):
@@ -72,6 +73,10 @@ def score(root, task_id, kind, prediction_file):
     return dict(
         task=task_id,
         split=kind,
+        panel=task["panel"],
+        bank_checksums_sha256=digest(Path(root) / "checksums.json"),
+        structure_group=task["structure_group"],
+        evidence_role=task["evidence_role"],
         status="scored",
         unit=task["unit"],
         prediction_sha256=hashlib.sha256(Path(prediction_file).read_bytes()).hexdigest(),
@@ -106,6 +111,10 @@ def recover(root, task_id, kind, expression):
     return dict(
         task=task_id,
         split=kind,
+        panel=task["panel"],
+        bank_checksums_sha256=digest(Path(root) / "checksums.json"),
+        structure_group=task["structure_group"],
+        evidence_role=task["evidence_role"],
         status="scored",
         unit=task["unit"],
         expression=expression,

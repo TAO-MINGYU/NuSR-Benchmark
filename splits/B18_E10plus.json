@@ -1,0 +1,346 @@
+{
+  "iid101": {
+    "counts": {
+      "purged": 0,
+      "test": 9,
+      "train": 15,
+      "validation": 7
+    },
+    "partitions": {
+      "purged": [],
+      "test": [
+        "N072Z062",
+        "N082Z068",
+        "N086Z070",
+        "N086Z072",
+        "N092Z062",
+        "N092Z064",
+        "N104Z070",
+        "N124Z088",
+        "N142Z094"
+      ],
+      "train": [
+        "N090Z072",
+        "N092Z058",
+        "N096Z060",
+        "N104Z076",
+        "N126Z088",
+        "N130Z090",
+        "N142Z090",
+        "N142Z092",
+        "N144Z092",
+        "N144Z094",
+        "N146Z092",
+        "N146Z096",
+        "N148Z094",
+        "N150Z096",
+        "N152Z102"
+      ],
+      "validation": [
+        "N094Z064",
+        "N096Z066",
+        "N098Z068",
+        "N128Z088",
+        "N146Z094",
+        "N150Z098",
+        "N152Z096"
+      ]
+    },
+    "reason": null,
+    "status": "enabled"
+  },
+  "isotone101": {
+    "counts": {
+      "purged": 0,
+      "test": 5,
+      "train": 19,
+      "validation": 7
+    },
+    "partitions": {
+      "purged": [],
+      "test": [
+        "N094Z064",
+        "N126Z088",
+        "N130Z090",
+        "N144Z092",
+        "N144Z094"
+      ],
+      "train": [
+        "N072Z062",
+        "N082Z068",
+        "N092Z058",
+        "N092Z062",
+        "N092Z064",
+        "N096Z060",
+        "N096Z066",
+        "N098Z068",
+        "N124Z088",
+        "N128Z088",
+        "N142Z090",
+        "N142Z092",
+        "N142Z094",
+        "N146Z092",
+        "N146Z094",
+        "N146Z096",
+        "N148Z094",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": [
+        "N086Z070",
+        "N086Z072",
+        "N090Z072",
+        "N104Z070",
+        "N104Z076",
+        "N150Z096",
+        "N150Z098"
+      ]
+    },
+    "reason": null,
+    "status": "enabled"
+  },
+  "isotope101": {
+    "counts": {
+      "purged": 0,
+      "test": 4,
+      "train": 21,
+      "validation": 6
+    },
+    "partitions": {
+      "purged": [],
+      "test": [
+        "N142Z094",
+        "N144Z094",
+        "N146Z094",
+        "N148Z094"
+      ],
+      "train": [
+        "N086Z070",
+        "N086Z072",
+        "N090Z072",
+        "N092Z058",
+        "N092Z064",
+        "N094Z064",
+        "N096Z060",
+        "N096Z066",
+        "N104Z070",
+        "N104Z076",
+        "N124Z088",
+        "N126Z088",
+        "N128Z088",
+        "N142Z092",
+        "N144Z092",
+        "N146Z092",
+        "N146Z096",
+        "N150Z096",
+        "N150Z098",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": [
+        "N072Z062",
+        "N082Z068",
+        "N092Z062",
+        "N098Z068",
+        "N130Z090",
+        "N142Z090"
+      ]
+    },
+    "reason": null,
+    "status": "enabled"
+  },
+  "neutron_edge": {
+    "counts": {
+      "purged": 0,
+      "test": 0,
+      "train": 31,
+      "validation": 0
+    },
+    "partitions": {
+      "purged": [],
+      "test": [],
+      "train": [
+        "N072Z062",
+        "N082Z068",
+        "N086Z070",
+        "N086Z072",
+        "N090Z072",
+        "N092Z058",
+        "N092Z062",
+        "N092Z064",
+        "N094Z064",
+        "N096Z060",
+        "N096Z066",
+        "N098Z068",
+        "N104Z070",
+        "N104Z076",
+        "N124Z088",
+        "N126Z088",
+        "N128Z088",
+        "N130Z090",
+        "N142Z090",
+        "N142Z092",
+        "N142Z094",
+        "N144Z092",
+        "N144Z094",
+        "N146Z092",
+        "N146Z094",
+        "N146Z096",
+        "N148Z094",
+        "N150Z096",
+        "N150Z098",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": []
+    },
+    "reason": "Fewer than three retained rows in at least one partition; not scored",
+    "status": "insufficient_coverage"
+  },
+  "proton_edge": {
+    "counts": {
+      "purged": 0,
+      "test": 0,
+      "train": 31,
+      "validation": 0
+    },
+    "partitions": {
+      "purged": [],
+      "test": [],
+      "train": [
+        "N072Z062",
+        "N082Z068",
+        "N086Z070",
+        "N086Z072",
+        "N090Z072",
+        "N092Z058",
+        "N092Z062",
+        "N092Z064",
+        "N094Z064",
+        "N096Z060",
+        "N096Z066",
+        "N098Z068",
+        "N104Z070",
+        "N104Z076",
+        "N124Z088",
+        "N126Z088",
+        "N128Z088",
+        "N130Z090",
+        "N142Z090",
+        "N142Z092",
+        "N142Z094",
+        "N144Z092",
+        "N144Z094",
+        "N146Z092",
+        "N146Z094",
+        "N146Z096",
+        "N148Z094",
+        "N150Z096",
+        "N150Z098",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": []
+    },
+    "reason": "Fewer than three retained rows in at least one partition; not scored",
+    "status": "insufficient_coverage"
+  },
+  "shell_N": {
+    "counts": {
+      "purged": 0,
+      "test": 4,
+      "train": 24,
+      "validation": 3
+    },
+    "partitions": {
+      "purged": [],
+      "test": [
+        "N082Z068",
+        "N124Z088",
+        "N126Z088",
+        "N128Z088"
+      ],
+      "train": [
+        "N072Z062",
+        "N090Z072",
+        "N092Z058",
+        "N092Z062",
+        "N092Z064",
+        "N094Z064",
+        "N096Z060",
+        "N096Z066",
+        "N098Z068",
+        "N104Z070",
+        "N104Z076",
+        "N142Z090",
+        "N142Z092",
+        "N142Z094",
+        "N144Z092",
+        "N144Z094",
+        "N146Z092",
+        "N146Z094",
+        "N146Z096",
+        "N148Z094",
+        "N150Z096",
+        "N150Z098",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": [
+        "N086Z070",
+        "N086Z072",
+        "N130Z090"
+      ]
+    },
+    "reason": null,
+    "status": "enabled"
+  },
+  "shell_Z": {
+    "counts": {
+      "purged": 0,
+      "test": 0,
+      "train": 31,
+      "validation": 0
+    },
+    "partitions": {
+      "purged": [],
+      "test": [],
+      "train": [
+        "N072Z062",
+        "N082Z068",
+        "N086Z070",
+        "N086Z072",
+        "N090Z072",
+        "N092Z058",
+        "N092Z062",
+        "N092Z064",
+        "N094Z064",
+        "N096Z060",
+        "N096Z066",
+        "N098Z068",
+        "N104Z070",
+        "N104Z076",
+        "N124Z088",
+        "N126Z088",
+        "N128Z088",
+        "N130Z090",
+        "N142Z090",
+        "N142Z092",
+        "N142Z094",
+        "N144Z092",
+        "N144Z094",
+        "N146Z092",
+        "N146Z094",
+        "N146Z096",
+        "N148Z094",
+        "N150Z096",
+        "N150Z098",
+        "N152Z096",
+        "N152Z102"
+      ],
+      "validation": []
+    },
+    "reason": "Fewer than three retained rows in at least one partition; not scored",
+    "status": "insufficient_coverage"
+  }
+}

@@ -8,11 +8,21 @@ from pathlib import Path
 
 import numpy as np
 
-from .data import load_observables
+from .controls import control_formulas
+from .data import STATES, load_observables, read_masses, state_name
+from .expanded_formulas import published_formulas
 from .expressions import evaluate
-from .formulas import FORMULAS, MACROS, in_domain
+from .formulas import MACROS, in_domain
+from .literature import LITERATURE
 from .sources import SOURCES, digest, verify_raw
 from .splits import SPLITS, make_split, validate_split
+from .temporal import (
+    TEMPORAL_OBSERVABLES,
+    TEMPORAL_SPLIT,
+    make_temporal_split,
+    temporal_rows,
+    validate_temporal_vintages,
+)
 
 FIELDS = (
     "sample_id",
@@ -31,6 +41,8 @@ FIELDS = (
 )
 JSON_FIELDS = {"dependencies", "observed_dependencies"}
 UNITS = {
+    "E_control": "MeV",
+    "B_macro": "MeV",
     "B": "MeV",
     "Sn": "MeV",
     "S2n": "MeV",
@@ -64,6 +76,12 @@ FAMILIES = {
     "R42": "collectivity",
     "BE2": "collectivity",
 }
+for _j, _p in STATES:
+    UNITS[state_name(_j, _p)] = "MeV"
+    FAMILIES[state_name(_j, _p)] = "shape_coexistence" if _j == 0 else "spectroscopy"
+
+MODEL_ANCHORED_RADIUS_Z = {75, 84, 86, 87, 88, 96}
+MIN_NEW_OBSERVATIONS = 30
 
 
 def write_json(path, value):
@@ -133,14 +151,19 @@ def build(raw, output):
     for name in bundled:
         shutil.copyfile(Path(raw) / name, output / "source_snapshots" / name)
     tasks = []
+    coverage = []
 
-    def add(task_id, category, observable, rows, family, formula=None):
+    def add(task_id, category, observable, rows, family, formula=None, temporal=False):
         if not rows:
             raise ValueError(f"Empty dataset: {task_id}")
         data = f"data/{task_id}.csv"
         splits = f"splits/{task_id}.json"
         write_rows(output / data, rows)
-        partition = {kind: make_split(rows, kind) for kind in SPLITS}
+        partition = (
+            {TEMPORAL_SPLIT: make_temporal_split(rows)}
+            if temporal
+            else {kind: make_split(rows, kind) for kind in SPLITS}
+        )
         write_json(output / splits, partition)
         tasks.append(
             {
@@ -153,30 +176,63 @@ def build(raw, output):
                 "data": data,
                 "splits": splits,
                 "formula": formula,
-                "source_population": len(tables[observable]),
-                "enabled_splits": [k for k in SPLITS if partition[k]["status"] == "enabled"],
+                "source_population": len(tables.get(observable, tables["B"])),
+                "observed_context_rows": sum(r["observed_y"] is not None for r in rows),
+                "panel": formula["recovery_kind"]
+                if formula
+                else ("historical_new_measurements" if temporal else "evaluated_observables"),
+                "structure_group": formula["structure_group"] if formula else family,
+                "evidence_role": formula["evidence_role"] if formula else "evaluation",
+                "split_families": list(partition),
+                "enabled_splits": [k for k in partition if partition[k]["status"] == "enabled"],
             }
         )
 
-    for formula in FORMULAS:
+    for formula in [*published_formulas(), *control_formulas()]:
         rows = []
-        for (n, z), observed in sorted(tables[formula["observable"]].items()):
+        synthetic = formula["recovery_kind"] == "synthetic_mechanism_control"
+        coordinate_table = (
+            tables["B"]
+            if synthetic
+            or formula["domain"] == "spectroscopy"
+            or formula["recovery_kind"] == "published_analytic_reference"
+            else tables[formula["observable"]]
+        )
+        for (n, z), coordinate in sorted(coordinate_table.items()):
             if not in_domain(formula["domain"], n, z):
                 continue
-            row = dict(observed)
+            observed = (
+                None
+                if synthetic or formula["recovery_kind"] == "published_analytic_reference"
+                else tables[formula["observable"]].get((n, z))
+            )
+            row = dict(observed or coordinate)
             row.update(
-                observed_y=row["y"],
-                observed_sigma=row["sigma"],
-                observed_dependencies=row["dependencies"],
+                observed_y=None if observed is None else observed["y"],
+                observed_sigma=None if observed is None else observed["sigma"],
+                observed_dependencies=[] if observed is None else observed["dependencies"],
                 sigma=None,
                 dependencies=[f"formula:{formula['id']}:{n}:{z}"],
             )
-            row["y"] = float(evaluate(formula["expression"], [n], [z])[0])
             row["note"] = (
-                "Formula-generated label; observational columns are never fitting inputs. "
+                "Formula-generated label; missing observed context is not fabricated. Coordinate/observation locator follows. "
                 + row["note"]
             )
+            if synthetic:
+                row["source"] = "NuclearBench-designed-control"
+                row["source_record"] = formula["id"] + ":sha256-uniform-v1"
+                row["note"] = "Synthetic diagnostic, not an empirical observation."
+            elif formula["recovery_kind"] == "published_analytic_reference":
+                row["observed_y"] = None
+                row["observed_sigma"] = None
+                row["observed_dependencies"] = []
+                row["note"] = (
+                    "Restricted analytic component; no experimental value for this component is asserted."
+                )
             rows.append(row)
+        values = evaluate(formula["expression"], [r["N"] for r in rows], [r["Z"] for r in rows])
+        for row, value in zip(rows, values):
+            row["y"] = float(value)
         add(
             formula["id"],
             "expression_recovery",
@@ -187,6 +243,31 @@ def build(raw, output):
         )
     for index, (observable, table) in enumerate(tables.items(), 1):
         rows = [dict(row) for (n, z), row in sorted(table.items()) if n >= 8 and z >= 8]
+        excluded_anchors = 0
+        if observable == "Rch":
+            excluded_anchors = sum(r["Z"] in MODEL_ANCHORED_RADIUS_Z for r in rows)
+            rows = [r for r in rows if r["Z"] not in MODEL_ANCHORED_RADIUS_Z]
+        eligible_splits = [k for k in SPLITS if make_split(rows, k)["status"] == "enabled"]
+        admitted = index <= 15 or (len(rows) >= MIN_NEW_OBSERVATIONS and len(eligible_splits) >= 2)
+        coverage.append(
+            {
+                "observable": observable,
+                "upstream_parsed": len(table),
+                "domain_rows": len(rows),
+                "model_anchored_radius_rows_excluded": excluded_anchors,
+                "admitted": admitted,
+                "reason": "legacy core retained"
+                if index <= 15
+                else (
+                    "meets >=30 observations and >=2 usable splits"
+                    if admitted
+                    else "insufficient conservative definite-state coverage: need >=30 rows and >=2 usable splits"
+                ),
+                "enabled_splits": eligible_splits,
+            }
+        )
+        if not admitted:
+            continue
         add(
             f"B{index:02d}_{observable}",
             "observable_prediction",
@@ -194,9 +275,21 @@ def build(raw, output):
             rows,
             FAMILIES[observable],
         )
+    old = read_masses(raw, "AME2016")
+    for index, observable in enumerate(TEMPORAL_OBSERVABLES, 1):
+        rows = temporal_rows(old[observable], tables[observable])
+        validate_temporal_vintages(rows, old[observable], tables[observable])
+        add(
+            f"T{index:02d}_{observable}",
+            "observable_prediction",
+            observable,
+            rows,
+            FAMILIES[observable],
+            temporal=True,
+        )
     bank = {
-        "schema_version": 1,
-        "version": "1.0.0",
+        "schema_version": 2,
+        "version": "2.0.0",
         "release_date": "2026-10-17",
         "tasks": tasks,
         "macros": MACROS,
@@ -206,15 +299,27 @@ def build(raw, output):
         "experimental_status": "retrospective_release_validation_not_blind",
         "source_policy": "Pinned evaluated values, no estimated mass parents, preliminary radii or censored point labels",
         "sources": {
-            name: {"url": url, "sha256": sha, "snapshot_retrieved": "2026-10-01"}
+            name: {
+                "url": url,
+                "sha256": sha,
+                "snapshot_retrieved": "2026-10-17"
+                if name in {"mass16.txt", "rct1-16.txt", "rct2-16.txt"}
+                else "2026-10-01",
+            }
             for name, (url, sha) in SOURCES.items()
         },
         "source_counts": {k: len(v) for k, v in tables.items()},
         "bundled_sources": bundled,
+        "counting_policy": "Task instances, split conditions and seeds are not independent physics/structure families",
+        "radius_primary_excluded_Z": sorted(MODEL_ANCHORED_RADIUS_Z),
     }
+    write_json(output / "coverage.json", coverage)
+    write_json(output / "literature.json", LITERATURE)
     write_json(output / "bank.json", bank)
     paths = [
         output / "bank.json",
+        output / "coverage.json",
+        output / "literature.json",
         *sorted((output / "data").glob("*.csv")),
         *sorted((output / "splits").glob("*.json")),
         *sorted((output / "source_snapshots").iterdir()),
@@ -226,8 +331,12 @@ def build(raw, output):
 def validate(root):
     root = Path(root)
     bank = load_bank(root)
+    if bank["schema_version"] != 2 or bank["version"] != "2.0.0":
+        raise ValueError(
+            "This verifier targets bank v2.0.0; use the v1.0.0 tag to validate the legacy bank"
+        )
     checksums = json.loads((root / "checksums.json").read_text())
-    expected = {"bank.json"}
+    expected = {"bank.json", "coverage.json", "literature.json"}
     expected.update("source_snapshots/" + name for name in bank["bundled_sources"])
     for name in bank["bundled_sources"]:
         if digest(root / "source_snapshots" / name) != bank["sources"][name]["sha256"]:
@@ -242,6 +351,16 @@ def validate(root):
     if len({t["id"] for t in bank["tasks"]}) != len(bank["tasks"]):
         raise ValueError("Duplicate task ID")
     totals = {"expression_recovery": 0, "observable_prediction": 0}
+    registry = {
+        f["id"]: json.loads(json.dumps(f)) for f in [*published_formulas(), *control_formulas()]
+    }
+    actual_recovery = {t["id"] for t in bank["tasks"] if t["category"] == "expression_recovery"}
+    if actual_recovery != set(registry):
+        raise ValueError("Missing or additional registered recovery tasks")
+    if json.loads((root / "literature.json").read_text()) != json.loads(json.dumps(LITERATURE)):
+        raise ValueError("Literature admission ledger differs from reviewed registry")
+    old_mass = read_masses(root / "source_snapshots", "AME2016")
+    new_mass = read_masses(root / "source_snapshots", "AME2020")
     row_count = 0
     disabled = []
     for task in bank["tasks"]:
@@ -262,24 +381,43 @@ def validate(root):
                 raise ValueError("Missing provenance")
         if task["category"] == "expression_recovery":
             f = task["formula"]
+            if f != registry.get(task["id"]):
+                raise ValueError(
+                    f"Formula differs from source-audited/generator registry: {task['id']}"
+                )
+            if (task["panel"], task["structure_group"], task["evidence_role"]) != (
+                f["recovery_kind"],
+                f["structure_group"],
+                f["evidence_role"],
+            ):
+                raise ValueError("Recovery panel/group/role metadata differs from registry")
+            if task["observed_context_rows"] != sum(r["observed_y"] is not None for r in rows):
+                raise ValueError("Incorrect observational context count")
             values = evaluate(f["expression"], [r["N"] for r in rows], [r["Z"] for r in rows])
             # libm implementations may differ at the last bit across platforms.
             if not np.allclose(values, [r["y"] for r in rows], rtol=2e-14, atol=2e-14):
                 raise ValueError("Formula/label mismatch")
             if any(
-                not in_domain(f["domain"], r["N"], r["Z"])
-                or r["observed_y"] is None
-                or r["sigma"] is not None
-                for r in rows
+                not in_domain(f["domain"], r["N"], r["Z"]) or r["sigma"] is not None for r in rows
             ):
                 raise ValueError("Recovery domain/label ambiguity")
-        if set(partitions) != set(SPLITS):
+        temporal = task["panel"] == "historical_new_measurements"
+        if temporal:
+            validate_temporal_vintages(
+                rows, old_mass[task["observable"]], new_mass[task["observable"]]
+            )
+        if task["id"] == "B10_Rch" and any(r["Z"] in MODEL_ANCHORED_RADIUS_Z for r in rows):
+            raise ValueError("Model-anchored absolute radius admitted to primary prediction")
+        expected_splits = [TEMPORAL_SPLIT] if temporal else list(SPLITS)
+        if set(partitions) != set(expected_splits) or task["split_families"] != expected_splits:
             raise ValueError("Missing split family")
         for kind, split in partitions.items():
             validate_split(rows, split, kind)
             if split["status"] != "enabled":
                 disabled.append(f"{task['id']}:{kind}")
-        if task["enabled_splits"] != [k for k in SPLITS if partitions[k]["status"] == "enabled"]:
+        if task["enabled_splits"] != [
+            k for k in expected_splits if partitions[k]["status"] == "enabled"
+        ]:
             raise ValueError("Inconsistent enabled split list")
         totals[task["category"]] += 1
         row_count += len(rows)

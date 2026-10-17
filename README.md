@@ -1,6 +1,16 @@
 # NuSR Nuclear Structure Benchmark
 
-An independent, frozen question bank for symbolic expression recovery and prediction of nuclear structure observables. It contains **10 published expression-recovery tasks and 15 evaluated-observable prediction tasks**, with 32,815 task rows. Repeated nuclides and related observables are not independent experiments.
+An independent question bank for symbolic expression recovery and prediction of nuclear structure observables. **Version 2.0.0 expands the original 25-card core to 120 task instances**, with 194,077 task rows. These are **not 120 independent physical laws**. The original [v1.0.0](https://github.com/TAO-MINGYU/NuSR-Benchmark/tree/v1.0.0) remains immutable.
+
+| Evaluation question | Panel | Instances | Interpretation |
+| --- | --- | ---: | --- |
+| Expression recovery | Published empirical formulas | 38 | Eight declared related groups; 22 spectroscopy instances share one group |
+| Expression recovery | Restricted published analytic references | 3 | Spherical macroscopic pieces, not complete mass models |
+| Expression recovery | Designed mechanism controls | 48 | 16 templates, three coefficient instances each; 12 development and 36 public confirmation instances |
+| Observable prediction | Evaluated observations | 22 | Mass, radii, transition strength, spectroscopy and shape coexistence |
+| Observable prediction | Historical evaluation holdout | 9 | Train/validate using AME2016 labels, test newly nonestimated AME2020 entries |
+
+Read [EXPANSION_REPORT.md](EXPANSION_REPORT.md) for what changed and [COVERAGE.md](COVERAGE.md) for related families, sparse cases and excluded candidates. Engineering integrity and a version tag do not establish publication sufficiency or NuSR superiority.
 
 The bank is designed for NuSR release evaluation, but its data and scoring tools do not import NuSR, MySR, PySR, Julia, or a trained model. A fresh clone works offline after installing the small Python dependencies. No model-comparison campaign has been run for this release.
 
@@ -8,10 +18,10 @@ The bank is designed for NuSR release evaluation, but its data and scoring tools
 
 | Category | Labels | Question | Principal measures |
 | --- | --- | --- | --- |
-| A: expression recovery | Values generated from a fixed, published empirical formula at evaluated nuclear coordinates | Can an SR method recover that specified expression? | Symbolic equality status, separate numerical agreement, recovery frequency, expression complexity, error and runtime |
+| A: expression recovery | Values generated from a fixed, declared reference expression | Can an SR method recover that specified expression? | Symbolic equality status, separate numerical agreement, recovery frequency, expression complexity, error and runtime |
 | B: observable prediction | Evaluated experimental nuclear observables | How well does a model generalize to withheld nuclides or nuclear regions? | RMSE and MAE in physical units, chain-level errors, generalization across split families |
 
-Category A retains experimental `observed_y` and `observed_sigma` for context; its training label is **`y`, the formula-generated value**. A published empirical expression is a designated model, not the unique exact law behind the observations. Category B makes no exact-expression claim. An observable can belong to both categories with different labels and scientific questions.
+Category A retains experimental `observed_y` and `observed_sigma` **where available**; its training label is **`y`, the formula-generated value**. Spectroscopy recovery uses common measured-mass nuclide coordinates, with missing level observations left empty. Restricted analytic components and synthetic controls assert no experimental target. A published empirical expression is a designated model, not the unique exact law behind observations. Category B makes no exact-expression claim. The two categories distinguish evaluation questions, not whether someone has ever proposed a formula for an observable.
 
 The scope is **nuclear structure**: mass and separation energies, pairing and shell indicators, charge radii, excitation energies, energy ratios and transition strengths. This release does not establish coverage of nuclear reactions, decay lifetimes, magnetic moments or all nuclear physics.
 
@@ -22,6 +32,7 @@ git clone https://github.com/TAO-MINGYU/NuSR-Benchmark.git
 cd NuSR-Benchmark
 python -m pip install '.[symbolic]'
 nuclearbench validate --root .
+nuclearbench summary --root .
 nuclearbench list --root .
 nuclearbench export --root . --task A01_BW --split isotope101 --partition train > train.csv
 nuclearbench export --root . --task A01_BW --split isotope101 --partition validation > validation.csv
@@ -39,15 +50,16 @@ python -m unittest discover -s tests -v
 
 `recover` distinguishes a symbolic proof from finite numerical agreement. A timeout or inability to prove equality is reported as **unproved**, not automatically incorrect. Small prediction error does not imply expression recovery. The example above is an integrity check using the known answer, never a benchmark performance result.
 
-For an executable prediction-file example, see [examples/train_linear.py](examples/train_linear.py). It uses only NumPy and training-partition observations.
+For an executable prediction-file example, see [examples/train_linear.py](examples/train_linear.py). It uses only NumPy and training-partition observations. Historical evaluation is available with `--task T01_B --split ame2016_to_2020`. The 71 test nuclei for that binding task have no usable nonestimated label in the older evaluation.
 
 ## Evaluation design
 
-- Seven registered split families: deterministic point holdout, entire isotope chains, entire isotone chains, neutron edge, proton edge, neutron-shell bands, and proton-shell bands.
-- Shared primitive label dependencies are purged across train/validation/test, including adjacent AME masses used in separation energies, pairing indicators and shell gaps. Purged IDs remain recorded. Two edge splits for the sparse first `3-` level task have insufficient coverage and are explicitly disabled.
+- Seven structural split families, plus the dedicated `ame2016_to_2020` evaluation-vintage split. Temporal tasks do not receive a replacement random split.
+- Shared primitive label dependencies are purged across train/validation/test, including mass parents across evaluation versions. Old labels are never silently replaced by revised AME2020 values. All purge lists and 16 disabled task/split pairs remain explicit.
 - Sources, units, formula conventions, row IDs, partitions and SHA-256 checksums are frozen. Estimated masses, preliminary radii, ambiguous first-level assignments and censored transition strengths are excluded from primary point regression.
 - Primary fits receive only `N,Z`, or the same declared deterministic nuclear feature set for every competing model. Embedded experimental lookup, target-derived features and held-out targets are forbidden. NuSR ablations and template-assisted recovery are reported explicitly.
 - Fixed model seeds: `7,17,37,73,101`. Clean, 1% and 5% training-label noise variants are available for category A. Actual model versions, settings, knowledge access and compute allocations must be frozen before campaign launch; see [PROTOCOL.md](PROTOCOL.md).
+- `aggregate` averages seeds within tasks, task instances within declared groups and groups within a panel. It reports missing/failed runs and never averages raw mixed-unit RMSE. Designed controls and restricted references have their own panels.
 
 Recommended horizontal methods: **NuSR, PySR, MySR and Operon**. Recommended vertical methods: **GPR, LightGBM and an MLP ensemble**, with empirical/physical references appropriate to each observable. Published formulas or per-nuclide prediction tables can save computation; unrelated paper-level RMSE values cannot form a matched ranking. See [MODEL_CANDIDATES.md](MODEL_CANDIDATES.md).
 
@@ -55,6 +67,8 @@ Recommended horizontal methods: **NuSR, PySR, MySR and Operon**. Recommended ver
 
 - [TASKS.md](TASKS.md): every task, row count, source, formula and supported partitions.
 - [FORMULAS.md](FORMULAS.md): exact numerical conventions, effective magic numbers and radius conversion.
+- [CONTROL_DESIGN.md](CONTROL_DESIGN.md): designed templates, coefficient generation and public confirmation roles.
+- [TEMPORAL_PROTOCOL.md](TEMPORAL_PROTOCOL.md): actual vintage labels, new-entry definition and cross-version embargo.
 - [DATA_SOURCES.md](DATA_SOURCES.md): upstream versions, citations, filtering and data-use notices.
 - [PROTOCOL.md](PROTOCOL.md): comparisons, leakage controls, budgets, candidate selection and reporting.
 - [RELEASE_ACCEPTANCE.md](RELEASE_ACCEPTANCE.md): integrity gates and limits of the release claims.
@@ -69,7 +83,7 @@ nuclearbench build --raw .cache/raw --output /tmp/nuclearbench-rebuilt
 diff checksums.json /tmp/nuclearbench-rebuilt/checksums.json
 ```
 
-`fetch` first verifies and copies the five small original files in `source_snapshots/`; only the 42 MB ENSDF archival zip needs downloading. These original bytes and their attribution are preserved, avoiding dependence on mutable pages and browser-download restrictions. An alternative snapshot location can be supplied with `--snapshots`. All input bytes are checked: `fetch` **fails on a hash mismatch** rather than silently changing the release. If upstream changes, obtain the locked ENSDF snapshot or use the checked-in normalized bank; creating a newer source snapshot requires a new bank version. Last-bit math differences across platforms are tolerated by formula validation; byte-identical rebuild claims apply to the recorded Python/NumPy environment in the development log.
+`fetch` first verifies and copies eight small original files in `source_snapshots/`; only the 42 MB ENSDF archival zip needs downloading. These original bytes and their attribution are preserved, avoiding dependence on mutable pages and browser-download restrictions. An alternative snapshot location can be supplied with `--snapshots`. All input bytes are checked: `fetch` **fails on a hash mismatch** rather than silently changing the release. If upstream changes, obtain the locked ENSDF snapshot or use the checked-in normalized bank; creating a newer source snapshot requires a new bank version. Last-bit math differences across platforms are tolerated by formula validation; byte-identical rebuild claims apply to the recorded Python/NumPy environment in the development log. Use each version's own code and artifacts together; the v2 verifier deliberately rejects a v1 bank.
 
 The source datasets have been used in NuSR development. This release supports reproducible retrospective validation; an independent future-data or genuinely untouched release set is needed for a blind performance claim. Passing the integrity checks does not establish NuSR superiority.
 

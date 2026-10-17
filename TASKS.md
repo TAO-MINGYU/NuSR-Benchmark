@@ -1,156 +1,156 @@
-# Task inventory
+# Task inventory — v2.0.0
 
-Frozen release 1.0.0. Counts are task rows, not independent measurements. All data and split links below are relative to this repository.
+Two evaluation categories: expression recovery and observable prediction. Published formulas, restricted analytic references and designed controls are separate panels within recovery. Counts below are task instances, not independent physical laws.
 
-## A. Published expression recovery
+Total: **120 task instances**, 194,077 task rows, 770 enabled task/split pairs.
 
-| ID | Observable | Rows | Family | Data / partitions |
-| --- | --- | ---: | --- | --- |
-| A01_BW | B (MeV) | 2020 | liquid_drop | [CSV](data/A01_BW.csv) / [IDs](splits/A01_BW.json) |
-| A02_BWM | B (MeV) | 2020 | liquid_drop | [CSV](data/A02_BWM.csv) / [IDs](splits/A02_BWM.json) |
-| A03_MISR1_B | B (MeV) | 939 | misr | [CSV](data/A03_MISR1_B.csv) / [IDs](splits/A03_MISR1_B.json) |
-| A04_R_A | Rch (fm) | 880 | radius_scaling | [CSV](data/A04_R_A.csv) / [IDs](splits/A04_R_A.json) |
-| A05_R_Z | Rch (fm) | 880 | radius_scaling | [CSV](data/A05_R_Z.csv) / [IDs](splits/A05_R_Z.json) |
-| A06_R_I | Rch (fm) | 880 | radius_isospin | [CSV](data/A06_R_I.csv) / [IDs](splits/A06_R_I.json) |
-| A07_R_finite | Rch (fm) | 880 | radius_isospin | [CSV](data/A07_R_finite.csv) / [IDs](splits/A07_R_finite.json) |
-| A08_R_collective | Rch (fm) | 880 | radius_valence | [CSV](data/A08_R_collective.csv) / [IDs](splits/A08_R_collective.json) |
-| A09_R_pairing | Rch (fm) | 880 | radius_valence | [CSV](data/A09_R_pairing.csv) / [IDs](splits/A09_R_pairing.json) |
-| A10_MISR1_R | Rch (fm) | 315 | misr | [CSV](data/A10_MISR1_R.csv) / [IDs](splits/A10_MISR1_R.json) |
+Recovery labels are generated values. `observed_y` is optional experimental context and is never a fitting input. Common-coordinate spectroscopy cards do not fabricate missing level measurements. Restricted macroscopic components and synthetic controls assert no experimental value for their generated target.
 
-Expressions use fixed published coefficients. The fitting target is formula-generated `y`; `observed_y` is experimental context only. See [FORMULAS.md](FORMULAS.md) for all conventions.
+## evaluated_observables
 
-## B. Evaluated observable prediction
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| B01_B | B / MeV | 2457 | 0 | mass | evaluation | 7 | [CSV](data/B01_B.csv) / [IDs](splits/B01_B.json) |
+| B02_S2n | S2n / MeV | 2232 | 0 | mass_difference | evaluation | 7 | [CSV](data/B02_S2n.csv) / [IDs](splits/B02_S2n.json) |
+| B03_S2p | S2p / MeV | 2151 | 0 | mass_difference | evaluation | 7 | [CSV](data/B03_S2p.csv) / [IDs](splits/B03_S2p.json) |
+| B04_Sn | Sn / MeV | 2314 | 0 | mass_difference | evaluation | 7 | [CSV](data/B04_Sn.csv) / [IDs](splits/B04_Sn.json) |
+| B05_Sp | Sp / MeV | 2268 | 0 | mass_difference | evaluation | 7 | [CSV](data/B05_Sp.csv) / [IDs](splits/B05_Sp.json) |
+| B06_OES3n | OES3n / MeV | 2192 | 0 | pairing | evaluation | 7 | [CSV](data/B06_OES3n.csv) / [IDs](splits/B06_OES3n.json) |
+| B07_OES3p | OES3p / MeV | 2105 | 0 | pairing | evaluation | 7 | [CSV](data/B07_OES3p.csv) / [IDs](splits/B07_OES3p.json) |
+| B08_delta2n | delta2n / MeV | 2031 | 0 | shell_gap | evaluation | 7 | [CSV](data/B08_delta2n.csv) / [IDs](splits/B08_delta2n.json) |
+| B09_delta2p | delta2p / MeV | 1846 | 0 | shell_gap | evaluation | 7 | [CSV](data/B09_delta2p.csv) / [IDs](splits/B09_delta2p.json) |
+| B10_Rch | Rch / fm | 812 | 0 | radius | evaluation | 7 | [CSV](data/B10_Rch.csv) / [IDs](splits/B10_Rch.json) |
+| B11_BE2 | BE2 / e^2 fm^4 | 417 | 0 | collectivity | evaluation | 7 | [CSV](data/B11_BE2.csv) / [IDs](splits/B11_BE2.json) |
+| B12_E2plus | E2plus / MeV | 509 | 0 | spectroscopy | evaluation | 7 | [CSV](data/B12_E2plus.csv) / [IDs](splits/B12_E2plus.json) |
+| B13_E4plus | E4plus / MeV | 368 | 0 | spectroscopy | evaluation | 7 | [CSV](data/B13_E4plus.csv) / [IDs](splits/B13_E4plus.json) |
+| B14_E3minus | E3minus / MeV | 99 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B14_E3minus.csv) / [IDs](splits/B14_E3minus.json) |
+| B15_R42 | R42 / 1 | 368 | 0 | collectivity | evaluation | 7 | [CSV](data/B15_R42.csv) / [IDs](splits/B15_R42.json) |
+| B16_E6plus | E6plus / MeV | 185 | 0 | spectroscopy | evaluation | 7 | [CSV](data/B16_E6plus.csv) / [IDs](splits/B16_E6plus.json) |
+| B17_E8plus | E8plus / MeV | 88 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B17_E8plus.csv) / [IDs](splits/B17_E8plus.json) |
+| B18_E10plus | E10plus / MeV | 31 | 0 | spectroscopy | evaluation | 4 | [CSV](data/B18_E10plus.csv) / [IDs](splits/B18_E10plus.json) |
+| B19_E1minus | E1minus / MeV | 45 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B19_E1minus.csv) / [IDs](splits/B19_E1minus.json) |
+| B20_E5minus | E5minus / MeV | 56 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B20_E5minus.csv) / [IDs](splits/B20_E5minus.json) |
+| B29_E3plus | E3plus / MeV | 108 | 0 | spectroscopy | evaluation | 5 | [CSV](data/B29_E3plus.csv) / [IDs](splits/B29_E3plus.json) |
+| B33_E0plus | E0plus / MeV | 221 | 0 | shape_coexistence | evaluation | 6 | [CSV](data/B33_E0plus.csv) / [IDs](splits/B33_E0plus.json) |
 
-| ID | Observable | Rows | Unit | Data / partitions |
-| --- | --- | ---: | --- | --- |
-| B01_B | B | 2457 | MeV | [CSV](data/B01_B.csv) / [IDs](splits/B01_B.json) |
-| B02_S2n | S2n | 2232 | MeV | [CSV](data/B02_S2n.csv) / [IDs](splits/B02_S2n.json) |
-| B03_S2p | S2p | 2151 | MeV | [CSV](data/B03_S2p.csv) / [IDs](splits/B03_S2p.json) |
-| B04_Sn | Sn | 2314 | MeV | [CSV](data/B04_Sn.csv) / [IDs](splits/B04_Sn.json) |
-| B05_Sp | Sp | 2268 | MeV | [CSV](data/B05_Sp.csv) / [IDs](splits/B05_Sp.json) |
-| B06_OES3n | OES3n | 2192 | MeV | [CSV](data/B06_OES3n.csv) / [IDs](splits/B06_OES3n.json) |
-| B07_OES3p | OES3p | 2105 | MeV | [CSV](data/B07_OES3p.csv) / [IDs](splits/B07_OES3p.json) |
-| B08_delta2n | delta2n | 2031 | MeV | [CSV](data/B08_delta2n.csv) / [IDs](splits/B08_delta2n.json) |
-| B09_delta2p | delta2p | 1846 | MeV | [CSV](data/B09_delta2p.csv) / [IDs](splits/B09_delta2p.json) |
-| B10_Rch | Rch | 884 | fm | [CSV](data/B10_Rch.csv) / [IDs](splits/B10_Rch.json) |
-| B11_BE2 | BE2 | 417 | e^2 fm^4 | [CSV](data/B11_BE2.csv) / [IDs](splits/B11_BE2.json) |
-| B12_E2plus | E2plus | 509 | MeV | [CSV](data/B12_E2plus.csv) / [IDs](splits/B12_E2plus.json) |
-| B13_E4plus | E4plus | 368 | MeV | [CSV](data/B13_E4plus.csv) / [IDs](splits/B13_E4plus.json) |
-| B14_E3minus | E3minus | 99 | MeV | [CSV](data/B14_E3minus.csv) / [IDs](splits/B14_E3minus.json) |
-| B15_R42 | R42 | 368 | 1 | [CSV](data/B15_R42.csv) / [IDs](splits/B15_R42.json) |
+## historical_new_measurements
 
-`OES3n/p` are three-point odd-even mass staggering, `delta2n/p` are two-nucleon shell gaps, `E2plus/E4plus/E3minus` are the first definite states of those spins, and `R42=E4plus/E2plus`. None asserts an exact unknown physical expression.
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| T01_B | B / MeV | 2479 | 0 | mass | evaluation | 1 | [CSV](data/T01_B.csv) / [IDs](splits/T01_B.json) |
+| T02_S2n | S2n / MeV | 2258 | 0 | mass_difference | evaluation | 1 | [CSV](data/T02_S2n.csv) / [IDs](splits/T02_S2n.json) |
+| T03_S2p | S2p / MeV | 2175 | 0 | mass_difference | evaluation | 1 | [CSV](data/T03_S2p.csv) / [IDs](splits/T03_S2p.json) |
+| T04_Sn | Sn / MeV | 2337 | 0 | mass_difference | evaluation | 1 | [CSV](data/T04_Sn.csv) / [IDs](splits/T04_Sn.json) |
+| T05_Sp | Sp / MeV | 2294 | 0 | mass_difference | evaluation | 1 | [CSV](data/T05_Sp.csv) / [IDs](splits/T05_Sp.json) |
+| T06_OES3n | OES3n / MeV | 2219 | 0 | pairing | evaluation | 1 | [CSV](data/T06_OES3n.csv) / [IDs](splits/T06_OES3n.json) |
+| T07_OES3p | OES3p / MeV | 2131 | 0 | pairing | evaluation | 1 | [CSV](data/T07_OES3p.csv) / [IDs](splits/T07_OES3p.json) |
+| T08_delta2n | delta2n / MeV | 2055 | 0 | shell_gap | evaluation | 1 | [CSV](data/T08_delta2n.csv) / [IDs](splits/T08_delta2n.json) |
+| T09_delta2p | delta2p / MeV | 1870 | 0 | shell_gap | evaluation | 1 | [CSV](data/T09_delta2p.csv) / [IDs](splits/T09_delta2p.json) |
 
-## Retained train / validation / test counts
+## published_analytic_reference
 
-Each cell is train/validation/test after dependency purging. Purged IDs and counts are retained in the JSON. An asterisk means insufficient coverage and disabled scoring; no substitute split is selected.
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| A39_LDM_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A39_LDM_spherical_macro.csv) / [IDs](splits/A39_LDM_spherical_macro.json) |
+| A40_NLD_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A40_NLD_spherical_macro.csv) / [IDs](splits/A40_NLD_spherical_macro.json) |
+| A41_LSD_spherical_macro | B_macro / MeV | 2457 | 0 | macroscopic_curvature | restricted_reference | 7 | [CSV](data/A41_LSD_spherical_macro.csv) / [IDs](splits/A41_LSD_spherical_macro.json) |
 
-| Task | iid101 | isotope101 | isotone101 | neutron_edge | proton_edge | shell_N | shell_Z |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| A01_BW | 1210/394/416 | 1310/302/408 | 1333/358/329 | 1152/434/434 | 1158/431/431 | 1304/310/406 | 1074/380/566 |
-| A02_BWM | 1210/394/416 | 1310/302/408 | 1333/358/329 | 1152/434/434 | 1158/431/431 | 1304/310/406 | 1074/380/566 |
-| A03_MISR1_B | 561/188/190 | 635/145/159 | 612/137/190 | 535/202/202 | 555/192/192 | 495/186/258 | 397/226/316 |
-| A04_R_A | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A05_R_Z | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A06_R_I | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A07_R_finite | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A08_R_collective | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A09_R_pairing | 520/186/174 | 536/175/169 | 549/186/145 | 558/161/161 | 656/112/112 | 587/120/173 | 493/128/259 |
-| A10_MISR1_R | 190/63/62 | 202/59/54 | 198/50/67 | 221/47/47 | 269/23/23 | 179/54/82 | 145/39/131 |
-| B01_B | 1463/490/504 | 1583/447/427 | 1572/438/447 | 1419/519/519 | 1369/544/544 | 1659/347/451 | 1403/451/603 |
-| B02_S2n | 588/301/448 | 1433/407/392 | 611/299/401 | 1114/297/476 | 1099/325/484 | 1494/22/411 | 1254/418/560 |
-| B03_S2p | 567/296/440 | 606/288/381 | 1381/386/384 | 1065/204/458 | 1037/200/466 | 1440/310/401 | 1198/56/508 |
-| B04_Sn | 602/297/468 | 1488/421/405 | 668/296/413 | 1229/406/497 | 1186/419/509 | 1436/162/426 | 1304/433/577 |
-| B05_Sp | 572/302/466 | 653/284/400 | 1456/407/405 | 1174/344/479 | 1147/355/492 | 1521/325/422 | 1133/213/547 |
-| B06_OES3n | 265/185/442 | 1405/401/386 | 266/210/383 | 1082/288/468 | 1050/317/478 | 1452/22/406 | 1227/414/551 |
-| B07_OES3p | 279/202/421 | 213/208/374 | 1353/379/373 | 988/192/450 | 967/186/454 | 1407/304/394 | 1150/38/513 |
-| B08_delta2n | 298/185/407 | 1294/376/361 | 357/214/357 | 954/102/438 | 916/153/446 | 1128/17/382 | 1133/384/514 |
-| B09_delta2p | 302/198/361 | 326/183/342 | 1188/333/325 | 795/64/402 | 935/9/394 | 1233/268/345 | 772/53/447 |
-| B10_Rch | 524/186/174 | 540/175/169 | 553/186/145 | 562/161/161 | 660/112/112 | 587/120/177 | 493/128/263 |
-| B11_BE2 | 239/92/86 | 287/86/44 | 264/101/52 | 257/80/80 | 337/40/40 | 275/53/89 | 218/77/122 |
-| B12_E2plus | 280/114/115 | 341/119/49 | 324/118/67 | 291/109/109 | 387/61/61 | 322/71/116 | 272/93/144 |
-| B13_E4plus | 213/77/78 | 234/94/40 | 226/94/48 | 248/60/60 | 314/27/27 | 254/46/68 | 218/60/90 |
-| B14_E3minus | 57/23/19 | 64/26/9 | 59/28/12 | 99/0/0* | 99/0/0* | 57/9/33 | 67/8/24 |
-| B15_R42 | 213/77/78 | 234/94/40 | 226/94/48 | 248/60/60 | 314/27/27 | 254/46/68 | 218/60/90 |
+## published_empirical
 
-## Full formula references
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| A01_BW | B / MeV | 2020 | 2020 | liquid_drop | evaluation | 7 | [CSV](data/A01_BW.csv) / [IDs](splits/A01_BW.json) |
+| A02_BWM | B / MeV | 2020 | 2020 | liquid_drop | evaluation | 7 | [CSV](data/A02_BWM.csv) / [IDs](splits/A02_BWM.json) |
+| A03_MISR1_B | B / MeV | 939 | 939 | misr | evaluation | 7 | [CSV](data/A03_MISR1_B.csv) / [IDs](splits/A03_MISR1_B.json) |
+| A04_R_A | Rch / fm | 880 | 880 | radius_scaling | evaluation | 7 | [CSV](data/A04_R_A.csv) / [IDs](splits/A04_R_A.json) |
+| A05_R_Z | Rch / fm | 880 | 880 | radius_scaling | evaluation | 7 | [CSV](data/A05_R_Z.csv) / [IDs](splits/A05_R_Z.json) |
+| A06_R_I | Rch / fm | 880 | 880 | radius_isospin | evaluation | 7 | [CSV](data/A06_R_I.csv) / [IDs](splits/A06_R_I.json) |
+| A07_R_finite | Rch / fm | 880 | 880 | radius_isospin | evaluation | 7 | [CSV](data/A07_R_finite.csv) / [IDs](splits/A07_R_finite.json) |
+| A08_R_collective | Rch / fm | 880 | 880 | radius_valence | evaluation | 7 | [CSV](data/A08_R_collective.csv) / [IDs](splits/A08_R_collective.json) |
+| A09_R_pairing | Rch / fm | 880 | 880 | radius_valence | evaluation | 7 | [CSV](data/A09_R_pairing.csv) / [IDs](splits/A09_R_pairing.json) |
+| A10_MISR1_R | Rch / fm | 315 | 315 | misr | evaluation | 7 | [CSV](data/A10_MISR1_R.csv) / [IDs](splits/A10_MISR1_R.json) |
+| A11_R_ZI | Rch / fm | 880 | 880 | radius_isospin | evaluation | 7 | [CSV](data/A11_R_ZI.csv) / [IDs](splits/A11_R_ZI.json) |
+| A12_R_Zasym | Rch / fm | 880 | 880 | radius_isospin | evaluation | 7 | [CSV](data/A12_R_Zasym.csv) / [IDs](splits/A12_R_Zasym.json) |
+| A13_R_Zfinite | Rch / fm | 880 | 880 | radius_isospin | evaluation | 7 | [CSV](data/A13_R_Zfinite.csv) / [IDs](splits/A13_R_Zfinite.json) |
+| A14_Ha_E2 | E2plus / MeV | 630 | 498 | valence_spectroscopy | evaluation | 7 | [CSV](data/A14_Ha_E2.csv) / [IDs](splits/A14_Ha_E2.json) |
+| A15_Ha_E3 | E3minus / MeV | 630 | 99 | valence_spectroscopy | evaluation | 7 | [CSV](data/A15_Ha_E3.csv) / [IDs](splits/A15_Ha_E3.json) |
+| A16_yrast_E2plus | E2plus / MeV | 630 | 498 | valence_spectroscopy | evaluation | 7 | [CSV](data/A16_yrast_E2plus.csv) / [IDs](splits/A16_yrast_E2plus.json) |
+| A17_yrast_E4plus | E4plus / MeV | 630 | 360 | valence_spectroscopy | evaluation | 7 | [CSV](data/A17_yrast_E4plus.csv) / [IDs](splits/A17_yrast_E4plus.json) |
+| A18_yrast_E6plus | E6plus / MeV | 630 | 178 | valence_spectroscopy | evaluation | 7 | [CSV](data/A18_yrast_E6plus.csv) / [IDs](splits/A18_yrast_E6plus.json) |
+| A19_yrast_E8plus | E8plus / MeV | 630 | 81 | valence_spectroscopy | evaluation | 7 | [CSV](data/A19_yrast_E8plus.csv) / [IDs](splits/A19_yrast_E8plus.json) |
+| A20_yrast_E10plus | E10plus / MeV | 630 | 29 | valence_spectroscopy | evaluation | 7 | [CSV](data/A20_yrast_E10plus.csv) / [IDs](splits/A20_yrast_E10plus.json) |
+| A21_yrast_E1minus | E1minus / MeV | 630 | 45 | valence_spectroscopy | evaluation | 7 | [CSV](data/A21_yrast_E1minus.csv) / [IDs](splits/A21_yrast_E1minus.json) |
+| A22_yrast_E3minus | E3minus / MeV | 630 | 99 | valence_spectroscopy | evaluation | 7 | [CSV](data/A22_yrast_E3minus.csv) / [IDs](splits/A22_yrast_E3minus.json) |
+| A23_yrast_E5minus | E5minus / MeV | 630 | 56 | valence_spectroscopy | evaluation | 7 | [CSV](data/A23_yrast_E5minus.csv) / [IDs](splits/A23_yrast_E5minus.json) |
+| A24_yrast_E7minus | E7minus / MeV | 630 | 20 | valence_spectroscopy | evaluation | 7 | [CSV](data/A24_yrast_E7minus.csv) / [IDs](splits/A24_yrast_E7minus.json) |
+| A25_yrast_E9minus | E9minus / MeV | 630 | 4 | valence_spectroscopy | evaluation | 7 | [CSV](data/A25_yrast_E9minus.csv) / [IDs](splits/A25_yrast_E9minus.json) |
+| A26_yrast_E2minus | E2minus / MeV | 630 | 23 | valence_spectroscopy | evaluation | 7 | [CSV](data/A26_yrast_E2minus.csv) / [IDs](splits/A26_yrast_E2minus.json) |
+| A27_yrast_E4minus | E4minus / MeV | 630 | 25 | valence_spectroscopy | evaluation | 7 | [CSV](data/A27_yrast_E4minus.csv) / [IDs](splits/A27_yrast_E4minus.json) |
+| A28_yrast_E6minus | E6minus / MeV | 630 | 7 | valence_spectroscopy | evaluation | 7 | [CSV](data/A28_yrast_E6minus.csv) / [IDs](splits/A28_yrast_E6minus.json) |
+| A29_yrast_E8minus | E8minus / MeV | 630 | 6 | valence_spectroscopy | evaluation | 7 | [CSV](data/A29_yrast_E8minus.csv) / [IDs](splits/A29_yrast_E8minus.json) |
+| A30_yrast_E10minus | E10minus / MeV | 630 | 2 | valence_spectroscopy | evaluation | 7 | [CSV](data/A30_yrast_E10minus.csv) / [IDs](splits/A30_yrast_E10minus.json) |
+| A31_yrast_E1plus | E1plus / MeV | 630 | 13 | valence_spectroscopy | evaluation | 7 | [CSV](data/A31_yrast_E1plus.csv) / [IDs](splits/A31_yrast_E1plus.json) |
+| A32_yrast_E3plus | E3plus / MeV | 630 | 108 | valence_spectroscopy | evaluation | 7 | [CSV](data/A32_yrast_E3plus.csv) / [IDs](splits/A32_yrast_E3plus.json) |
+| A33_yrast_E5plus | E5plus / MeV | 630 | 24 | valence_spectroscopy | evaluation | 7 | [CSV](data/A33_yrast_E5plus.csv) / [IDs](splits/A33_yrast_E5plus.json) |
+| A34_yrast_E7plus | E7plus / MeV | 630 | 4 | valence_spectroscopy | evaluation | 7 | [CSV](data/A34_yrast_E7plus.csv) / [IDs](splits/A34_yrast_E7plus.json) |
+| A35_yrast_E9plus | E9plus / MeV | 630 | 0 | valence_spectroscopy | evaluation | 7 | [CSV](data/A35_yrast_E9plus.csv) / [IDs](splits/A35_yrast_E9plus.json) |
+| A36_DZ_R_naive | Rch / fm | 101 | 101 | radius_isovector_exponential | evaluation | 6 | [CSV](data/A36_DZ_R_naive.csv) / [IDs](splits/A36_DZ_R_naive.json) |
+| A37_DZ_R_correlated | Rch / fm | 106 | 106 | radius_isovector_exponential | evaluation | 6 | [CSV](data/A37_DZ_R_correlated.csv) / [IDs](splits/A37_DZ_R_correlated.json) |
+| A38_Angeli_R | Rch / fm | 880 | 880 | radius_inverse_powers | evaluation | 7 | [CSV](data/A38_Angeli_R.csv) / [IDs](splits/A38_Angeli_R.json) |
 
-### A01_BW
+## synthetic_mechanism_control
 
-Source: [Eq. (1), coefficients in text](https://arxiv.org/pdf/nucl-th/0405080); domain `mass_bw`.
+| ID | Target / unit | Rows | Observed context | Structure group | Role | Enabled splits | Files |
+| --- | --- | ---: | ---: | --- | --- | ---: | --- |
+| S01_isospin_quadratic_01 | E_control / MeV | 2413 | 0 | isospin_quadratic | development | 7 | [CSV](data/S01_isospin_quadratic_01.csv) / [IDs](splits/S01_isospin_quadratic_01.json) |
+| S01_isospin_quadratic_02 | E_control / MeV | 2413 | 0 | isospin_quadratic | confirmation | 7 | [CSV](data/S01_isospin_quadratic_02.csv) / [IDs](splits/S01_isospin_quadratic_02.json) |
+| S01_isospin_quadratic_03 | E_control / MeV | 2413 | 0 | isospin_quadratic | confirmation | 7 | [CSV](data/S01_isospin_quadratic_03.csv) / [IDs](splits/S01_isospin_quadratic_03.json) |
+| S02_surface_symmetry_01 | E_control / MeV | 2413 | 0 | surface_symmetry | development | 7 | [CSV](data/S02_surface_symmetry_01.csv) / [IDs](splits/S02_surface_symmetry_01.json) |
+| S02_surface_symmetry_02 | E_control / MeV | 2413 | 0 | surface_symmetry | confirmation | 7 | [CSV](data/S02_surface_symmetry_02.csv) / [IDs](splits/S02_surface_symmetry_02.json) |
+| S02_surface_symmetry_03 | E_control / MeV | 2413 | 0 | surface_symmetry | confirmation | 7 | [CSV](data/S02_surface_symmetry_03.csv) / [IDs](splits/S02_surface_symmetry_03.json) |
+| S03_wigner_cusp_01 | E_control / MeV | 2413 | 0 | wigner_cusp | development | 7 | [CSV](data/S03_wigner_cusp_01.csv) / [IDs](splits/S03_wigner_cusp_01.json) |
+| S03_wigner_cusp_02 | E_control / MeV | 2413 | 0 | wigner_cusp | confirmation | 7 | [CSV](data/S03_wigner_cusp_02.csv) / [IDs](splits/S03_wigner_cusp_02.json) |
+| S03_wigner_cusp_03 | E_control / MeV | 2413 | 0 | wigner_cusp | confirmation | 7 | [CSV](data/S03_wigner_cusp_03.csv) / [IDs](splits/S03_wigner_cusp_03.json) |
+| S04_congruence_exp_01 | E_control / MeV | 2413 | 0 | congruence_exp | development | 7 | [CSV](data/S04_congruence_exp_01.csv) / [IDs](splits/S04_congruence_exp_01.json) |
+| S04_congruence_exp_02 | E_control / MeV | 2413 | 0 | congruence_exp | confirmation | 7 | [CSV](data/S04_congruence_exp_02.csv) / [IDs](splits/S04_congruence_exp_02.json) |
+| S04_congruence_exp_03 | E_control / MeV | 2413 | 0 | congruence_exp | confirmation | 7 | [CSV](data/S04_congruence_exp_03.csv) / [IDs](splits/S04_congruence_exp_03.json) |
+| S05_pairing_power_01 | E_control / MeV | 2413 | 0 | pairing_power | development | 7 | [CSV](data/S05_pairing_power_01.csv) / [IDs](splits/S05_pairing_power_01.json) |
+| S05_pairing_power_02 | E_control / MeV | 2413 | 0 | pairing_power | confirmation | 7 | [CSV](data/S05_pairing_power_02.csv) / [IDs](splits/S05_pairing_power_02.json) |
+| S05_pairing_power_03 | E_control / MeV | 2413 | 0 | pairing_power | confirmation | 7 | [CSV](data/S05_pairing_power_03.csv) / [IDs](splits/S05_pairing_power_03.json) |
+| S06_pairing_isospin_01 | E_control / MeV | 2413 | 0 | pairing_isospin | development | 7 | [CSV](data/S06_pairing_isospin_01.csv) / [IDs](splits/S06_pairing_isospin_01.json) |
+| S06_pairing_isospin_02 | E_control / MeV | 2413 | 0 | pairing_isospin | confirmation | 7 | [CSV](data/S06_pairing_isospin_02.csv) / [IDs](splits/S06_pairing_isospin_02.json) |
+| S06_pairing_isospin_03 | E_control / MeV | 2413 | 0 | pairing_isospin | confirmation | 7 | [CSV](data/S06_pairing_isospin_03.csv) / [IDs](splits/S06_pairing_isospin_03.json) |
+| S07_shell_gaussian_sum_01 | E_control / MeV | 2413 | 0 | shell_gaussian_sum | development | 7 | [CSV](data/S07_shell_gaussian_sum_01.csv) / [IDs](splits/S07_shell_gaussian_sum_01.json) |
+| S07_shell_gaussian_sum_02 | E_control / MeV | 2413 | 0 | shell_gaussian_sum | confirmation | 7 | [CSV](data/S07_shell_gaussian_sum_02.csv) / [IDs](splits/S07_shell_gaussian_sum_02.json) |
+| S07_shell_gaussian_sum_03 | E_control / MeV | 2413 | 0 | shell_gaussian_sum | confirmation | 7 | [CSV](data/S07_shell_gaussian_sum_03.csv) / [IDs](splits/S07_shell_gaussian_sum_03.json) |
+| S08_shell_gaussian_joint_01 | E_control / MeV | 2413 | 0 | shell_gaussian_joint | development | 7 | [CSV](data/S08_shell_gaussian_joint_01.csv) / [IDs](splits/S08_shell_gaussian_joint_01.json) |
+| S08_shell_gaussian_joint_02 | E_control / MeV | 2413 | 0 | shell_gaussian_joint | confirmation | 7 | [CSV](data/S08_shell_gaussian_joint_02.csv) / [IDs](splits/S08_shell_gaussian_joint_02.json) |
+| S08_shell_gaussian_joint_03 | E_control / MeV | 2413 | 0 | shell_gaussian_joint | confirmation | 7 | [CSV](data/S08_shell_gaussian_joint_03.csv) / [IDs](splits/S08_shell_gaussian_joint_03.json) |
+| S09_shell_absolute_exp_01 | E_control / MeV | 2413 | 0 | shell_absolute_exp | development | 7 | [CSV](data/S09_shell_absolute_exp_01.csv) / [IDs](splits/S09_shell_absolute_exp_01.json) |
+| S09_shell_absolute_exp_02 | E_control / MeV | 2413 | 0 | shell_absolute_exp | confirmation | 7 | [CSV](data/S09_shell_absolute_exp_02.csv) / [IDs](splits/S09_shell_absolute_exp_02.json) |
+| S09_shell_absolute_exp_03 | E_control / MeV | 2413 | 0 | shell_absolute_exp | confirmation | 7 | [CSV](data/S09_shell_absolute_exp_03.csv) / [IDs](splits/S09_shell_absolute_exp_03.json) |
+| S10_valence_product_01 | E_control / MeV | 2413 | 0 | valence_product | development | 7 | [CSV](data/S10_valence_product_01.csv) / [IDs](splits/S10_valence_product_01.json) |
+| S10_valence_product_02 | E_control / MeV | 2413 | 0 | valence_product | confirmation | 7 | [CSV](data/S10_valence_product_02.csv) / [IDs](splits/S10_valence_product_02.json) |
+| S10_valence_product_03 | E_control / MeV | 2413 | 0 | valence_product | confirmation | 7 | [CSV](data/S10_valence_product_03.csv) / [IDs](splits/S10_valence_product_03.json) |
+| S11_valence_saturation_01 | E_control / MeV | 2413 | 0 | valence_saturation | development | 7 | [CSV](data/S11_valence_saturation_01.csv) / [IDs](splits/S11_valence_saturation_01.json) |
+| S11_valence_saturation_02 | E_control / MeV | 2413 | 0 | valence_saturation | confirmation | 7 | [CSV](data/S11_valence_saturation_02.csv) / [IDs](splits/S11_valence_saturation_02.json) |
+| S11_valence_saturation_03 | E_control / MeV | 2413 | 0 | valence_saturation | confirmation | 7 | [CSV](data/S11_valence_saturation_03.csv) / [IDs](splits/S11_valence_saturation_03.json) |
+| S12_valence_isospin_01 | E_control / MeV | 2413 | 0 | valence_isospin | development | 7 | [CSV](data/S12_valence_isospin_01.csv) / [IDs](splits/S12_valence_isospin_01.json) |
+| S12_valence_isospin_02 | E_control / MeV | 2413 | 0 | valence_isospin | confirmation | 7 | [CSV](data/S12_valence_isospin_02.csv) / [IDs](splits/S12_valence_isospin_02.json) |
+| S12_valence_isospin_03 | E_control / MeV | 2413 | 0 | valence_isospin | confirmation | 7 | [CSV](data/S12_valence_isospin_03.csv) / [IDs](splits/S12_valence_isospin_03.json) |
+| S13_shell_isospin_01 | E_control / MeV | 2413 | 0 | shell_isospin | confirmation | 7 | [CSV](data/S13_shell_isospin_01.csv) / [IDs](splits/S13_shell_isospin_01.json) |
+| S13_shell_isospin_02 | E_control / MeV | 2413 | 0 | shell_isospin | confirmation | 7 | [CSV](data/S13_shell_isospin_02.csv) / [IDs](splits/S13_shell_isospin_02.json) |
+| S13_shell_isospin_03 | E_control / MeV | 2413 | 0 | shell_isospin | confirmation | 7 | [CSV](data/S13_shell_isospin_03.csv) / [IDs](splits/S13_shell_isospin_03.json) |
+| S14_shell_pairing_01 | E_control / MeV | 2413 | 0 | shell_pairing | confirmation | 7 | [CSV](data/S14_shell_pairing_01.csv) / [IDs](splits/S14_shell_pairing_01.json) |
+| S14_shell_pairing_02 | E_control / MeV | 2413 | 0 | shell_pairing | confirmation | 7 | [CSV](data/S14_shell_pairing_02.csv) / [IDs](splits/S14_shell_pairing_02.json) |
+| S14_shell_pairing_03 | E_control / MeV | 2413 | 0 | shell_pairing | confirmation | 7 | [CSV](data/S14_shell_pairing_03.csv) / [IDs](splits/S14_shell_pairing_03.json) |
+| S15_bulk_pairing_01 | E_control / MeV | 2413 | 0 | bulk_pairing | confirmation | 7 | [CSV](data/S15_bulk_pairing_01.csv) / [IDs](splits/S15_bulk_pairing_01.json) |
+| S15_bulk_pairing_02 | E_control / MeV | 2413 | 0 | bulk_pairing | confirmation | 7 | [CSV](data/S15_bulk_pairing_02.csv) / [IDs](splits/S15_bulk_pairing_02.json) |
+| S15_bulk_pairing_03 | E_control / MeV | 2413 | 0 | bulk_pairing | confirmation | 7 | [CSV](data/S15_bulk_pairing_03.csv) / [IDs](splits/S15_bulk_pairing_03.json) |
+| S16_bulk_shell_collective_01 | E_control / MeV | 2413 | 0 | bulk_shell_collective | confirmation | 7 | [CSV](data/S16_bulk_shell_collective_01.csv) / [IDs](splits/S16_bulk_shell_collective_01.json) |
+| S16_bulk_shell_collective_02 | E_control / MeV | 2413 | 0 | bulk_shell_collective | confirmation | 7 | [CSV](data/S16_bulk_shell_collective_02.csv) / [IDs](splits/S16_bulk_shell_collective_02.json) |
+| S16_bulk_shell_collective_03 | E_control / MeV | 2413 | 0 | bulk_shell_collective | confirmation | 7 | [CSV](data/S16_bulk_shell_collective_03.csv) / [IDs](splits/S16_bulk_shell_collective_03.json) |
 
-```text
-15.78*A-18.34*A**(2/3)-0.71*Z*(Z-1)/A**(1/3)-23.21*(N-Z)**2/A+12*d/sqrt(A)
-```
+Full expressions, domains, printed coefficients, sources and scope restrictions are in each task's `formula` entry in [bank.json](bank.json). See [FORMULAS.md](FORMULAS.md), [CONTROL_DESIGN.md](CONTROL_DESIGN.md), [TEMPORAL_PROTOCOL.md](TEMPORAL_PROTOCOL.md) and [SPLIT_COUNTS.md](SPLIT_COUNTS.md).
 
-### A02_BWM
-
-Source: [Eqs. (4)-(5); no isotonic experimental shift](https://arxiv.org/pdf/nucl-th/0405080); domain `mass_bw`.
-
-```text
-15.777*A-18.34*A**(2/3)-0.71*Z*(Z-1)/A**(1/3)-23.21*(N-Z)**2/(A*(1+exp(-A/17)))+12*(1-exp(-A/30))*d/sqrt(A)
-```
-
-### A03_MISR1_B
-
-Source: [Version 3, Eq. (4), eta0=1 MeV](https://arxiv.org/html/2404.11477v3); domain `misr`.
-
-```text
-Z*(1+1/N+1.10*N/Z**2)*(I*(32.43-A**(1/3)*N/Z)+16.70)
-```
-
-### A04_R_A
-
-Source: [Eq. (2), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.2269*A**(1/3)
-```
-
-### A05_R_Z
-
-Source: [Eq. (6), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.6394*Z**(1/3)
-```
-
-### A06_R_I
-
-Source: [Eq. (4), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.2828*(1-0.2704*I)*A**(1/3)
-```
-
-### A07_R_finite
-
-Source: [Eq. (5), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.2331*(1-0.1461*I+2.3310/A)*A**(1/3)
-```
-
-### A08_R_collective
-
-Source: [Eq. (10), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.2262*(1-0.1473*I+1.9876/A+0.3993*P_s/A)*A**(1/3)
-```
-
-### A09_R_pairing
-
-Source: [Eq. (11), Table 1](https://doi.org/10.7498/aps.64.112101); domain `sheng`.
-
-```text
-sqrt(3/5)*1.2262*(1-0.1472*I+1.9552/A+0.4030*P_s/A+0.1093*d/A)*A**(1/3)
-```
-
-### A10_MISR1_R
-
-Source: [Version 3, Eq. (5); numeric radii in fm](https://arxiv.org/html/2404.11477v3); domain `misr`.
-
-```text
-A**(1/3)*(0.95+1.48/Z)+0.017*(P_m-Z/N)*exp(I)-I
-```
+B identifiers retain candidate ordinals: gaps reflect rejected sparse states, not missing files. All rejections and their coverage are listed in [COVERAGE.md](COVERAGE.md). v1.0.0 remains available at its immutable Git tag.
